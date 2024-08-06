@@ -28,7 +28,7 @@ public class CameraScript : MonoBehaviour
             rotationMin = -10f;
             rotationMax = 60f;
             smoothTime = 0.2f;
-            rotationSensitivity = 0.3f;
+            rotationSensitivity = 0.39f;
 
 
         }

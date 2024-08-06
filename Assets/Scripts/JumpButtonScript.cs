@@ -1,18 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
-public class JumpButtonScript : MonoBehaviour
+public class JumpButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    // Start is called before the first frame update
-    void Start()
+
+
+    [SerializeField] private float jumpForce;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private PlayerController _playerController;
+    [SerializeField] private GameObject player;
+
+    public void OnPointerDown(PointerEventData eventData)
     {
         
+        if (_playerController.IsGrounded)
+        {
+            _playerController.IsGrounded = false;
+            //rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+            rb.AddForce(jumpForce * player.transform.up);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void OnPointerUp(PointerEventData eventData)
     {
-        
+
     }
+   
+    
+
 }

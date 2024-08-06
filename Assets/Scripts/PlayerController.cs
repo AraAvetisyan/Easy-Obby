@@ -15,8 +15,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool isMobile;
 
-    [SerializeField] private float jumpForce;
-    [SerializeField] private bool isGrounded;
+
+    public bool IsGrounded;
+
     public void FixedUpdate()
     {
         Vector2 input = Vector2.zero;
@@ -38,32 +39,28 @@ public class PlayerController : MonoBehaviour
         float targertSpeed = moveSpeed * inputDir.magnitude;
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targertSpeed, ref speedVelocity, 0.1f);
         transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            JumpButtonPressed();
-        }
+       
     }
-    public void JumpButtonPressed()
+   
+    public void OnCollisionEnter(Collision collision)
     {
-        if (isGrounded)
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = false;
-            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+            rb.velocity = Vector3.zero;
         }
     }
     public void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true;
+            IsGrounded = true;
         }       
     }
     public void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = false;
+            IsGrounded = false;
         }
     }
 }
