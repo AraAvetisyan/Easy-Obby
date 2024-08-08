@@ -24,7 +24,7 @@ public class CameraScript : MonoBehaviour
     {
         if(isMobile)
         {
-            distance = 10f;
+           // distance = 10f;
             rotationMin = -10f;
             rotationMax = 60f;
             smoothTime = 0.2f;

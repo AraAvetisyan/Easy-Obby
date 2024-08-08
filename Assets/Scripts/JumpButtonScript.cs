@@ -1,9 +1,10 @@
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class JumpButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class JumpButtonScript : MonoBehaviour, IPointerDownHandler
 {
 
 
@@ -12,6 +13,7 @@ public class JumpButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject player;
 
+    [SerializeField] private bool gamemodeRunning;
     public void OnPointerDown(PointerEventData eventData)
     {
         
@@ -20,14 +22,21 @@ public class JumpButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             _playerController.IsGrounded = false;
             //rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
             rb.AddForce(jumpForce * player.transform.up);
+            _playerController.Jumping = true;
+            if (gamemodeRunning)
+            {
+                _playerController.Animator.SetTrigger("Jump");
+            }
+            StartCoroutine(OnJump());
         }
     }
-
-
-    public void OnPointerUp(PointerEventData eventData)
+    public IEnumerator OnJump()
     {
-
+        yield return new WaitForSeconds(0.7f);
+        _playerController.Jumping = false;
     }
+
+
    
     
 

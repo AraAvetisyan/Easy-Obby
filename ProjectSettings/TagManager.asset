@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Teleport
+  - TeleportPoint
   layers:
   - Default
   - TransparentFX

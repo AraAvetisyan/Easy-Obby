@@ -9,14 +9,17 @@ public class PlayerController : MonoBehaviour
     private float currentVelocity;
     private float speedVelocity;
     private float currentSpeed;
-    [SerializeField] private float smootRotationTimer = 0.25f;
+    [SerializeField] private float smootRotationTimer;
+    [SerializeField] private float smootSpeedTimer;
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private Transform camera;
 
+    [SerializeField] private bool gamemodeRunning;
     [SerializeField] private bool isMobile;
-
+    public bool Jumping;
 
     public bool IsGrounded;
+    public Animator Animator;
 
     public void FixedUpdate()
     {
@@ -37,8 +40,23 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, rotation, ref currentVelocity, smootRotationTimer);
         }
         float targertSpeed = moveSpeed * inputDir.magnitude;
-        currentSpeed = Mathf.SmoothDamp(currentSpeed, targertSpeed, ref speedVelocity, 0.1f);
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer);
+        if (gamemodeRunning)
+        {
+            if (currentSpeed > 0)
+            {
+                Animator.SetBool("IsRunning", true);
+            }
+            if (currentSpeed == 0)
+            {
+                Animator.SetBool("IsRunning", false);
+            }
+        }
         transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+        //if(IsGrounded && rb.velocity != Vector3.zero && !Jumping) 
+        //{
+        //    rb.velocity = Vector3.zero;
+        //}
        
     }
    
