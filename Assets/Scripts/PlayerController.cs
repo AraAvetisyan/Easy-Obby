@@ -8,12 +8,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     private float currentVelocity;
     private float speedVelocity;
-    private float currentSpeed;
+    [SerializeField] private float currentSpeed;
     [SerializeField] private float smootRotationTimer;
     [SerializeField] private float smootSpeedTimer;
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private Transform camera;
-
+    [SerializeField] private SprintButtonScript _sprintButtonScript;
     [SerializeField] private bool gamemodeRunning;
     [SerializeField] private bool isMobile;
     public bool Jumping;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, rotation, ref currentVelocity, smootRotationTimer);
         }
         float targertSpeed = moveSpeed * inputDir.magnitude;
-        currentSpeed = Mathf.SmoothDamp(currentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer);
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer) * _sprintButtonScript.SprintSpeed;
         if (gamemodeRunning)
         {
             if (currentSpeed > 0)
