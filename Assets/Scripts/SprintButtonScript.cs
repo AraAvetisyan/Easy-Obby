@@ -8,13 +8,17 @@ public class SprintButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUp
 {
     public float SprintSpeed;
     [SerializeField] private float SprintSpeedMultiplier;
+    [SerializeField] private PlayerController _playerController;
     private void Start()
     {
         SprintSpeed = 1;
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        SprintSpeed = SprintSpeedMultiplier;
+        if (_playerController.IsGrounded)
+        {
+            SprintSpeed = SprintSpeedMultiplier;
+        }
     }
     public void OnPointerUp(PointerEventData eventData)
     {

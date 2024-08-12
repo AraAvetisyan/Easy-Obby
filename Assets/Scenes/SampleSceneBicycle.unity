@@ -2860,6 +2860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SprintSpeed: 1
   SprintSpeedMultiplier: 1.5
+  _playerController: {fileID: 1043353385}
 --- !u!114 &708168515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3718,6 +3719,7 @@ GameObject:
   - component: {fileID: 1043353385}
   - component: {fileID: 1043353386}
   - component: {fileID: 1043353387}
+  - component: {fileID: 1043353388}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -3831,14 +3833,15 @@ MonoBehaviour:
   _floatingJoystick: {fileID: 922186949}
   rb: {fileID: 1043353386}
   currentSpeed: 0
-  smootRotationTimer: 0.1
-  smootSpeedTimer: 0.5
+  smootRotationTimer: 0.3
+  smootSpeedTimer: 0.3
   moveSpeed: 15
   camera: {fileID: 963194228}
   _sprintButtonScript: {fileID: 708168514}
   gamemodeRunning: 0
-  isMobile: 0
+  isMobile: 1
   Jumping: 0
+  graundObjects: []
   IsGrounded: 0
   Animator: {fileID: 0}
 --- !u!54 &1043353386
@@ -3893,6 +3896,27 @@ MonoBehaviour:
   - {fileID: 1309634240}
   - {fileID: 698694504}
   - {fileID: 1589469885}
+--- !u!65 &1043353388
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043353379}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.34921253, y: 0.5399182, z: 1.5218356}
+  m_Center: {x: 0.011663914, y: -0.94614947, z: 0.115478635}
 --- !u!1 &1133684713
 GameObject:
   m_ObjectHideFlags: 0

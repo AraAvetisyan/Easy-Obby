@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleSceneBicycle.unity
     guid: 22b56f96e27511742ae3c8845a116060
+  - enabled: 1
+    path: Assets/Scenes/SampleSceneCar.unity
+    guid: 7cc87f2521f78424abb2d95a37b1217b
   m_configObjects: {}

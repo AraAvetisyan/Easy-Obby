@@ -12,6 +12,8 @@ public class Teleport : MonoBehaviour
     [SerializeField] private int fillCount;
     [SerializeField] private TextMeshProUGUI fillText;
     [SerializeField] private bool gamemodeRunning;
+    [SerializeField] private bool gamemodeCar;
+    [SerializeField] private bool gamemodeBicycle;
     [SerializeField] private BoxCollider[] boxColliders;
     float fillAmount;
     private void Start()
@@ -41,7 +43,7 @@ public class Teleport : MonoBehaviour
                 }
             }
         }
-        else
+        if(gamemodeBicycle)
         {
             fillAmount = Geekplay.Instance.PlayerData.BikeSaveProgress * 0.01f;
             fillCount = Geekplay.Instance.PlayerData.BikeSaveProgress;
@@ -60,6 +62,30 @@ public class Teleport : MonoBehaviour
             for (int i = 0; i < boxColliders.Length; i++)
             {
                 if (i <= Geekplay.Instance.PlayerData.BikeSaveProgress)
+                {
+                    boxColliders[i].enabled = false;
+                }
+            }
+        }
+        if (gamemodeCar)
+        {
+            fillAmount = Geekplay.Instance.PlayerData.CarSaveProgress * 0.01f;
+            fillCount = Geekplay.Instance.PlayerData.CarSaveProgress;
+            fillImage.fillAmount = fillAmount;
+            fillText.text = fillCount.ToString() + "%";
+            if (Geekplay.Instance.PlayerData.CarSaveProgress < allTP.Length)
+            {
+                transform.position = allTP[Geekplay.Instance.PlayerData.CarSaveProgress].position;
+                tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgress];
+            }
+            else
+            {
+                transform.position = allTP[allTP.Length - 1].position;
+                tp = allTP[allTP.Length - 1];
+            }
+            for (int i = 0; i < boxColliders.Length; i++)
+            {
+                if (i <= Geekplay.Instance.PlayerData.CarSaveProgress)
                 {
                     boxColliders[i].enabled = false;
                 }

@@ -11,13 +11,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float currentSpeed;
     [SerializeField] private float smootRotationTimer;
     [SerializeField] private float smootSpeedTimer;
-    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float moveSpeed;
     [SerializeField] private Transform camera;
     [SerializeField] private SprintButtonScript _sprintButtonScript;
     [SerializeField] private bool gamemodeRunning;
     [SerializeField] private bool isMobile;
     public bool Jumping;
-
+    [SerializeField] private List<GameObject> graundObjects;
     public bool IsGrounded;
     public Animator Animator;
 
@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour
             float rotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, rotation, ref currentVelocity, smootRotationTimer);
         }
-        float targertSpeed = moveSpeed * inputDir.magnitude;
-        currentSpeed = Mathf.SmoothDamp(currentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer) * _sprintButtonScript.SprintSpeed;
+        float targertSpeed = moveSpeed * inputDir.magnitude * _sprintButtonScript.SprintSpeed;
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer);
         if (gamemodeRunning)
         {
             if (currentSpeed > 0)
@@ -53,11 +53,18 @@ public class PlayerController : MonoBehaviour
             }
         }
         transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
-        //if(IsGrounded && rb.velocity != Vector3.zero && !Jumping) 
-        //{
-        //    rb.velocity = Vector3.zero;
-        //}
-       
+        if (IsGrounded && rb.velocity != Vector3.zero && !Jumping)
+        {
+            rb.velocity = Vector3.zero;
+        }
+        if(graundObjects.Count > 0)
+        {
+            IsGrounded = true;
+        }
+        else
+        {
+            IsGrounded = false;
+        }
     }
    
     public void OnCollisionEnter(Collision collision)
@@ -69,16 +76,25 @@ public class PlayerController : MonoBehaviour
     }
     public void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            IsGrounded = true;
-        }       
+        
     }
     public void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+       
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
         {
-            IsGrounded = false;
+            graundObjects.Add(other.gameObject);
+            
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            graundObjects.Remove(other.gameObject);
         }
     }
 }
