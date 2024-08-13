@@ -1581,8 +1581,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -32, y: 0}
+  m_SizeDelta: {x: -64, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &581113321
 MonoBehaviour:
@@ -3152,17 +3152,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _floatingJoystick: {fileID: 922186949}
   rb: {fileID: 1043353386}
-  currentSpeed: 0
+  CurrentSpeed: 0
   smootRotationTimer: 0.2
   smootSpeedTimer: 0
   moveSpeed: 7
   camera: {fileID: 963194228}
   _sprintButtonScript: {fileID: 1485953710}
   gamemodeRunning: 1
+  gamemodeBicycle: 0
   isMobile: 1
   Jumping: 0
+  graundObjects: []
   IsGrounded: 0
   Animator: {fileID: 1043353388}
+  rotationSpeed: 1
 --- !u!54 &1043353386
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3213,12 +3216,17 @@ MonoBehaviour:
   fillCount: 0
   fillText: {fileID: 2087975537}
   gamemodeRunning: 1
+  gamemodeCar: 0
+  gamemodeBicycle: 0
   boxColliders:
   - {fileID: 1309634240}
   - {fileID: 1598884017}
   - {fileID: 1223109841}
   - {fileID: 1140659231}
   - {fileID: 1281270843}
+  coins: 0
+  coinsText: {fileID: 581113321}
+  diamondsText: {fileID: 1246638175}
 --- !u!95 &1043353388
 Animator:
   serializedVersion: 5
@@ -3925,8 +3933,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -32, y: 0}
+  m_SizeDelta: {x: -64, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246638175
 MonoBehaviour:
@@ -4882,8 +4890,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1895307487}
   - {fileID: 1246638174}
+  - {fileID: 1895307487}
   m_Father: {fileID: 1750593832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
@@ -5880,8 +5888,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 966938558}
   - {fileID: 581113320}
+  - {fileID: 966938558}
   m_Father: {fileID: 1750593832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}

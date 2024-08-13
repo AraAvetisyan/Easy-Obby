@@ -8,13 +8,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     private float currentVelocity;
     private float speedVelocity;
-    [SerializeField] private float currentSpeed;
+    public float CurrentSpeed;
     [SerializeField] private float smootRotationTimer;
     [SerializeField] private float smootSpeedTimer;
     [SerializeField] private float moveSpeed;
     [SerializeField] private Transform camera;
     [SerializeField] private SprintButtonScript _sprintButtonScript;
     [SerializeField] private bool gamemodeRunning;
+    [SerializeField] private bool gamemodeBicycle;
     [SerializeField] private bool isMobile;
     public bool Jumping;
     [SerializeField] private List<GameObject> graundObjects;
@@ -40,19 +41,30 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, rotation, ref currentVelocity, smootRotationTimer);
         }
         float targertSpeed = moveSpeed * inputDir.magnitude * _sprintButtonScript.SprintSpeed;
-        currentSpeed = Mathf.SmoothDamp(currentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer);
+        CurrentSpeed = Mathf.SmoothDamp(CurrentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer);
         if (gamemodeRunning)
         {
-            if (currentSpeed > 0)
+            if (CurrentSpeed > 0)
             {
                 Animator.SetBool("IsRunning", true);
             }
-            if (currentSpeed == 0)
+            if (CurrentSpeed == 0)
             {
                 Animator.SetBool("IsRunning", false);
             }
         }
-        transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+        if (gamemodeBicycle)
+        {
+            if (targertSpeed != 0)
+            {
+                Animator.SetBool("OnMove", true);
+            }
+            if(targertSpeed == 0)
+            {
+                Animator.SetBool("OnMove", false);
+            }
+        }
+        transform.Translate(transform.forward * CurrentSpeed * Time.deltaTime, Space.World);
         if (IsGrounded && rb.velocity != Vector3.zero && !Jumping)
         {
             rb.velocity = Vector3.zero;

@@ -47,7 +47,7 @@ public class CameraScript : MonoBehaviour
         }
         xAxis = Mathf.Clamp(xAxis, rotationMin, rotationMax);
 
-        targetRotation = Vector3.SmoothDamp(targetRotation,new Vector3(xAxis,yAxis), ref currentVel,smoothTime);
+        targetRotation = Vector3.SmoothDamp(targetRotation,new Vector3(xAxis,yAxis), ref currentVel, smoothTime);
         transform.eulerAngles = targetRotation;
 
         transform.position = target.position - transform.forward * distance;

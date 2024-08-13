@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Teleport : MonoBehaviour
@@ -15,9 +16,16 @@ public class Teleport : MonoBehaviour
     [SerializeField] private bool gamemodeCar;
     [SerializeField] private bool gamemodeBicycle;
     [SerializeField] private BoxCollider[] boxColliders;
+    [SerializeField] private int coins;
     float fillAmount;
+    [SerializeField] private TextMeshProUGUI coinsText;
+    [SerializeField] private TextMeshProUGUI diamondsText;
     private void Start()
     {
+        coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
+        diamondsText.text = Geekplay.Instance.PlayerData.Diamond.ToString();
+        
+
 
         if (gamemodeRunning)
         {
@@ -92,6 +100,19 @@ public class Teleport : MonoBehaviour
             }
         }
     }
+    private void OnEnable()
+    {
+        Rewarder.ChangeDiamond += ChangeDimondsText;
+    }
+    private void OnDisable()
+    {
+        Rewarder.ChangeDiamond -= ChangeDimondsText;
+
+    }
+    public void ChangeDimondsText(bool bb)
+    {
+        diamondsText.text = Geekplay.Instance.PlayerData.Diamond.ToString();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Teleport"))
@@ -105,6 +126,15 @@ public class Teleport : MonoBehaviour
             fillCount += 1;
             fillImage.fillAmount += 0.01f;
             fillText.text = fillCount.ToString() + "%";
+            Geekplay.Instance.PlayerData.Coins += 1;
+            if(fillCount >= 100)
+            {
+
+                Geekplay.Instance.PlayerData.Coins += 100;
+            }
+
+            coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
+            Geekplay.Instance.Save();
             if (gamemodeRunning)
             {
                 Geekplay.Instance.PlayerData.RunningSaveProgress += 1;

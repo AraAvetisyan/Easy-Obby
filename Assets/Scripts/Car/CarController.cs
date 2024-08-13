@@ -11,7 +11,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     private float currentVelocity;
     private float speedVelocity;
-    [SerializeField] private float currentSpeed;
+    public float CurrentSpeed;
     [SerializeField] private float smootRotationTimer;
     [SerializeField] private float smootSpeedTimer;
     public float moveSpeed;
@@ -21,6 +21,7 @@ public class CarController : MonoBehaviour
     private int speedCounter;
     private bool notFirstMove;
     Vector2 inputDir;
+    public float Rotation;
     public void FixedUpdate()
     {
 
@@ -33,14 +34,17 @@ public class CarController : MonoBehaviour
         {
             input = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
         }
+    
+       
         inputDir = input.normalized;
 
         if (inputDir != Vector2.zero)
         {
-            if (currentSpeed!=0)
+            Rotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
+            if (CurrentSpeed!=0)
             {
-                float rotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
-                transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, rotation, ref currentVelocity, smootRotationTimer);
+                
+                transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, Rotation, ref currentVelocity, smootRotationTimer);
             }
         }
         if (_forwardButtonScript.ForwardPressed)
@@ -85,10 +89,10 @@ public class CarController : MonoBehaviour
                 speedCounter = 2;
             }
         }
-        currentSpeed = Mathf.SmoothDamp(currentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer);
+        CurrentSpeed = Mathf.SmoothDamp(CurrentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer);
         
-        transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
-        if (currentSpeed == 0)
+        transform.Translate(transform.forward * CurrentSpeed * Time.deltaTime, Space.World);
+        if (CurrentSpeed == 0)
         {
             rb.velocity = Vector3.zero;
         }

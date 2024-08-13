@@ -21,7 +21,6 @@ public class ReverseButtonScript : MonoBehaviour, IPointerDownHandler, IPointerU
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Up");
         Speed = 0f;
         ReversePressed = false;
     }
