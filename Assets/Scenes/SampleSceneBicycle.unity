@@ -3895,7 +3895,7 @@ MonoBehaviour:
   fillText: {fileID: 1732243565}
   gamemodeRunning: 0
   gamemodeCar: 0
-  gamemodeBicycle: 0
+  gamemodeBicycle: 1
   boxColliders:
   - {fileID: 1309634240}
   - {fileID: 698694504}

@@ -5,14 +5,7 @@ using UnityEngine;
 
 public class CarWheelScript : MonoBehaviour
 {
-    [SerializeField] private CarController _carController;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float currentRotationSpeed;
-    private void FixedUpdate()
-    {
-        currentRotationSpeed = rotationSpeed * _carController.CurrentSpeed * Time.deltaTime;
-        transform.Rotate(currentRotationSpeed, 0, 0);
-    }
+
 }
 
 
