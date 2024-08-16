@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Teleport : MonoBehaviour
 {
+    [SerializeField] private TimerScript _timerScript;
     [SerializeField] private Transform tp;
     [SerializeField] private Transform[] allTP;
     [SerializeField] private Image fillImage;
@@ -29,73 +30,385 @@ public class Teleport : MonoBehaviour
 
         if (gamemodeRunning)
         {
-            fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgress * 0.01f;
-            fillCount = Geekplay.Instance.PlayerData.RunningSaveProgress;
-            fillImage.fillAmount = fillAmount;
-            fillText.text = fillCount.ToString() + "%";
-            if (Geekplay.Instance.PlayerData.RunningSaveProgress < allTP.Length)
+            if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
             {
-                transform.position = allTP[Geekplay.Instance.PlayerData.RunningSaveProgress].position;
-                tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgress];
-            }
-            else
-            {
-                transform.position = allTP[allTP.Length - 1].position;
-                tp = allTP[allTP.Length - 1];
-            }
-            for(int i = 0; i < boxColliders.Length; i++)
-            {
-                if(i <= Geekplay.Instance.PlayerData.RunningSaveProgress)
+                fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel1;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 < allTP.Length)
                 {
-                    boxColliders[i].enabled = false;
+                    transform.position = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel1].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel1];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel1)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel2;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel2].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel2];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    Debug.Log("Stexa qaqy");
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel2)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel3;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel3].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel3];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel3)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel4;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel4].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel4];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel4)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel5;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel5].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel5];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel5)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
                 }
             }
         }
+
+
         if(gamemodeBicycle)
         {
-            fillAmount = Geekplay.Instance.PlayerData.BikeSaveProgress * 0.01f;
-            fillCount = Geekplay.Instance.PlayerData.BikeSaveProgress;
-            fillImage.fillAmount = fillAmount;
-            fillText.text = fillCount.ToString() + "%";
-            if (Geekplay.Instance.PlayerData.BikeSaveProgress < allTP.Length)
+            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
             {
-                transform.position = allTP[Geekplay.Instance.PlayerData.BikeSaveProgress].position;
-                tp = allTP[Geekplay.Instance.PlayerData.BikeSaveProgress];
-            }
-            else
-            {
-                transform.position = allTP[allTP.Length - 1].position;
-                tp = allTP[allTP.Length - 1];
-            }
-            for (int i = 0; i < boxColliders.Length; i++)
-            {
-                if (i <= Geekplay.Instance.PlayerData.BikeSaveProgress)
+                fillAmount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 < allTP.Length)
                 {
-                    boxColliders[i].enabled = false;
+                    transform.position = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
                 }
             }
         }
         if (gamemodeCar)
         {
-            fillAmount = Geekplay.Instance.PlayerData.CarSaveProgress * 0.01f;
-            fillCount = Geekplay.Instance.PlayerData.CarSaveProgress;
-            fillImage.fillAmount = fillAmount;
-            fillText.text = fillCount.ToString() + "%";
-            if (Geekplay.Instance.PlayerData.CarSaveProgress < allTP.Length)
+            if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
             {
-                transform.position = allTP[Geekplay.Instance.PlayerData.CarSaveProgress].position;
-                tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgress];
-            }
-            else
-            {
-                transform.position = allTP[allTP.Length - 1].position;
-                tp = allTP[allTP.Length - 1];
-            }
-            for (int i = 0; i < boxColliders.Length; i++)
-            {
-                if (i <= Geekplay.Instance.PlayerData.CarSaveProgress)
+                fillAmount = Geekplay.Instance.PlayerData.CarSaveProgressLevel1 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressLevel1;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel1 < allTP.Length)
                 {
-                    boxColliders[i].enabled = false;
+                    transform.position = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel1].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel1];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel1)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.CarSaveProgressLevel2 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressLevel2;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel2 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel2].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel2];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel2)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.CarSaveProgressLevel3 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressLevel3;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel3 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel3].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel3];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel3)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.CarSaveProgressLevel4 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressLevel4;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel4 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel4].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel4];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel4)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
+                }
+            }
+
+            if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
+            {
+                fillAmount = Geekplay.Instance.PlayerData.CarSaveProgressLevel5 * 0.01f;
+                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressLevel5;
+                fillImage.fillAmount = fillAmount;
+                fillText.text = fillCount.ToString() + "%";
+                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel5 < allTP.Length)
+                {
+                    transform.position = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel5].position;
+                    tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel5];
+                }
+                else
+                {
+                    transform.position = allTP[allTP.Length - 1].position;
+                    tp = allTP[allTP.Length - 1];
+                }
+                for (int i = 0; i < boxColliders.Length; i++)
+                {
+                    if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel5)
+                    {
+                        boxColliders[i].enabled = false;
+                    }
                 }
             }
         }
@@ -103,12 +416,14 @@ public class Teleport : MonoBehaviour
     private void OnEnable()
     {
         Rewarder.ChangeDiamond += ChangeDimondsText;
+       
     }
     private void OnDisable()
     {
         Rewarder.ChangeDiamond -= ChangeDimondsText;
-
+        
     }
+   
     public void ChangeDimondsText(bool bb)
     {
         diamondsText.text = Geekplay.Instance.PlayerData.Diamond.ToString();
@@ -129,19 +444,80 @@ public class Teleport : MonoBehaviour
             Geekplay.Instance.PlayerData.Coins += 1;
             if(fillCount >= 100)
             {
-
                 Geekplay.Instance.PlayerData.Coins += 100;
+                _timerScript.StopTimer = true;
             }
 
             coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
             Geekplay.Instance.Save();
             if (gamemodeRunning)
             {
-                Geekplay.Instance.PlayerData.RunningSaveProgress += 1;
+                if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
+                {
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
+                {
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
+                {
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
+                {
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
+                {
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 += 1;
+                }
             }
-            else
+            if(gamemodeBicycle)
             {
-                Geekplay.Instance.PlayerData.BikeSaveProgress += 1;
+                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+                {
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
+                {
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
+                {
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
+                {
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
+                {
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 += 1;
+                }
+            }
+            if (gamemodeCar)
+            {
+                if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+                {
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel1 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+                {
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel2 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+                {
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel3 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
+                {
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel4 += 1;
+                }
+                if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
+                {
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel5 += 1;
+                }
             }
             Geekplay.Instance.Save();
             other.gameObject.GetComponent<BoxCollider>().enabled = false;

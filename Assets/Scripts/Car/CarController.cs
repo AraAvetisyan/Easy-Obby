@@ -56,7 +56,12 @@ public class CarController : MonoBehaviour
     [SerializeField] private bool canTurn;
     [SerializeField] private bool slowDown;
     [SerializeField] private float slowDownSpeed; 
-    [SerializeField] private float slowDownAngularSpeed; 
+    [SerializeField] private float slowDownAngularSpeed;
+
+
+
+    private int stopCounter;
+    [SerializeField] private GameObject finalPanel;
     private void Start()
     {
         InitializeCar();
@@ -76,6 +81,54 @@ public class CarController : MonoBehaviour
     {
         CarPhysicsUpdate();
         CheckInput();
+
+        if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+        {
+            if (Geekplay.Instance.PlayerData.CarSaveProgressLevel1 == 100 && stopCounter == 0)
+            {
+                stopCounter = 1;
+                maxSpeed = 0;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+        {
+            if (Geekplay.Instance.PlayerData.CarSaveProgressLevel2 == 100 && stopCounter == 0)
+            {
+                stopCounter = 1;
+                maxSpeed = 0;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+        {
+            if (Geekplay.Instance.PlayerData.CarSaveProgressLevel3 == 100 && stopCounter == 0)
+            {
+                stopCounter = 1;
+                maxSpeed = 0;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
+        {
+            if (Geekplay.Instance.PlayerData.CarSaveProgressLevel4 == 100 && stopCounter == 0)
+            {
+                stopCounter = 1;
+                maxSpeed = 0;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
+        {
+            if (Geekplay.Instance.PlayerData.CarSaveProgressLevel5 == 100 && stopCounter == 0)
+            {
+                stopCounter = 1;
+                maxSpeed = 0;
+                finalPanel.SetActive(true);
+            }
+        }
+
+
     }
     private void LateUpdate()
     {
@@ -205,6 +258,7 @@ public class CarController : MonoBehaviour
         }
     }
   
+    
 
 }
 

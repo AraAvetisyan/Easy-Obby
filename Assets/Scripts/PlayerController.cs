@@ -21,7 +21,110 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private List<GameObject> graundObjects;
     public bool IsGrounded;
     public Animator Animator;
+    private int stopCounter;
+    [SerializeField] private GameObject finalPanel;
+    
 
+    private void Update()
+    {
+        if (gamemodeRunning)
+        {
+            if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
+            {
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 == 100 && stopCounter == 0)
+                {
+                    stopCounter = 1;
+                    moveSpeed = 0;
+                    finalPanel.SetActive(true);
+                }
+            }
+            if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
+            {
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 == 100 && stopCounter == 0)
+                {
+                    stopCounter = 1;
+                    moveSpeed = 0;
+                    finalPanel.SetActive(true);
+                }
+            }
+            if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
+            {
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 == 100 && stopCounter == 0)
+                {
+                    stopCounter = 1;
+                    moveSpeed = 0;
+                    finalPanel.SetActive(true);
+                }
+            }
+            if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
+            {
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 == 100 && stopCounter == 0)
+                {
+                    stopCounter = 1;
+                    moveSpeed = 0;
+                    finalPanel.SetActive(true);
+                }
+            }
+            if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
+            {
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 == 100 && stopCounter == 0)
+                {
+                    stopCounter = 1;
+                    moveSpeed = 0;
+                    finalPanel.SetActive(true);
+                }
+            }
+        }
+
+        if (gamemodeBicycle)
+        {
+            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+            {
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 == 100 && stopCounter == 0)
+                {
+                    stopCounter = 1;
+                    moveSpeed = 0;
+                    finalPanel.SetActive(true);
+                }
+            }
+            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
+            {
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 == 100 && stopCounter == 0)
+                {
+                    stopCounter = 1;
+                    moveSpeed = 0;
+                    finalPanel.SetActive(true);
+                }
+            }
+            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
+            {
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 == 100 && stopCounter == 0)
+                {
+                    stopCounter = 1;
+                    moveSpeed = 0;
+                    finalPanel.SetActive(true);
+                }
+            }
+            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
+            {
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 == 100 && stopCounter == 0)
+                {
+                    stopCounter = 1;
+                    moveSpeed = 0;
+                    finalPanel.SetActive(true);
+                }
+            }
+            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
+            {
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 == 100 && stopCounter == 0)
+                {
+                    stopCounter = 1;
+                    moveSpeed = 0;
+                    finalPanel.SetActive(true);
+                }
+            }
+        }
+    }
     public void FixedUpdate()
     {
         Vector2 input = Vector2.zero;
@@ -85,14 +188,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
-    }
-    public void OnCollisionStay(Collision collision)
-    {
-        
-    }
-    public void OnCollisionExit(Collision collision)
-    {
-       
     }
     private void OnTriggerEnter(Collider other)
     {
