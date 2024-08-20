@@ -16993,7 +16993,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -17237,6 +17237,13 @@ MonoBehaviour:
   coins: 0
   coinsText: {fileID: 581113321}
   diamondsText: {fileID: 1246638175}
+  rb: {fileID: 1043353386}
+  _vehicleControl: {fileID: 0}
+  isTest: 1
+  fillAmountTest: 0
+  fillCountTest: 0
+  progressCountTest: 0
+  mustBreak: 0
 --- !u!95 &1043353388
 Animator:
   serializedVersion: 5

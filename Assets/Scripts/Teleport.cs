@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -21,8 +22,34 @@ public class Teleport : MonoBehaviour
     float fillAmount;
     [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private TextMeshProUGUI diamondsText;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private VehicleControl _vehicleControl;
+
+
+
+    [SerializeField] private bool isTest;
+    [SerializeField] private float fillAmountTest;
+    [SerializeField] private int fillCountTest;
+    [SerializeField] private int progressCountTest;
+
+    public bool mustBreak;
     private void Start()
     {
+        
+        if (isTest)
+        {
+            fillAmountTest = 0.25f;
+            fillCountTest = 25;
+            progressCountTest = 25;
+        }
+        else
+        {
+            fillAmountTest = 0.01f;
+            fillCountTest = 1;
+            progressCountTest = 1;
+        }
+
+
         coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
         diamondsText.text = Geekplay.Instance.PlayerData.Diamond.ToString();
         
@@ -69,7 +96,6 @@ public class Teleport : MonoBehaviour
                 else
                 {
                     transform.position = allTP[allTP.Length - 1].position;
-                    Debug.Log("Stexa qaqy");
                     tp = allTP[allTP.Length - 1];
                 }
                 for (int i = 0; i < boxColliders.Length; i++)
@@ -412,6 +438,16 @@ public class Teleport : MonoBehaviour
                 }
             }
         }
+
+
+        
+    }
+    private void Update()
+    {
+        if (mustBreak)
+        {
+            _vehicleControl.brake = true;
+        }
     }
     private void OnEnable()
     {
@@ -433,13 +469,19 @@ public class Teleport : MonoBehaviour
         if (other.CompareTag("Teleport"))
         {
             transform.position = tp.position;
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+            rb.velocity = Vector3.zero;
+            if (gamemodeCar)
+            {
+                StartCoroutine(StopCar());
+            }
         }
 
         if (other.CompareTag("TeleportPoint"))
         {
             tp = other.gameObject.transform;
-            fillCount += 1;
-            fillImage.fillAmount += 0.01f;
+            fillCount += fillCountTest;
+            fillImage.fillAmount += fillAmountTest;
             fillText.text = fillCount.ToString() + "%";
             Geekplay.Instance.PlayerData.Coins += 1;
             if(fillCount >= 100)
@@ -454,69 +496,69 @@ public class Teleport : MonoBehaviour
             {
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
                 {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 += 1;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
                 {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 += 1;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
                 {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 += 1;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
                 {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 += 1;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
                 {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 += 1;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 += progressCountTest;
                 }
             }
             if(gamemodeBicycle)
             {
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
                 {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 += 1;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
                 {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 += 1;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
                 {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 += 1;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
                 {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 += 1;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
                 {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 += 1;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 += progressCountTest;
                 }
             }
             if (gamemodeCar)
             {
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
                 {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel1 += 1;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel1 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
                 {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel2 += 1;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel2 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
                 {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel3 += 1;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel3 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
                 {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel4 += 1;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel4 += progressCountTest;
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
                 {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel5 += 1;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel5 += progressCountTest;
                 }
             }
             Geekplay.Instance.Save();
@@ -532,4 +574,19 @@ public class Teleport : MonoBehaviour
         }
     }
 
+    public IEnumerator StopCar()
+    {
+        mustBreak = true;
+        rb.velocity = Vector3.zero;
+        _vehicleControl.speed = 0;
+        _vehicleControl.accel = 0;
+        _vehicleControl.carSetting.carPower = 0;
+        _vehicleControl.carSetting.LimitForwardSpeed = 0;
+        _vehicleControl.carSetting.LimitBackwardSpeed = 0;
+        yield return new WaitForSeconds(3f);
+        mustBreak = false;
+        _vehicleControl.carSetting.carPower = 120;
+        _vehicleControl.carSetting.LimitForwardSpeed = 100;
+        _vehicleControl.carSetting.LimitBackwardSpeed = 30;
+    }
 }
