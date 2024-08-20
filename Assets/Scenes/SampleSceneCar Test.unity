@@ -29678,7 +29678,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267254387}
   serializedVersion: 4
-  m_Mass: 2000
+  m_Mass: 3000
   m_Drag: 0
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -29738,8 +29738,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.3639252, y: 2.0151837, z: 6.893389}
-  m_Center: {x: 0.024804635, y: 0.07019345, z: 0.16493294}
+  m_Size: {x: 2.3639252, y: 1.0528536, z: 6.893389}
+  m_Center: {x: 0.024804635, y: 0.55135983, z: 0.16493294}
 --- !u!82 &1274286387
 AudioSource:
   m_ObjectHideFlags: 0
@@ -33691,7 +33691,7 @@ MonoBehaviour:
       backLeft: {fileID: 1267493883}
     setting:
       Radius: 0.4
-      Weight: 2000
+      Weight: 3000
       Distance: 0.2
   carLights:
     brakeLights:
@@ -33719,7 +33719,7 @@ MonoBehaviour:
     dampers: 1500
     carPower: 120
     shiftPower: 150
-    brakePower: 800000
+    brakePower: 20000
     shiftCentre: {x: 0, y: -0.8, z: 0}
     maxSteerAngle: 25
     shiftDownRPM: 1500
@@ -33736,6 +33736,7 @@ MonoBehaviour:
     - 2.5
     LimitBackwardSpeed: 30
     LimitForwardSpeed: 100
+  accel: 0
   brake: 0
   curTorque: 100
   powerShift: 100
@@ -33750,6 +33751,7 @@ MonoBehaviour:
   steerAmount: 0
   MobileInput: 0
   CarQuit: 0
+  finalPanel: {fileID: 0}
 --- !u!114 &1507695176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33777,6 +33779,13 @@ MonoBehaviour:
   coins: 0
   coinsText: {fileID: 581113321}
   diamondsText: {fileID: 1246638175}
+  rb: {fileID: 0}
+  _vehicleControl: {fileID: 0}
+  isTest: 0
+  fillAmountTest: 0
+  fillCountTest: 0
+  progressCountTest: 0
+  mustBreak: 0
 --- !u!1 &1507775808
 GameObject:
   m_ObjectHideFlags: 0

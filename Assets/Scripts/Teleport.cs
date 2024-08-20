@@ -470,11 +470,7 @@ public class Teleport : MonoBehaviour
         {
             transform.position = tp.position;
             transform.rotation = new Quaternion(0, 0, 0, 0);
-            rb.velocity = Vector3.zero;
-            if (gamemodeCar)
-            {
-                StartCoroutine(StopCar());
-            }
+            rb.velocity = Vector3.zero;           
         }
 
         if (other.CompareTag("TeleportPoint"))
@@ -497,22 +493,32 @@ public class Teleport : MonoBehaviour
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
                 {
                     Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 += progressCountTest;
+                    Geekplay.Instance.PlayerData.RunningFillAmountLevel1 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
                 {
                     Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 += progressCountTest;
+                    Geekplay.Instance.PlayerData.RunningFillAmountLevel2 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
                 {
                     Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 += progressCountTest;
+                    Geekplay.Instance.PlayerData.RunningFillAmountLevel3 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
                 {
                     Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 += progressCountTest;
+                    Geekplay.Instance.PlayerData.RunningFillAmountLevel4 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
                 {
                     Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 += progressCountTest;
+                    Geekplay.Instance.PlayerData.RunningFillAmountLevel5 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
             }
             if(gamemodeBicycle)
@@ -520,22 +526,32 @@ public class Teleport : MonoBehaviour
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
                 {
                     Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 += progressCountTest;
+                    Geekplay.Instance.PlayerData.BicycleFillAmountLevel1 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
                 {
                     Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 += progressCountTest;
+                    Geekplay.Instance.PlayerData.BicycleFillAmountLevel2 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
                 {
                     Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 += progressCountTest;
+                    Geekplay.Instance.PlayerData.BicycleFillAmountLevel3 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
                 {
                     Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 += progressCountTest;
+                    Geekplay.Instance.PlayerData.BicycleFillAmountLevel4 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
                 {
                     Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 += progressCountTest;
+                    Geekplay.Instance.PlayerData.BicycleFillAmountLevel5 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
             }
             if (gamemodeCar)
@@ -543,25 +559,34 @@ public class Teleport : MonoBehaviour
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
                 {
                     Geekplay.Instance.PlayerData.CarSaveProgressLevel1 += progressCountTest;
+                    Geekplay.Instance.PlayerData.CarFillAmountLevel1 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
                 {
                     Geekplay.Instance.PlayerData.CarSaveProgressLevel2 += progressCountTest;
+                    Geekplay.Instance.PlayerData.CarFillAmountLevel2 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
                 {
                     Geekplay.Instance.PlayerData.CarSaveProgressLevel3 += progressCountTest;
+                    Geekplay.Instance.PlayerData.CarFillAmountLevel3 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
                 {
                     Geekplay.Instance.PlayerData.CarSaveProgressLevel4 += progressCountTest;
+                    Geekplay.Instance.PlayerData.CarFillAmountLevel4 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
                 {
                     Geekplay.Instance.PlayerData.CarSaveProgressLevel5 += progressCountTest;
+                    Geekplay.Instance.PlayerData.CarFillAmountLevel5 += fillAmountTest;
+                    Geekplay.Instance.Save();
                 }
             }
-            Geekplay.Instance.Save();
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
 
         }
@@ -574,19 +599,5 @@ public class Teleport : MonoBehaviour
         }
     }
 
-    public IEnumerator StopCar()
-    {
-        mustBreak = true;
-        rb.velocity = Vector3.zero;
-        _vehicleControl.speed = 0;
-        _vehicleControl.accel = 0;
-        _vehicleControl.carSetting.carPower = 0;
-        _vehicleControl.carSetting.LimitForwardSpeed = 0;
-        _vehicleControl.carSetting.LimitBackwardSpeed = 0;
-        yield return new WaitForSeconds(3f);
-        mustBreak = false;
-        _vehicleControl.carSetting.carPower = 120;
-        _vehicleControl.carSetting.LimitForwardSpeed = 100;
-        _vehicleControl.carSetting.LimitBackwardSpeed = 30;
-    }
+   
 }

@@ -1744,7 +1744,7 @@ MonoBehaviour:
       backLeft: {fileID: 1428169837}
     setting:
       Radius: 0.4
-      Weight: 2000
+      Weight: 3000
       Distance: 0.2
   carLights:
     brakeLights:
@@ -1772,7 +1772,7 @@ MonoBehaviour:
     dampers: 1500
     carPower: 120
     shiftPower: 150
-    brakePower: 800000000
+    brakePower: 20000
     shiftCentre: {x: 0, y: -0.8, z: 0}
     maxSteerAngle: 25
     shiftDownRPM: 1500
@@ -1813,7 +1813,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111055849}
   serializedVersion: 4
-  m_Mass: 2000
+  m_Mass: 3000
   m_Drag: 0
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3709,7 +3709,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 878, y: -490}
+  m_AnchoredPosition: {x: 654, y: -362}
   m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &232934002
@@ -20995,7 +20995,7 @@ MonoBehaviour:
   rotationSensitivity: 0.39
   target: {fileID: 111055854}
   distance: 7.5
-  rotationMin: 0
+  rotationMin: 5
   rotationMax: 60
   smoothTime: 0.2
   isMobile: 1
@@ -37908,8 +37908,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.3639252, y: 2.0151837, z: 6.893389}
-  m_Center: {x: 0.024804635, y: 0.07019345, z: 0.16493294}
+  m_Size: {x: 2.3639252, y: 1.0330379, z: 6.893389}
+  m_Center: {x: 0.024804635, y: 0.5612686, z: 0.16493294}
 --- !u!64 &1709444445
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41769,7 +41769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 878, y: -234}
+  m_AnchoredPosition: {x: 910, y: -362}
   m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1935705735

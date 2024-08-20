@@ -22,6 +22,12 @@ public class PlayerData
     public int RunningSaveProgressLevel4;
     public int RunningSaveProgressLevel5;
 
+    public float RunningFillAmountLevel1;
+    public float RunningFillAmountLevel2;
+    public float RunningFillAmountLevel3;
+    public float RunningFillAmountLevel4;
+    public float RunningFillAmountLevel5;
+
     public float BestRunningMapMinutesLevel1;
     public float BestRunningMapSecondsLevel1;
     public float CurrentRunningMapMinutesLevel1;
@@ -57,6 +63,12 @@ public class PlayerData
     public int BicycleSaveProgressLevel4;
     public int BicycleSaveProgressLevel5;
 
+    public float BicycleFillAmountLevel1;
+    public float BicycleFillAmountLevel2;
+    public float BicycleFillAmountLevel3;
+    public float BicycleFillAmountLevel4;
+    public float BicycleFillAmountLevel5;
+
     public float BestBicycleMapMinutesLevel1;
     public float BestBicycleMapSecondsLevel1;
     public float CurrentBicycleMapMinutesLevel1;
@@ -91,6 +103,13 @@ public class PlayerData
     public int CarSaveProgressLevel3;
     public int CarSaveProgressLevel4;
     public int CarSaveProgressLevel5;
+
+
+    public float CarFillAmountLevel1;
+    public float CarFillAmountLevel2;
+    public float CarFillAmountLevel3;
+    public float CarFillAmountLevel4;
+    public float CarFillAmountLevel5;
 
     public float BestCarMapMinutesLevel1;
     public float BestCarMapSecondsLevel1;

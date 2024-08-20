@@ -35,7 +35,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -61,7 +61,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -87,7 +87,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -113,7 +113,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -139,7 +139,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -172,7 +172,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -198,7 +198,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -224,7 +224,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -250,7 +250,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -276,7 +276,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -308,7 +308,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -334,7 +334,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -360,7 +360,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -386,7 +386,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
@@ -412,7 +412,7 @@ public class TimerScript : MonoBehaviour
                         finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
                     }
                 }
-                else
+                if (Minutes >= 10)
                 {
                     if (Seconds < 10)
                     {
