@@ -42,12 +42,12 @@ public class Teleport : MonoBehaviour
             fillCountTest = 25;
             progressCountTest = 25;
         }
-        else
-        {
-            fillAmountTest = 0.01f;
-            fillCountTest = 1;
-            progressCountTest = 1;
-        }
+        //else
+        //{
+        //    fillAmountTest = 0.01f;
+        //    fillCountTest = 1;
+        //    progressCountTest = 1;
+        //}
 
 
         coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
@@ -59,8 +59,8 @@ public class Teleport : MonoBehaviour
         {
             if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
             {
-                fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel1;
+                fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel1;
+                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 < allTP.Length)
@@ -84,8 +84,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
             {
-                fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel2;
+                fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel2;
+                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 < allTP.Length)
@@ -109,8 +109,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
             {
-                fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel3;
+                fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel3;
+                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 < allTP.Length)
@@ -134,8 +134,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
             {
-                fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel4;
+                fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel4;
+                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 < allTP.Length)
@@ -159,8 +159,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
             {
-                fillAmount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressLevel5;
+                fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel5;
+                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 < allTP.Length)
@@ -188,8 +188,8 @@ public class Teleport : MonoBehaviour
         {
             if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
             {
-                fillAmount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1;
+                fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel1;
+                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 < allTP.Length)
@@ -213,8 +213,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
             {
-                fillAmount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2;
+                fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel2;
+                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 < allTP.Length)
@@ -238,8 +238,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
             {
-                fillAmount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3;
+                fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel3;
+                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 < allTP.Length)
@@ -263,8 +263,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
             {
-                fillAmount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4;
+                fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel4;
+                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 < allTP.Length)
@@ -288,8 +288,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
             {
-                fillAmount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5;
+                fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel5;
+                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 < allTP.Length)
@@ -315,8 +315,8 @@ public class Teleport : MonoBehaviour
         {
             if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
             {
-                fillAmount = Geekplay.Instance.PlayerData.CarSaveProgressLevel1 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressLevel1;
+                fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel1;
+                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel1;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.CarSaveProgressLevel1 < allTP.Length)
@@ -340,8 +340,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
             {
-                fillAmount = Geekplay.Instance.PlayerData.CarSaveProgressLevel2 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressLevel2;
+                fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel2;
+                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel2;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.CarSaveProgressLevel2 < allTP.Length)
@@ -365,8 +365,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
             {
-                fillAmount = Geekplay.Instance.PlayerData.CarSaveProgressLevel3 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressLevel3;
+                fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel3;
+                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel3;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.CarSaveProgressLevel3 < allTP.Length)
@@ -390,8 +390,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
             {
-                fillAmount = Geekplay.Instance.PlayerData.CarSaveProgressLevel4 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressLevel4;
+                fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel4;
+                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel4;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.CarSaveProgressLevel4 < allTP.Length)
@@ -415,8 +415,8 @@ public class Teleport : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
             {
-                fillAmount = Geekplay.Instance.PlayerData.CarSaveProgressLevel5 * 0.01f;
-                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressLevel5;
+                fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel5;
+                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel5;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.CarSaveProgressLevel5 < allTP.Length)
@@ -492,31 +492,36 @@ public class Teleport : MonoBehaviour
             {
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
                 {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 += progressCountTest;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 += 1;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1 += progressCountTest;
                     Geekplay.Instance.PlayerData.RunningFillAmountLevel1 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
                 {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 += progressCountTest;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 += 1;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2 += progressCountTest;
                     Geekplay.Instance.PlayerData.RunningFillAmountLevel2 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
                 {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 += progressCountTest;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 += 1;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3 += progressCountTest;
                     Geekplay.Instance.PlayerData.RunningFillAmountLevel3 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
                 {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 += progressCountTest;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 += 1;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4 += progressCountTest;
                     Geekplay.Instance.PlayerData.RunningFillAmountLevel4 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
                 {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 += progressCountTest;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 += 1;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5 += progressCountTest;
                     Geekplay.Instance.PlayerData.RunningFillAmountLevel5 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
@@ -525,31 +530,36 @@ public class Teleport : MonoBehaviour
             {
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
                 {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 += progressCountTest;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 += 1;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1 += progressCountTest;
                     Geekplay.Instance.PlayerData.BicycleFillAmountLevel1 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
                 {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 += progressCountTest;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 += 1;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2 += progressCountTest;
                     Geekplay.Instance.PlayerData.BicycleFillAmountLevel2 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
                 {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 += progressCountTest;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 += 1;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3 += progressCountTest;
                     Geekplay.Instance.PlayerData.BicycleFillAmountLevel3 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
                 {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 += progressCountTest;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 += 1;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4 += progressCountTest;
                     Geekplay.Instance.PlayerData.BicycleFillAmountLevel4 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
                 {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 += progressCountTest;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 += 1;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5 += progressCountTest;
                     Geekplay.Instance.PlayerData.BicycleFillAmountLevel5 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
@@ -558,31 +568,36 @@ public class Teleport : MonoBehaviour
             {
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
                 {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel1 += progressCountTest;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel1 += 1;
+                    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel1 += progressCountTest;
                     Geekplay.Instance.PlayerData.CarFillAmountLevel1 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
                 {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel2 += progressCountTest;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel2 += 1;
+                    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel2 += progressCountTest;
                     Geekplay.Instance.PlayerData.CarFillAmountLevel2 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
                 {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel3 += progressCountTest;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel3 += 1;
+                    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel3 += progressCountTest;
                     Geekplay.Instance.PlayerData.CarFillAmountLevel3 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
                 {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel4 += progressCountTest;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel4 += 1;
+                    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel4 += progressCountTest;
                     Geekplay.Instance.PlayerData.CarFillAmountLevel4 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }
                 if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
                 {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel5 += progressCountTest;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevel5 += 1;
+                    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel5 += progressCountTest;
                     Geekplay.Instance.PlayerData.CarFillAmountLevel5 += fillAmountTest;
                     Geekplay.Instance.Save();
                 }

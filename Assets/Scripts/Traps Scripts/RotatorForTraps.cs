@@ -5,8 +5,16 @@ using UnityEngine;
 public class RotatorForTraps : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed;
+    [SerializeField] private bool isHorizontal;
     void FixedUpdate()
     {
-        transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
+        if (isHorizontal)
+        {
+            transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
+        }
+        else
+        {
+            transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+        }
     }
 }

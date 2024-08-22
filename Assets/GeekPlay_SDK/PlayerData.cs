@@ -22,6 +22,13 @@ public class PlayerData
     public int RunningSaveProgressLevel4;
     public int RunningSaveProgressLevel5;
 
+
+    public int RunningSaveProgressMenuLevel1;
+    public int RunningSaveProgressMenuLevel2;
+    public int RunningSaveProgressMenuLevel3;
+    public int RunningSaveProgressMenuLevel4;
+    public int RunningSaveProgressMenuLevel5;
+
     public float RunningFillAmountLevel1;
     public float RunningFillAmountLevel2;
     public float RunningFillAmountLevel3;
@@ -63,6 +70,12 @@ public class PlayerData
     public int BicycleSaveProgressLevel4;
     public int BicycleSaveProgressLevel5;
 
+    public int BicycleSaveProgressMenuLevel1;
+    public int BicycleSaveProgressMenuLevel2;
+    public int BicycleSaveProgressMenuLevel3;
+    public int BicycleSaveProgressMenuLevel4;
+    public int BicycleSaveProgressMenuLevel5;
+
     public float BicycleFillAmountLevel1;
     public float BicycleFillAmountLevel2;
     public float BicycleFillAmountLevel3;
@@ -103,6 +116,12 @@ public class PlayerData
     public int CarSaveProgressLevel3;
     public int CarSaveProgressLevel4;
     public int CarSaveProgressLevel5;
+
+    public int CarSaveProgressMenuLevel1;
+    public int CarSaveProgressMenuLevel2;
+    public int CarSaveProgressMenuLevel3;
+    public int CarSaveProgressMenuLevel4;
+    public int CarSaveProgressMenuLevel5;
 
 
     public float CarFillAmountLevel1;

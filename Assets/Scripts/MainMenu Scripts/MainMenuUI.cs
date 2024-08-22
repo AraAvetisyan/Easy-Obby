@@ -65,11 +65,11 @@ public class MainMenuUI : MonoBehaviour
         runningProgressLevel4.fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel4;
         runningProgressLevel5.fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel5;
 
-        runningProgressPercentLevel1.text = Geekplay.Instance.PlayerData.RunningSaveProgressLevel1.ToString() + "%";
-        runningProgressPercentLevel2.text = Geekplay.Instance.PlayerData.RunningSaveProgressLevel2.ToString() + "%";
-        runningProgressPercentLevel3.text = Geekplay.Instance.PlayerData.RunningSaveProgressLevel3.ToString() + "%";
-        runningProgressPercentLevel4.text = Geekplay.Instance.PlayerData.RunningSaveProgressLevel4.ToString() + "%";
-        runningProgressPercentLevel5.text = Geekplay.Instance.PlayerData.RunningSaveProgressLevel5.ToString() + "%";
+        runningProgressPercentLevel1.text = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1.ToString() + "%";
+        runningProgressPercentLevel2.text = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2.ToString() + "%";
+        runningProgressPercentLevel3.text = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3.ToString() + "%";
+        runningProgressPercentLevel4.text = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4.ToString() + "%";
+        runningProgressPercentLevel5.text = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5.ToString() + "%";
 
         var culture = new CultureInfo("en-EN");
 
@@ -202,11 +202,11 @@ public class MainMenuUI : MonoBehaviour
         bicycleProgressLevel4.fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel4;
         bicycleProgressLevel5.fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel5;
 
-        bicycleProgressPercentLevel1.text = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1.ToString() + "%";
-        bicycleProgressPercentLevel2.text = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2.ToString() + "%";
-        bicycleProgressPercentLevel3.text = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3.ToString() + "%";
-        bicycleProgressPercentLevel4.text = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4.ToString() + "%";
-        bicycleProgressPercentLevel5.text = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5.ToString() + "%";
+        bicycleProgressPercentLevel1.text = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1.ToString() + "%";
+        bicycleProgressPercentLevel2.text = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2.ToString() + "%";
+        bicycleProgressPercentLevel3.text = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3.ToString() + "%";
+        bicycleProgressPercentLevel4.text = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4.ToString() + "%";
+        bicycleProgressPercentLevel5.text = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5.ToString() + "%";
 
         var culture = new CultureInfo("en-EN");
 
@@ -347,11 +347,11 @@ public class MainMenuUI : MonoBehaviour
         carProgressLevel4.fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel4;
         carProgressLevel5.fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel5;
 
-        carProgressPercentLevel1.text = Geekplay.Instance.PlayerData.CarSaveProgressLevel1.ToString() + "%";
-        carProgressPercentLevel2.text = Geekplay.Instance.PlayerData.CarSaveProgressLevel2.ToString() + "%";
-        carProgressPercentLevel3.text = Geekplay.Instance.PlayerData.CarSaveProgressLevel3.ToString() + "%";
-        carProgressPercentLevel4.text = Geekplay.Instance.PlayerData.CarSaveProgressLevel4.ToString() + "%";
-        carProgressPercentLevel5.text = Geekplay.Instance.PlayerData.CarSaveProgressLevel5.ToString() + "%";
+        carProgressPercentLevel1.text = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel1.ToString() + "%";
+        carProgressPercentLevel2.text = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel2.ToString() + "%";
+        carProgressPercentLevel3.text = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel3.ToString() + "%";
+        carProgressPercentLevel4.text = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel4.ToString() + "%";
+        carProgressPercentLevel5.text = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel5.ToString() + "%";
 
         var culture = new CultureInfo("en-EN");
 
