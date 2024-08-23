@@ -6,6 +6,7 @@ public class RotatorForTraps : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed;
     [SerializeField] private bool isHorizontal;
+ 
     void FixedUpdate()
     {
         if (isHorizontal)

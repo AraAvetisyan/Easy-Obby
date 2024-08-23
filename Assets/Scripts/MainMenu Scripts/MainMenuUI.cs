@@ -40,6 +40,69 @@ public class MainMenuUI : MonoBehaviour
     {
         coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
         diamondsText.text = Geekplay.Instance.PlayerData.Diamond.ToString();
+
+        if (Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1 >= 100)
+        {
+            Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2 >= 100)
+        {
+            Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3 >= 100)
+        {
+            Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4 >= 100)
+        {
+            Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5 >= 100)
+        {
+            Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5 = 100;
+        }
+
+        if (Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1 >= 100)
+        {
+            Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2 >= 100)
+        {
+            Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3 >= 100)
+        {
+            Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4 >= 100)
+        {
+            Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5 >= 100)
+        {
+            Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5 = 100;
+        }
+
+        if (Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel1 >= 100)
+        {
+            Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel1 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel2 >= 100)
+        {
+            Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel2 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel3 >= 100)
+        {
+            Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel3 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel4 >= 100)
+        {
+            Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel4 = 100;
+        }
+        if (Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel5 >= 100)
+        {
+            Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel5 = 100;
+        }
     }
     private void OnEnable()
     {
@@ -706,6 +769,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel1 = 0;
             Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel1 = 0;
+            Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1 = 0;
             Geekplay.Instance.PlayerData.RunningFillAmountLevel1 = 0;
             Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 = 0;
             Geekplay.Instance.Save();
@@ -715,6 +779,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel2 = 0;
             Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel2 = 0;
+            Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2 = 0;
             Geekplay.Instance.PlayerData.RunningFillAmountLevel2 = 0;
             Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 = 0;
             Geekplay.Instance.Save();
@@ -724,6 +789,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel3 = 0;
             Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel3 = 0;
+            Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3 = 0;
             Geekplay.Instance.PlayerData.RunningFillAmountLevel3 = 0;
             Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 = 0;
             Geekplay.Instance.Save();
@@ -733,6 +799,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel4 = 0;
             Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel4 = 0;
+            Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4 = 0;
             Geekplay.Instance.PlayerData.RunningFillAmountLevel4 = 0;
             Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 = 0;
             Geekplay.Instance.Save();
@@ -742,6 +809,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel5 = 0;
             Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel5 = 0;
+            Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5 = 0;
             Geekplay.Instance.PlayerData.RunningFillAmountLevel5 = 0;
             Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 = 0;
             Geekplay.Instance.Save();
@@ -754,6 +822,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel1 = 0;
             Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel1 = 0;
+            Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1 = 0;
             Geekplay.Instance.PlayerData.BicycleFillAmountLevel1 = 0;
             Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 = 0;
             Geekplay.Instance.Save();
@@ -763,6 +832,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel2 = 0;
             Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel2 = 0;
+            Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2 = 0;
             Geekplay.Instance.PlayerData.BicycleFillAmountLevel2 = 0;
             Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 = 0;
             Geekplay.Instance.Save();
@@ -772,6 +842,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel3 = 0;
             Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel3 = 0;
+            Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3 = 0;
             Geekplay.Instance.PlayerData.BicycleFillAmountLevel3 = 0;
             Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 = 0;
             Geekplay.Instance.Save();
@@ -781,6 +852,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel4 = 0;
             Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel4 = 0;
+            Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4 = 0;
             Geekplay.Instance.PlayerData.BicycleFillAmountLevel4 = 0;
             Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 = 0;
             Geekplay.Instance.Save();
@@ -790,6 +862,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel5 = 0;
             Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel5 = 0;
+            Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5 = 0;
             Geekplay.Instance.PlayerData.BicycleFillAmountLevel5 = 0;
             Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 = 0;
             Geekplay.Instance.Save();
@@ -802,6 +875,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel1 = 0;
             Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel1 = 0;
+            Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel1 = 0;
             Geekplay.Instance.PlayerData.CarFillAmountLevel1 = 0;
             Geekplay.Instance.PlayerData.CarSaveProgressLevel1 = 0;
             Geekplay.Instance.Save();
@@ -811,6 +885,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel2 = 0;
             Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel2 = 0;
+            Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel2 = 0;
             Geekplay.Instance.PlayerData.CarFillAmountLevel2 = 0;
             Geekplay.Instance.PlayerData.CarSaveProgressLevel2 = 0;
             Geekplay.Instance.Save();
@@ -820,6 +895,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel3 = 0;
             Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel3 = 0;
+            Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel3 = 0;
             Geekplay.Instance.PlayerData.CarFillAmountLevel3 = 0;
             Geekplay.Instance.PlayerData.CarSaveProgressLevel3 = 0;
             Geekplay.Instance.Save();
@@ -829,6 +905,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel4 = 0;
             Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel4 = 0;
+            Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel4 = 0;
             Geekplay.Instance.PlayerData.CarFillAmountLevel4 = 0;
             Geekplay.Instance.PlayerData.CarSaveProgressLevel4 = 0;
             Geekplay.Instance.Save();
@@ -838,6 +915,7 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel5 = 0;
             Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel5 = 0;
+            Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel5 = 0;
             Geekplay.Instance.PlayerData.CarFillAmountLevel5 = 0;
             Geekplay.Instance.PlayerData.CarSaveProgressLevel5 = 0;
             Geekplay.Instance.Save();

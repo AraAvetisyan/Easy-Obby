@@ -23,18 +23,18 @@ public class PlayerController : MonoBehaviour
     public Animator Animator;
     private int stopCounter;
     [SerializeField] private GameObject finalPanel;
-    
 
+    float currentRotation;
     private void Update()
     {
         if (gamemodeRunning)
         {
             if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
             {
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 >= 100 && stopCounter == 0)
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 >= 34 && stopCounter == 0)
                 {
                     stopCounter = 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 = 100;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 = 34;
                     Geekplay.Instance.PlayerData.RunningFillAmountLevel1 = 1;
                     Geekplay.Instance.Save();
                     moveSpeed = 0;
@@ -43,10 +43,10 @@ public class PlayerController : MonoBehaviour
             }
             if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
             {
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 >= 100 && stopCounter == 0)
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 >= 34 && stopCounter == 0)
                 {
                     stopCounter = 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 = 100;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 = 34;
                     Geekplay.Instance.PlayerData.RunningFillAmountLevel2 = 1;
                     Geekplay.Instance.Save();
                     moveSpeed = 0;
@@ -55,10 +55,10 @@ public class PlayerController : MonoBehaviour
             }
             if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
             {
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 >= 100 && stopCounter == 0)
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 >= 67 && stopCounter == 0)
                 {
                     stopCounter = 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 = 100;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 = 67;
                     Geekplay.Instance.PlayerData.RunningFillAmountLevel3 = 1;
                     Geekplay.Instance.Save();
                     moveSpeed = 0;
@@ -67,10 +67,10 @@ public class PlayerController : MonoBehaviour
             }
             if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
             {
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 >= 100 && stopCounter == 0)
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 >= 67 && stopCounter == 0)
                 {
                     stopCounter = 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 = 100;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 = 67;
                     Geekplay.Instance.PlayerData.RunningFillAmountLevel4 = 1;
                     Geekplay.Instance.Save();
                     moveSpeed = 0;
@@ -95,10 +95,10 @@ public class PlayerController : MonoBehaviour
         {
             if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
             {
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 >= 100 && stopCounter == 0)
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 >= 34 && stopCounter == 0)
                 {
                     stopCounter = 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 = 100;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 = 34;
                     Geekplay.Instance.PlayerData.BicycleFillAmountLevel1 = 1;
                     Geekplay.Instance.Save();
                     moveSpeed = 0;
@@ -107,10 +107,10 @@ public class PlayerController : MonoBehaviour
             }
             if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
             {
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 >= 100 && stopCounter == 0)
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 >= 34 && stopCounter == 0)
                 {
                     stopCounter = 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 = 100;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 = 34;
                     Geekplay.Instance.PlayerData.BicycleFillAmountLevel2 = 1;
                     Geekplay.Instance.Save();
                     moveSpeed = 0;
@@ -119,10 +119,10 @@ public class PlayerController : MonoBehaviour
             }
             if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
             {
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 >= 100 && stopCounter == 0)
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 >= 67 && stopCounter == 0)
                 {
                     stopCounter = 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 = 100;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 = 67;
                     Geekplay.Instance.PlayerData.BicycleFillAmountLevel3 = 1;
                     Geekplay.Instance.Save();
                     moveSpeed = 0;
@@ -131,10 +131,10 @@ public class PlayerController : MonoBehaviour
             }
             if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
             {
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 >= 100 && stopCounter == 0)
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 >= 67 && stopCounter == 0)
                 {
                     stopCounter = 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 = 100;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 = 67;
                     Geekplay.Instance.PlayerData.BicycleFillAmountLevel4 = 1;
                     Geekplay.Instance.Save();
                     moveSpeed = 0;
@@ -157,14 +157,16 @@ public class PlayerController : MonoBehaviour
     }
     public void FixedUpdate()
     {
+
         Vector2 input = Vector2.zero;
+
         if (isMobile)
         {
             input = new Vector2(_floatingJoystick.Horizontal, _floatingJoystick.Vertical);
         }
         else
         {
-           input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         }
         Vector2 inputDir = input.normalized;
 
@@ -175,34 +177,13 @@ public class PlayerController : MonoBehaviour
         }
         float targertSpeed = moveSpeed * inputDir.magnitude * _sprintButtonScript.SprintSpeed;
         CurrentSpeed = Mathf.SmoothDamp(CurrentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer);
-        if (gamemodeRunning)
-        {
-            if (CurrentSpeed > 0)
-            {
-                Animator.SetBool("IsRunning", true);
-            }
-            if (CurrentSpeed == 0)
-            {
-                Animator.SetBool("IsRunning", false);
-            }
-        }
-        if (gamemodeBicycle)
-        {
-            if (targertSpeed != 0)
-            {
-                Animator.SetBool("OnMove", true);
-            }
-            if(targertSpeed == 0)
-            {
-                Animator.SetBool("OnMove", false);
-            }
-        }
+
         transform.Translate(transform.forward * CurrentSpeed * Time.deltaTime, Space.World);
         if (IsGrounded && rb.velocity != Vector3.zero && !Jumping)
         {
             rb.velocity = Vector3.zero;
         }
-        if(graundObjects.Count > 0)
+        if (graundObjects.Count > 0)
         {
             IsGrounded = true;
         }
@@ -210,6 +191,8 @@ public class PlayerController : MonoBehaviour
         {
             IsGrounded = false;
         }
+
+
     }
    
     public void OnCollisionEnter(Collision collision)
