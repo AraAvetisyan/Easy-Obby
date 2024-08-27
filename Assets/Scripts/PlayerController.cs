@@ -191,6 +191,17 @@ public class PlayerController : MonoBehaviour
         {
             IsGrounded = false;
         }
+        if (gamemodeRunning)
+        {
+            if (CurrentSpeed > 0)
+            {
+                Animator.SetBool("IsRunning", true);
+            }
+            if (CurrentSpeed == 0)
+            {
+                Animator.SetBool("IsRunning", false);
+            }
+        }
 
 
     }
