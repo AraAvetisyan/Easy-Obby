@@ -4083,7 +4083,7 @@ MonoBehaviour:
     - 3
     - 2.5
     LimitBackwardSpeed: 30
-    LimitForwardSpeed: 100
+    LimitForwardSpeed: 80
   accel: 0
   brake: 0
   curTorque: 100
