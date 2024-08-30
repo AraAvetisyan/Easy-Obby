@@ -32,6 +32,13 @@ public class Teleport : MonoBehaviour
     [SerializeField] private int fillCountTest;
     [SerializeField] private int progressCountTest;
 
+    [SerializeField] private GameObject[] teleportParticles;
+    [SerializeField] private MeshRenderer[] coinMeshes;
+    [SerializeField] private MeshRenderer[] flagMeshes, cloatMeshes;
+    [SerializeField] private int coinMeshCounter;
+
+    [SerializeField] private bool front, back, left, right;
+
     public bool mustBreak;
     private void Start()
     {
@@ -52,7 +59,7 @@ public class Teleport : MonoBehaviour
 
         coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
         diamondsText.text = Geekplay.Instance.PlayerData.Diamond.ToString();
-        
+
 
 
         if (gamemodeRunning)
@@ -61,6 +68,7 @@ public class Teleport : MonoBehaviour
             {
                 fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel1;
                 fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1;
+                coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel1;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 < allTP.Length)
@@ -78,6 +86,7 @@ public class Teleport : MonoBehaviour
                     if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel1)
                     {
                         boxColliders[i].enabled = false;
+                        coinMeshes[i].enabled = false;
                     }
                 }
             }
@@ -86,6 +95,7 @@ public class Teleport : MonoBehaviour
             {
                 fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel2;
                 fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2;
+                coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel2;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 < allTP.Length)
@@ -103,6 +113,7 @@ public class Teleport : MonoBehaviour
                     if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel2)
                     {
                         boxColliders[i].enabled = false;
+                        coinMeshes[i].enabled = false;
                     }
                 }
             }
@@ -111,6 +122,7 @@ public class Teleport : MonoBehaviour
             {
                 fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel3;
                 fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3;
+                coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel3;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 < allTP.Length)
@@ -128,6 +140,7 @@ public class Teleport : MonoBehaviour
                     if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel3)
                     {
                         boxColliders[i].enabled = false;
+                        coinMeshes[i].enabled = false;
                     }
                 }
             }
@@ -136,6 +149,7 @@ public class Teleport : MonoBehaviour
             {
                 fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel4;
                 fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4;
+                coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel4;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 < allTP.Length)
@@ -153,6 +167,7 @@ public class Teleport : MonoBehaviour
                     if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel4)
                     {
                         boxColliders[i].enabled = false;
+                        coinMeshes[i].enabled = false;
                     }
                 }
             }
@@ -161,6 +176,7 @@ public class Teleport : MonoBehaviour
             {
                 fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel5;
                 fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5;
+                coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel5;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 < allTP.Length)
@@ -178,6 +194,7 @@ public class Teleport : MonoBehaviour
                     if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel5)
                     {
                         boxColliders[i].enabled = false;
+                        coinMeshes[i].enabled = false;
                     }
                 }
             }
@@ -190,6 +207,7 @@ public class Teleport : MonoBehaviour
             {
                 fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel1;
                 fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1;
+                coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 < allTP.Length)
@@ -207,6 +225,8 @@ public class Teleport : MonoBehaviour
                     if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1)
                     {
                         boxColliders[i].enabled = false;
+                        flagMeshes[i].enabled = false;
+                        cloatMeshes[i].enabled = false;
                     }
                 }
             }
@@ -215,6 +235,7 @@ public class Teleport : MonoBehaviour
             {
                 fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel2;
                 fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2;
+                coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 < allTP.Length)
@@ -232,6 +253,8 @@ public class Teleport : MonoBehaviour
                     if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2)
                     {
                         boxColliders[i].enabled = false;
+                        flagMeshes[i].enabled = false;
+                        cloatMeshes[i].enabled = false;
                     }
                 }
             }
@@ -240,6 +263,7 @@ public class Teleport : MonoBehaviour
             {
                 fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel3;
                 fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3;
+                coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 < allTP.Length)
@@ -257,6 +281,8 @@ public class Teleport : MonoBehaviour
                     if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3)
                     {
                         boxColliders[i].enabled = false;
+                        flagMeshes[i].enabled = false;
+                        cloatMeshes[i].enabled = false;
                     }
                 }
             }
@@ -265,6 +291,7 @@ public class Teleport : MonoBehaviour
             {
                 fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel4;
                 fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4;
+                coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 < allTP.Length)
@@ -282,6 +309,8 @@ public class Teleport : MonoBehaviour
                     if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4)
                     {
                         boxColliders[i].enabled = false;
+                        flagMeshes[i].enabled = false;
+                        cloatMeshes[i].enabled = false;
                     }
                 }
             }
@@ -290,6 +319,7 @@ public class Teleport : MonoBehaviour
             {
                 fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel5;
                 fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5;
+                coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5;
                 fillImage.fillAmount = fillAmount;
                 fillText.text = fillCount.ToString() + "%";
                 if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 < allTP.Length)
@@ -307,6 +337,8 @@ public class Teleport : MonoBehaviour
                     if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5)
                     {
                         boxColliders[i].enabled = false;
+                        flagMeshes[i].enabled = false;
+                        cloatMeshes[i].enabled = false;
                     }
                 }
             }
@@ -466,16 +498,79 @@ public class Teleport : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Front"))
+        {
+            front = true;
+            back = false;
+            right = false;
+            left = false;
+        }
+        if (other.CompareTag("Back"))
+        {
+            front = false;
+            back = true;
+            right = false;
+            left = false;
+        }
+        if (other.CompareTag("Right"))
+        {
+            front = false;
+            back = false;
+            right = true;
+            left = false;
+        }
+        if (other.CompareTag("Left"))
+        {
+            front = false;
+            back = false;
+            right = false;
+            left = true;
+        }
         if (other.CompareTag("Teleport"))
         {
             transform.position = tp.position;
-            transform.rotation = new Quaternion(0, 0, 0, 0);
+            if (front)
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, 0, 0);
+                transform.rotation = targetRotation;
+            }
+            if (back)
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
+                transform.rotation = targetRotation;
+            }
+            if (right)
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, 90, 0);
+                transform.rotation = targetRotation;
+            }
+            if (left)
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, -90, 0);
+                transform.rotation = targetRotation;
+            }
             rb.velocity = Vector3.zero;           
         }
 
         if (other.CompareTag("TeleportPoint"))
         {
+            if (gamemodeRunning)
+            {
+                coinMeshCounter++;
+                coinMeshes[coinMeshCounter].enabled = false;
+                teleportParticles[coinMeshCounter].SetActive(true);
+            }
+            if (gamemodeBicycle)
+            {
+                coinMeshCounter++;
+                flagMeshes[coinMeshCounter].enabled = false;
+                cloatMeshes[coinMeshCounter].enabled = false;
+                teleportParticles[coinMeshCounter].SetActive(true);
+            }
+
+
             tp = other.gameObject.transform;
+
             fillCount += fillCountTest;
             fillImage.fillAmount += fillAmountTest;
             fillText.text = fillCount.ToString() + "%";
