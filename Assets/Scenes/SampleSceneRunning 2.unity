@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c83c181e2b726ca4aa3087fbec088bec, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -34501,7 +34501,7 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.7882353, g: 0.8352941, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -37131,7 +37131,7 @@ MonoBehaviour:
   _sprintButtonScript: {fileID: 1485953710}
   gamemodeRunning: 1
   gamemodeBicycle: 0
-  isMobile: 1
+  isMobile: 0
   Jumping: 0
   graundObjects: []
   IsGrounded: 0
@@ -37337,6 +37337,7 @@ MonoBehaviour:
   - {fileID: 1772882600}
   - {fileID: 1901670205}
   - {fileID: 763042812}
+  startLines: []
   flagMeshes: []
   cloatMeshes: []
   coinMeshCounter: 0
@@ -37344,6 +37345,7 @@ MonoBehaviour:
   back: 0
   left: 0
   right: 0
+  carObject: {fileID: 0}
   mustBreak: 0
 --- !u!95 &1043353388
 Animator:
@@ -45172,7 +45174,7 @@ GameObject:
   - component: {fileID: 1309634240}
   m_Layer: 0
   m_Name: TP
-  m_TagString: Untagged
+  m_TagString: Front
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

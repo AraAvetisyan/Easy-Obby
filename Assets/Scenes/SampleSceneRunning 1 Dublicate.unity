@@ -31340,6 +31340,7 @@ MonoBehaviour:
   progressCountTest: 3
   teleportParticles: []
   coinMeshes: []
+  startLines: []
   flagMeshes: []
   cloatMeshes: []
   coinMeshCounter: 0
@@ -31347,6 +31348,7 @@ MonoBehaviour:
   back: 0
   left: 0
   right: 0
+  carObject: {fileID: 0}
   mustBreak: 0
 --- !u!95 &1043353388
 Animator:
@@ -40198,7 +40200,7 @@ GameObject:
   - component: {fileID: 1309634240}
   m_Layer: 0
   m_Name: TP
-  m_TagString: Untagged
+  m_TagString: Front
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

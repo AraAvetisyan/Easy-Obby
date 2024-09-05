@@ -64,24 +64,29 @@ public class PlayerData
 
     public int BicycleMapIndex;
 
+    public int[] BicycleSaveProgressLevels;
     public int BicycleSaveProgressLevel1;
     public int BicycleSaveProgressLevel2;
     public int BicycleSaveProgressLevel3;
     public int BicycleSaveProgressLevel4;
     public int BicycleSaveProgressLevel5;
 
+    public int[] BicycleSaveProgressMenuLevels;
     public int BicycleSaveProgressMenuLevel1;
     public int BicycleSaveProgressMenuLevel2;
     public int BicycleSaveProgressMenuLevel3;
     public int BicycleSaveProgressMenuLevel4;
     public int BicycleSaveProgressMenuLevel5;
 
+    public float[] BicycleFillAmountLevels;
     public float BicycleFillAmountLevel1;
     public float BicycleFillAmountLevel2;
     public float BicycleFillAmountLevel3;
     public float BicycleFillAmountLevel4;
     public float BicycleFillAmountLevel5;
 
+
+    public float[] BestBicycleMapMinutesLevels;
     public float BestBicycleMapMinutesLevel1;
     public float BestBicycleMapSecondsLevel1;
     public float CurrentBicycleMapMinutesLevel1;

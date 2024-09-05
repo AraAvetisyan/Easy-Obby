@@ -31,6 +31,9 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI runningProgressPercentLevel1, runningProgressPercentLevel2, runningProgressPercentLevel3, runningProgressPercentLevel4, runningProgressPercentLevel5;
     [SerializeField] private TextMeshProUGUI bicycleProgressPercentLevel1, bicycleProgressPercentLevel2, bicycleProgressPercentLevel3, bicycleProgressPercentLevel4, bicycleProgressPercentLevel5;
     [SerializeField] private TextMeshProUGUI carProgressPercentLevel1, carProgressPercentLevel2, carProgressPercentLevel3, carProgressPercentLevel4, carProgressPercentLevel5;
+
+
+
     private void Awake()
     {
         Instance = this;
@@ -575,6 +578,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneRunning 1 Continue_Game");
             SceneManager.LoadScene("SampleSceneRunning 1");
         }
         if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
@@ -587,6 +591,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneRunning 2 Continue_Game");
             SceneManager.LoadScene("SampleSceneRunning 2");
         }
         if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
@@ -599,6 +604,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneRunning 3 Continue_Game");
             SceneManager.LoadScene("SampleSceneRunning 3");
         }
         if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
@@ -611,6 +617,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneRunning 4 Continue_Game");
             SceneManager.LoadScene("SampleSceneRunning 4");
         }
         if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
@@ -623,6 +630,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneRunning 5 Continue_Game");
             SceneManager.LoadScene("SampleSceneRunning 5");
         }
     }   
@@ -641,6 +649,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneBicycle 1 Continue_Game");
             SceneManager.LoadScene("SampleSceneBicycle 1");
         }
         if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
@@ -653,6 +662,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneBicycle 2 Continue_Game");
             SceneManager.LoadScene("SampleSceneBicycle 2");
         }
         if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
@@ -665,6 +675,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneBicycle 3 Continue_Game");
             SceneManager.LoadScene("SampleSceneBicycle 3");
         }
         if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
@@ -677,6 +688,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneBicycle 4 Continue_Game");
             SceneManager.LoadScene("SampleSceneBicycle 4");
         }
         if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
@@ -689,6 +701,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneBicycle 5 Continue_Game");
             SceneManager.LoadScene("SampleSceneBicycle 5");
         }
     }
@@ -707,6 +720,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.CarSaveProgressLevel1 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneCar 1 Continue_Game");
             SceneManager.LoadScene("SampleSceneCar 1");
         }
         if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
@@ -719,6 +733,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.CarSaveProgressLevel2 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneCar 2 Continue_Game");
             SceneManager.LoadScene("SampleSceneCar 2");
         }
         if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
@@ -731,6 +746,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.CarSaveProgressLevel3 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneCar 3 Continue_Game");
             SceneManager.LoadScene("SampleSceneCar 3");
         }
         if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
@@ -743,6 +759,7 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.CarSaveProgressLevel4 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneCar 4 Continue_Game");
             SceneManager.LoadScene("SampleSceneCar 4");
         }
         if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
@@ -755,12 +772,9 @@ public class MainMenuUI : MonoBehaviour
                 Geekplay.Instance.PlayerData.CarSaveProgressLevel5 = 0;
                 Geekplay.Instance.Save();
             }
+            Analytics.instance.SendEvent("SampleSceneCar 5 Continue_Game");
             SceneManager.LoadScene("SampleSceneCar 5");
         }
-        //ContinueCar = true;
-        //Geekplay.Instance.PlayerData.IsFirstTry = 1;
-        //Geekplay.Instance.Save();
-        //SceneManager.LoadScene("SampleSceneCar");
     }
 
     public void PressedNewGameRun()
@@ -773,6 +787,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.RunningFillAmountLevel1 = 0;
             Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneRunning 1 Start_New_Game");
             SceneManager.LoadScene("SampleSceneRunning 1");
         }
         if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
@@ -783,6 +798,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.RunningFillAmountLevel2 = 0;
             Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneRunning 2 Start_New_Game");
             SceneManager.LoadScene("SampleSceneRunning 2");
         }
         if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
@@ -793,6 +809,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.RunningFillAmountLevel3 = 0;
             Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneRunning 3 Start_New_Game");
             SceneManager.LoadScene("SampleSceneRunning 3");
         }
         if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
@@ -803,6 +820,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.RunningFillAmountLevel4 = 0;
             Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneRunning 4 Start_New_Game");
             SceneManager.LoadScene("SampleSceneRunning 4");
         }
         if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
@@ -813,7 +831,8 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.RunningFillAmountLevel5 = 0;
             Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 = 0;
             Geekplay.Instance.Save();
-            SceneManager.LoadScene("SampleSceneRunning 1");
+            Analytics.instance.SendEvent("SampleSceneRunning 5 Start_New_Game");
+            SceneManager.LoadScene("SampleSceneRunning 5");
         }
     }
     public void PressedNewGameBicycle()
@@ -826,6 +845,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.BicycleFillAmountLevel1 = 0;
             Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneBicycle 1 Start_New_Game");
             SceneManager.LoadScene("SampleSceneBicycle 1");
         }
         if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
@@ -836,6 +856,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.BicycleFillAmountLevel2 = 0;
             Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneBicycle 2 Start_New_Game");
             SceneManager.LoadScene("SampleSceneBicycle 2");
         }
         if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
@@ -846,6 +867,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.BicycleFillAmountLevel3 = 0;
             Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneBicycle 3 Start_New_Game");
             SceneManager.LoadScene("SampleSceneBicycle 3");
         }
         if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
@@ -856,6 +878,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.BicycleFillAmountLevel4 = 0;
             Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneBicycle 4 Start_New_Game");
             SceneManager.LoadScene("SampleSceneBicycle 4");
         }
         if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
@@ -866,6 +889,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.BicycleFillAmountLevel5 = 0;
             Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneBicycle 5 Start_New_Game");
             SceneManager.LoadScene("SampleSceneBicycle 5");
         }
     }
@@ -879,6 +903,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.CarFillAmountLevel1 = 0;
             Geekplay.Instance.PlayerData.CarSaveProgressLevel1 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneCar 1 Start_New_Game");
             SceneManager.LoadScene("SampleSceneCar 1");
         }
         if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
@@ -889,6 +914,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.CarFillAmountLevel2 = 0;
             Geekplay.Instance.PlayerData.CarSaveProgressLevel2 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneCar 2 Start_New_Game");
             SceneManager.LoadScene("SampleSceneCar 2");
         }
         if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
@@ -899,6 +925,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.CarFillAmountLevel3 = 0;
             Geekplay.Instance.PlayerData.CarSaveProgressLevel3 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneCar 3 Start_New_Game");
             SceneManager.LoadScene("SampleSceneCar 3");
         }
         if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
@@ -909,6 +936,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.CarFillAmountLevel4 = 0;
             Geekplay.Instance.PlayerData.CarSaveProgressLevel4 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneCar 4 Start_New_Game");
             SceneManager.LoadScene("SampleSceneCar 4");
         }
         if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
@@ -919,6 +947,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.CarFillAmountLevel5 = 0;
             Geekplay.Instance.PlayerData.CarSaveProgressLevel5 = 0;
             Geekplay.Instance.Save();
+            Analytics.instance.SendEvent("SampleSceneCar 5 Start_New_Game");
             SceneManager.LoadScene("SampleSceneCar 5");
         }
     }
