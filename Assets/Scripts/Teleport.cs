@@ -59,274 +59,321 @@ public class Teleport : MonoBehaviour
 
         if (gamemodeRunning)
         {
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
+            fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevels[Geekplay.Instance.PlayerData.RunningMapIndex];
+            fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevels[Geekplay.Instance.PlayerData.RunningMapIndex];
+            coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevels[Geekplay.Instance.PlayerData.RunningMapIndex];
+            fillImage.fillAmount = fillAmount;
+            fillText.text = fillCount.ToString() + "%";
+            if (Geekplay.Instance.PlayerData.RunningSaveProgressLevels[Geekplay.Instance.PlayerData.RunningMapIndex] < allTP.Length)
             {
-                fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel1;
-                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1;
-                coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel1;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel1];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel1)
-                    {
-                        boxColliders[i].enabled = false;
-                        coinMeshes[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
+                tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevels[Geekplay.Instance.PlayerData.RunningMapIndex]];
             }
+            else
+            {
+                tp = allTP[allTP.Length - 1];
+            }
+            for (int i = 0; i < boxColliders.Length; i++)
+            {
+                if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevels[Geekplay.Instance.PlayerData.RunningMapIndex])
+                {
+                    boxColliders[i].enabled = false;
+                    coinMeshes[i].enabled = false;
+                }
+            }
+            transform.position = tp.position;
+            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel1;
+            //    fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel1;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel1];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel1)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            coinMeshes[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
 
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel2;
-                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2;
-                coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel2;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel2];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel2)
-                    {
-                        boxColliders[i].enabled = false;
-                        coinMeshes[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel2;
+            //    fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel2;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel2];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel2)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            coinMeshes[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
 
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel3;
-                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3;
-                coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel3;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel3];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel3)
-                    {
-                        boxColliders[i].enabled = false;
-                        coinMeshes[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel3;
+            //    fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel3;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel3];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel3)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            coinMeshes[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
 
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel4;
-                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4;
-                coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel4;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel4];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel4)
-                    {
-                        boxColliders[i].enabled = false;
-                        coinMeshes[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel4;
+            //    fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel4;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel4];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel4)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            coinMeshes[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
 
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel5;
-                fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5;
-                coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel5;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel5];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel5)
-                    {
-                        boxColliders[i].enabled = false;
-                        coinMeshes[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.RunningFillAmountLevel5;
+            //    fillCount = Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.RunningSaveProgressLevel5;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.RunningSaveProgressLevel5];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.RunningSaveProgressLevel5)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            coinMeshes[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
         }
 
 
         if(gamemodeBicycle)
         {
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+            fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevels[Geekplay.Instance.PlayerData.BicycleMapIndex];
+            fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevels[Geekplay.Instance.PlayerData.BicycleMapIndex];
+            coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[Geekplay.Instance.PlayerData.BicycleMapIndex];
+            fillImage.fillAmount = fillAmount;
+            fillText.text = fillCount.ToString() + "%";
+            if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] < allTP.Length)
             {
-                fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel1;
-                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1;
-                coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1)
-                    {
-                        boxColliders[i].enabled = false;
-                        flagMeshes[i].enabled = false;
-                        cloatMeshes[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
+                tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[Geekplay.Instance.PlayerData.BicycleMapIndex]];
             }
+            else
+            {
+                tp = allTP[allTP.Length - 1];
+            }
+            for (int i = 0; i < boxColliders.Length; i++)
+            {
+                if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[Geekplay.Instance.PlayerData.BicycleMapIndex])
+                {
+                    boxColliders[i].enabled = false;
+                    flagMeshes[i].enabled = false;
+                    cloatMeshes[i].enabled = false;
+                }
+            }
+            transform.position = tp.position;
 
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel2;
-                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2;
-                coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2)
-                    {
-                        boxColliders[i].enabled = false;
-                        flagMeshes[i].enabled = false;
-                        cloatMeshes[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
 
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel3;
-                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3;
-                coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3)
-                    {
-                        boxColliders[i].enabled = false;
-                        flagMeshes[i].enabled = false;
-                        cloatMeshes[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel1;
+            //    fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            flagMeshes[i].enabled = false;
+            //            cloatMeshes[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
 
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel4;
-                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4;
-                coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4)
-                    {
-                        boxColliders[i].enabled = false;
-                        flagMeshes[i].enabled = false;
-                        cloatMeshes[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel2;
+            //    fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            flagMeshes[i].enabled = false;
+            //            cloatMeshes[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
 
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel5;
-                fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5;
-                coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5)
-                    {
-                        boxColliders[i].enabled = false;
-                        flagMeshes[i].enabled = false;
-                        cloatMeshes[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel3;
+            //    fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            flagMeshes[i].enabled = false;
+            //            cloatMeshes[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
+
+            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel4;
+            //    fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            flagMeshes[i].enabled = false;
+            //            cloatMeshes[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
+
+            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.BicycleFillAmountLevel5;
+            //    fillCount = Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            flagMeshes[i].enabled = false;
+            //            cloatMeshes[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
         }
         if (gamemodeCar)
         {
@@ -587,99 +634,112 @@ public class Teleport : MonoBehaviour
             Geekplay.Instance.Save();
             if (gamemodeRunning)
             {
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
-                {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 += 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1 += progressCountTest;
-                    Geekplay.Instance.PlayerData.RunningFillAmountLevel1 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                Geekplay.Instance.PlayerData.RunningSaveProgressLevels[Geekplay.Instance.PlayerData.RunningMapIndex] += 1;
+                Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevels[Geekplay.Instance.PlayerData.RunningMapIndex] += progressCountTest;
+                Geekplay.Instance.PlayerData.RunningFillAmountLevels[Geekplay.Instance.PlayerData.RunningMapIndex] += fillAmountTest;
+                Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneRunning 1 Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevel1);
-                }
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
-                {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 += 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2 += progressCountTest;
-                    Geekplay.Instance.PlayerData.RunningFillAmountLevel2 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                Analytics.instance.SendEvent("Reach SampleSceneRunning " + (Geekplay.Instance.PlayerData.RunningMapIndex + 1) + " Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevels[Geekplay.Instance.PlayerData.RunningMapIndex]);
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
+                //{
+                //    Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 += 1;
+                //    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel1 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.RunningFillAmountLevel1 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneRunning 2 Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevel2);
-                }
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
-                {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 += 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3 += progressCountTest;
-                    Geekplay.Instance.PlayerData.RunningFillAmountLevel3 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                //    Analytics.instance.SendEvent("Reach SampleSceneRunning 1 Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevel1);
+                //}
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
+                //{
+                //    Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 += 1;
+                //    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel2 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.RunningFillAmountLevel2 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneRunning 3 Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevel3);
-                }
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
-                {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 += 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4 += progressCountTest;
-                    Geekplay.Instance.PlayerData.RunningFillAmountLevel4 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                //    Analytics.instance.SendEvent("Reach SampleSceneRunning 2 Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevel2);
+                //}
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
+                //{
+                //    Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 += 1;
+                //    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel3 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.RunningFillAmountLevel3 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneRunning 4 Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevel4);
-                }
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
-                {
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 += 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5 += progressCountTest;
-                    Geekplay.Instance.PlayerData.RunningFillAmountLevel5 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                //    Analytics.instance.SendEvent("Reach SampleSceneRunning 3 Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevel3);
+                //}
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
+                //{
+                //    Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 += 1;
+                //    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel4 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.RunningFillAmountLevel4 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneRunning 5 Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevel5);
-                }
+                //    Analytics.instance.SendEvent("Reach SampleSceneRunning 4 Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevel4);
+                //}
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
+                //{
+                //    Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 += 1;
+                //    Geekplay.Instance.PlayerData.RunningSaveProgressMenuLevel5 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.RunningFillAmountLevel5 += fillAmountTest;
+                //    Geekplay.Instance.Save();
+
+                //    Analytics.instance.SendEvent("Reach SampleSceneRunning 5 Checkpoint " + Geekplay.Instance.PlayerData.RunningSaveProgressLevel5);
+                //}
             }
             if(gamemodeBicycle)
             {
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
-                {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 += 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1 += progressCountTest;
-                    Geekplay.Instance.PlayerData.BicycleFillAmountLevel1 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] += 1;
+                Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] += progressCountTest;
+                Geekplay.Instance.PlayerData.BicycleFillAmountLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] += fillAmountTest;
+                Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneBicycle 1 Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1);
-                }
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
-                {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 += 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2 += progressCountTest;
-                    Geekplay.Instance.PlayerData.BicycleFillAmountLevel2 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                Analytics.instance.SendEvent("Reach SampleSceneBicycle " + (Geekplay.Instance.PlayerData.BicycleMapIndex + 1) + " Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[Geekplay.Instance.PlayerData.BicycleMapIndex]);
 
-                    Analytics.instance.SendEvent("Reach SampleSceneBicycle 2 Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2);
-                }
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
-                {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 += 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3 += progressCountTest;
-                    Geekplay.Instance.PlayerData.BicycleFillAmountLevel3 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+                //{
+                //    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 += 1;
+                //    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel1 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.BicycleFillAmountLevel1 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneBicycle 3 Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3);
-                }
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
-                {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 += 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4 += progressCountTest;
-                    Geekplay.Instance.PlayerData.BicycleFillAmountLevel4 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                //    Analytics.instance.SendEvent("Reach SampleSceneBicycle 1 Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1);
+                //}
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
+                //{
+                //    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 += 1;
+                //    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel2 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.BicycleFillAmountLevel2 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneBicycle 4 Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4);
-                }
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
-                {
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 += 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5 += progressCountTest;
-                    Geekplay.Instance.PlayerData.BicycleFillAmountLevel5 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                //    Analytics.instance.SendEvent("Reach SampleSceneBicycle 2 Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2);
+                //}
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
+                //{
+                //    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 += 1;
+                //    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel3 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.BicycleFillAmountLevel3 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneBicycle 5 Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5);
-                }
+                //    Analytics.instance.SendEvent("Reach SampleSceneBicycle 3 Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3);
+                //}
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
+                //{
+                //    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 += 1;
+                //    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel4 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.BicycleFillAmountLevel4 += fillAmountTest;
+                //    Geekplay.Instance.Save();
+
+                //    Analytics.instance.SendEvent("Reach SampleSceneBicycle 4 Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4);
+                //}
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
+                //{
+                //    Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 += 1;
+                //    Geekplay.Instance.PlayerData.BicycleSaveProgressMenuLevel5 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.BicycleFillAmountLevel5 += fillAmountTest;
+                //    Geekplay.Instance.Save();
+
+                //    Analytics.instance.SendEvent("Reach SampleSceneBicycle 5 Checkpoint " + Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5);
+                //}
             }
             if (gamemodeCar)
             {

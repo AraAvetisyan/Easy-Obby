@@ -22,135 +22,157 @@ public class TimerScript : MonoBehaviour
         var culture = new CultureInfo("en-EN");
         if (runningMode)
         {
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
+            if (Minutes < 10)
             {
-                if (Minutes < 10)
+                if (Seconds < 10)
                 {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
-                    }
+                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString("F2", culture);
                 }
-                if (Minutes >= 10)
+                else
                 {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
-                    }
+                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString("F2", culture);
                 }
             }
+            if (Minutes >= 10)
+            {
+                if (Seconds < 10)
+                {
+                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString("F2", culture);
+                }
+                else
+                {
+                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString("F2", culture);
+                }
+            }
+            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
+            //{
+            //    if (Minutes < 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
+            //        }
+            //    }
+            //    if (Minutes >= 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
+            //        }
+            //    }
+            //}
 
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
-                    }
-                }
-            }
+            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
+            //{
+            //    if (Minutes < 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
+            //        }
+            //    }
+            //    if (Minutes >= 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
+            //        }
+            //    }
+            //}
 
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
-                    }
-                }
-            }
+            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
+            //{
+            //    if (Minutes < 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
+            //        }
+            //    }
+            //    if (Minutes >= 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
+            //        }
+            //    }
+            //}
 
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
-                    }
-                }
-            }
+            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
+            //{
+            //    if (Minutes < 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
+            //        }
+            //    }
+            //    if (Minutes >= 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
+            //        }
+            //    }
+            //}
 
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
-                    }
-                }
-            }
+            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
+            //{
+            //    if (Minutes < 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
+            //        }
+            //    }
+            //    if (Minutes >= 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
+            //        }
+            //    }
+            //}
         }
 
 
@@ -159,135 +181,159 @@ public class TimerScript : MonoBehaviour
 
         if (bicycleMode)
         {
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+            if (Minutes < 10)
             {
-                if (Minutes < 10)
+                if (Seconds < 10)
                 {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
-                    }
+                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString("F2", culture);
                 }
-                if (Minutes >= 10)
+                else
                 {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
-                    }
+                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString("F2", culture);
+                }
+            }
+            if (Minutes >= 10)
+            {
+                if (Seconds < 10)
+                {
+                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString("F2", culture);
+                }
+                else
+                {
+                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString("F2", culture);
                 }
             }
 
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
-                    }
-                }
-            }
 
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
-                    }
-                }
-            }
+            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+            //{
+            //    if (Minutes < 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
+            //        }
+            //    }
+            //    if (Minutes >= 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
+            //        }
+            //    }
+            //}
 
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
-                    }
-                }
-            }
+            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
+            //{
+            //    if (Minutes < 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
+            //        }
+            //    }
+            //    if (Minutes >= 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
+            //        }
+            //    }
+            //}
 
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
-                    }
-                }
-            }
+            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
+            //{
+            //    if (Minutes < 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
+            //        }
+            //    }
+            //    if (Minutes >= 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
+            //        }
+            //    }
+            //}
+
+            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
+            //{
+            //    if (Minutes < 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
+            //        }
+            //    }
+            //    if (Minutes >= 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
+            //        }
+            //    }
+            //}
+
+            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
+            //{
+            //    if (Minutes < 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
+            //        }
+            //    }
+            //    if (Minutes >= 10)
+            //    {
+            //        if (Seconds < 10)
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
+            //        }
+            //        else
+            //        {
+            //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
+            //        }
+            //    }
+            //}
         }
 
         ///////////////////////////////////////////////////////////////////
@@ -434,31 +480,33 @@ public class TimerScript : MonoBehaviour
         {
             if (MainMenuUI.Instance.ContinueRun)
             {
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel1;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel1;
-                }
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel2;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel2;
-                }
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel3;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel3;
-                }
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel4;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel4;
-                }
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel5;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel5;
-                }
+                Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex];
+                Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex];
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel1;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel1;
+                //}
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel2;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel2;
+                //}
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel3;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel3;
+                //}
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel4;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel4;
+                //}
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel5;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel5;
+                //}
             }
         }
 
@@ -469,31 +517,33 @@ public class TimerScript : MonoBehaviour
         {
             if (MainMenuUI.Instance.ContinueBicycle)
             {
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel1;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel1;
-                }
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel2;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel2;
-                }
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel3;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel3;
-                }
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel4;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel4;
-                }
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel5;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel5;
-                }
+                Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex];
+                Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex];
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel1;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel1;
+                //}
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel2;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel2;
+                //}
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel3;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel3;
+                //}
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel4;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel4;
+                //}
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel5;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel5;
+                //}
             }
         }
 
@@ -539,255 +589,298 @@ public class TimerScript : MonoBehaviour
         {
             if (StopTimer && stopCounter == 0)
             {
-                Debug.Log("Mtav running mot time stop");
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
-                {
-                    Debug.Log("Mtav level 1 stpp");
-                    Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel1 = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1;
-                    Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel1 = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1 > Minutes)
-                    {
-                        Debug.Log("Mtav ropenery shat en");
-                        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1 = Minutes;
-                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1 > Seconds)
-                        {
 
-                            Debug.Log("Mtav vayrkyannery shat en ropenery nuynn en");
-                            Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1 == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1 == 0)
+                Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex] = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex];
+                Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex] = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex];
+                var culture = new CultureInfo("en-EN");
+                stopCounter = 1;
+                if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex] > Minutes)
+                {
+                    Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex] = Minutes;
+                    Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex] = Seconds;
+                }
+                if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex] == Minutes)
+                {
+                    if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex] > Seconds)
                     {
-                        Debug.Log("araji angama");
-                        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1 = Minutes;
-                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1 = Seconds;
+                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex] = Seconds;
                     }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
+                }
+                if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex] == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex] == 0)
+                {
+
+                    Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex] = Minutes;
+                    Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex] = Seconds;
+                }
+                Geekplay.Instance.Save();
+                if (Minutes < 10)
+                {
+                    if (Seconds < 10)
                     {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString("F2", culture);
                     }
                     else
                     {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString("F2", culture);
                     }
                 }
-
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
+                else
                 {
-                    Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel2 = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2;
-                    Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel2 = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2 > Minutes)
+                    if (Seconds < 10)
                     {
-                        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2 = Minutes;
-                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2 == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2 == 0)
-                    {
-
-                        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2 = Minutes;
-                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString("F2", culture);
                     }
                     else
                     {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevels[Geekplay.Instance.PlayerData.RunningMapIndex].ToString("F2", culture);
                     }
                 }
 
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
-                {
-                    Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel3 = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3;
-                    Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel3 = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3 > Minutes)
-                    {
-                        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3 = Minutes;
-                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3 == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3 == 0)
-                    {
 
-                        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3 = Minutes;
-                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
-                        }
-                    }
-                    else
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
-                        }
-                    }
-                }
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
+                //{
+                //    Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel1 = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1;
+                //    Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel1 = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1;
+                //    var culture = new CultureInfo("en-EN");
+                //    stopCounter = 1;
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1 > Minutes)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1 = Seconds;
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1 == Minutes)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1 > Seconds)
+                //        {
 
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
-                {
-                    Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel4 = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4;
-                    Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel4 = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4 > Minutes)
-                    {
-                        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4 = Minutes;
-                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4 == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4 == 0)
-                    {
+                //            Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1 = Seconds;
+                //        }
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1 == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1 == 0)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1 = Seconds;
+                //    }
+                //    Geekplay.Instance.Save();
+                //    if (Minutes < 10)
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel1.ToString("F2", culture);
+                //        }
+                //    }
+                //}
 
-                        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4 = Minutes;
-                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
-                        }
-                    }
-                    else
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
-                        }
-                    }
-                }
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
+                //{
+                //    Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel2 = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2;
+                //    Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel2 = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2;
+                //    var culture = new CultureInfo("en-EN");
+                //    stopCounter = 1;
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2 > Minutes)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2 = Seconds;
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2 == Minutes)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2 > Seconds)
+                //        {
+                //            Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2 = Seconds;
+                //        }
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2 == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2 == 0)
+                //    {
 
-                if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
-                {
-                    Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel5 = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5;
-                    Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel5 = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5 > Minutes)
-                    {
-                        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5 = Minutes;
-                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5 == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5 == 0)
-                    {
+                //        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2 = Seconds;
+                //    }
+                //    Geekplay.Instance.Save();
+                //    if (Minutes < 10)
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel2.ToString("F2", culture);
+                //        }
+                //    }
+                //}
 
-                        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5 = Minutes;
-                        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
-                        }
-                    }
-                    else
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
-                        }
-                    }
-                }
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
+                //{
+                //    Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel3 = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3;
+                //    Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel3 = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3;
+                //    var culture = new CultureInfo("en-EN");
+                //    stopCounter = 1;
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3 > Minutes)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3 = Seconds;
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3 == Minutes)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3 > Seconds)
+                //        {
+                //            Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3 = Seconds;
+                //        }
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3 == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3 == 0)
+                //    {
+
+                //        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3 = Seconds;
+                //    }
+                //    Geekplay.Instance.Save();
+                //    if (Minutes < 10)
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel3.ToString("F2", culture);
+                //        }
+                //    }
+                //}
+
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
+                //{
+                //    Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel4 = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4;
+                //    Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel4 = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4;
+                //    var culture = new CultureInfo("en-EN");
+                //    stopCounter = 1;
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4 > Minutes)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4 = Seconds;
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4 == Minutes)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4 > Seconds)
+                //        {
+                //            Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4 = Seconds;
+                //        }
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4 == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4 == 0)
+                //    {
+
+                //        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4 = Seconds;
+                //    }
+                //    Geekplay.Instance.Save();
+                //    if (Minutes < 10)
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel4.ToString("F2", culture);
+                //        }
+                //    }
+                //}
+
+                //if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
+                //{
+                //    Geekplay.Instance.PlayerData.CurrentRunningMapMinutesLevel5 = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5;
+                //    Geekplay.Instance.PlayerData.CurrentRunningMapSecondsLevel5 = Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5;
+                //    var culture = new CultureInfo("en-EN");
+                //    stopCounter = 1;
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5 > Minutes)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5 = Seconds;
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5 == Minutes)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5 > Seconds)
+                //        {
+                //            Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5 = Seconds;
+                //        }
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5 == 0 && Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5 == 0)
+                //    {
+
+                //        Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5 = Seconds;
+                //    }
+                //    Geekplay.Instance.Save();
+                //    if (Minutes < 10)
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestRunningMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestRunningMapSecondsLevel5.ToString("F2", culture);
+                //        }
+                //    }
+                //}
             }
         }
 
@@ -798,250 +891,298 @@ public class TimerScript : MonoBehaviour
         {
             if (StopTimer && stopCounter == 0)
             {
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+                Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex];
+                Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex];
+                var culture = new CultureInfo("en-EN");
+                stopCounter = 1;
+                if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] > Minutes)
                 {
-                    Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel1 = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1;
-                    Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel1 = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1 > Minutes)
+                    Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] = Minutes;
+                    Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] = Seconds;
+                }
+                if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] == Minutes)
+                {
+                    if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] > Seconds)
                     {
-                        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1 = Minutes;
-                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1 = Seconds;
+                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] = Seconds;
                     }
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1 == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1 == 0)
-                    {
+                }
+                if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] == 0)
+                {
 
-                        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1 = Minutes;
-                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
+                    Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] = Minutes;
+                    Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex] = Seconds;
+                }
+                Geekplay.Instance.Save();
+                if (Minutes < 10)
+                {
+                    if (Seconds < 10)
                     {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString("F2", culture);
                     }
                     else
                     {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString("F2", culture);
                     }
                 }
-
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
+                else
                 {
-                    Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel2 = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2;
-                    Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel2 = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2 > Minutes)
+                    if (Seconds < 10)
                     {
-                        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2 = Minutes;
-                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2 == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2 == 0)
-                    {
-
-                        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2 = Minutes;
-                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString("F2", culture);
                     }
                     else
                     {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevels[Geekplay.Instance.PlayerData.BicycleMapIndex].ToString("F2", culture);
                     }
                 }
 
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
-                {
-                    Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel3 = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3;
-                    Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel3 = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3 > Minutes)
-                    {
-                        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3 = Minutes;
-                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3 == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3 == 0)
-                    {
 
-                        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3 = Minutes;
-                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
-                        }
-                    }
-                    else
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
-                        }
-                    }
-                }
 
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
-                {
-                    Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel4 = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4;
-                    Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel4 = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4 > Minutes)
-                    {
-                        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4 = Minutes;
-                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4 == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4 == 0)
-                    {
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+                //{
+                //    Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel1 = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1;
+                //    Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel1 = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1;
+                //    var culture = new CultureInfo("en-EN");
+                //    stopCounter = 1;
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1 > Minutes)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1 = Seconds;
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1 == Minutes)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1 > Seconds)
+                //        {
+                //            Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1 = Seconds;
+                //        }
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1 == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1 == 0)
+                //    {
 
-                        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4 = Minutes;
-                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
-                        }
-                    }
-                    else
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
-                        }
-                    }
-                }
+                //        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1 = Seconds;
+                //    }
+                //    Geekplay.Instance.Save();
+                //    if (Minutes < 10)
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel1.ToString("F2", culture);
+                //        }
+                //    }
+                //}
 
-                if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
-                {
-                    Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel5 = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5;
-                    Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel5 = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5 > Minutes)
-                    {
-                        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5 = Minutes;
-                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5 == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5 == 0)
-                    {
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
+                //{
+                //    Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel2 = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2;
+                //    Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel2 = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2;
+                //    var culture = new CultureInfo("en-EN");
+                //    stopCounter = 1;
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2 > Minutes)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2 = Seconds;
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2 == Minutes)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2 > Seconds)
+                //        {
+                //            Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2 = Seconds;
+                //        }
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2 == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2 == 0)
+                //    {
 
-                        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5 = Minutes;
-                        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
-                        }
-                    }
-                    else
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
-                        }
-                    }
-                }
+                //        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2 = Seconds;
+                //    }
+                //    Geekplay.Instance.Save();
+                //    if (Minutes < 10)
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel2.ToString("F2", culture);
+                //        }
+                //    }
+                //}
+
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
+                //{
+                //    Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel3 = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3;
+                //    Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel3 = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3;
+                //    var culture = new CultureInfo("en-EN");
+                //    stopCounter = 1;
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3 > Minutes)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3 = Seconds;
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3 == Minutes)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3 > Seconds)
+                //        {
+                //            Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3 = Seconds;
+                //        }
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3 == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3 == 0)
+                //    {
+
+                //        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3 = Seconds;
+                //    }
+                //    Geekplay.Instance.Save();
+                //    if (Minutes < 10)
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel3.ToString("F2", culture);
+                //        }
+                //    }
+                //}
+
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
+                //{
+                //    Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel4 = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4;
+                //    Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel4 = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4;
+                //    var culture = new CultureInfo("en-EN");
+                //    stopCounter = 1;
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4 > Minutes)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4 = Seconds;
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4 == Minutes)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4 > Seconds)
+                //        {
+                //            Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4 = Seconds;
+                //        }
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4 == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4 == 0)
+                //    {
+
+                //        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4 = Seconds;
+                //    }
+                //    Geekplay.Instance.Save();
+                //    if (Minutes < 10)
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel4.ToString("F2", culture);
+                //        }
+                //    }
+                //}
+
+                //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
+                //{
+                //    Geekplay.Instance.PlayerData.CurrentBicycleMapMinutesLevel5 = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5;
+                //    Geekplay.Instance.PlayerData.CurrentBicycleMapSecondsLevel5 = Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5;
+                //    var culture = new CultureInfo("en-EN");
+                //    stopCounter = 1;
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5 > Minutes)
+                //    {
+                //        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5 = Seconds;
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5 == Minutes)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5 > Seconds)
+                //        {
+                //            Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5 = Seconds;
+                //        }
+                //    }
+                //    if (Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5 == 0 && Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5 == 0)
+                //    {
+
+                //        Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5 = Minutes;
+                //        Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5 = Seconds;
+                //    }
+                //    Geekplay.Instance.Save();
+                //    if (Minutes < 10)
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Seconds < 10)
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
+                //        }
+                //        else
+                //        {
+                //            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestBicycleMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestBicycleMapSecondsLevel5.ToString("F2", culture);
+                //        }
+                //    }
+                //}
             }
         }
 
