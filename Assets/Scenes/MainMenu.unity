@@ -970,24 +970,9 @@ MonoBehaviour:
   runGamePanel: {fileID: 1148507749}
   bicycleGamePanel: {fileID: 1967836254}
   carGamePanel: {fileID: 2068814274}
-  carProgressLevel1: {fileID: 743668424}
-  carProgressLevel2: {fileID: 2064012546}
-  carProgressLevel3: {fileID: 1148912062}
-  carProgressLevel4: {fileID: 407041851}
-  carProgressLevel5: {fileID: 1236555728}
-  carTimerLevel1: {fileID: 504549414}
-  carTimerLevel2: {fileID: 488829104}
-  carTimerLevel3: {fileID: 1643194446}
-  carTimerLevel4: {fileID: 1457503517}
-  carTimerLevel5: {fileID: 1466101116}
   runMenu: {fileID: 1353316191}
   bicycleMenu: {fileID: 2136976009}
   carMenu: {fileID: 1373801123}
-  carProgressPercentLevel1: {fileID: 1302656865}
-  carProgressPercentLevel2: {fileID: 777094854}
-  carProgressPercentLevel3: {fileID: 2134603443}
-  carProgressPercentLevel4: {fileID: 1773909965}
-  carProgressPercentLevel5: {fileID: 235117550}
   bicycleTimerLevels:
   - {fileID: 1836682142}
   - {fileID: 544202405}
@@ -1701,12 +1686,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: BicycleGameLevel3
-        m_Mode: 1
+        m_MethodName: BicycleGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2317,12 +2302,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: RunGameLevel3
-        m_Mode: 1
+        m_MethodName: RungGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2456,12 +2441,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: RunGameLevel5
-        m_Mode: 1
+        m_MethodName: RungGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3071,12 +3056,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: CarGameLevel3
-        m_Mode: 1
+        m_MethodName: CarGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3953,12 +3938,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: BicycleGameLevel2
-        m_Mode: 1
+        m_MethodName: BicycleGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4972,12 +4957,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: CarGameLevel4
-        m_Mode: 1
+        m_MethodName: CarGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6834,12 +6819,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: BicycleGameLevel5
-        m_Mode: 1
+        m_MethodName: BicycleGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9494,12 +9479,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: CarGameLevel2
-        m_Mode: 1
+        m_MethodName: CarGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -14416,12 +14401,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: RunGameLevel4
-        m_Mode: 1
+        m_MethodName: RungGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -14555,12 +14540,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: CarGameLevel5
-        m_Mode: 1
+        m_MethodName: CarGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -16386,12 +16371,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: RunGameLevel2
-        m_Mode: 1
+        m_MethodName: RungGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -17378,8 +17363,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: BicycleGameLevel1
-        m_Mode: 1
+        m_MethodName: BicycleGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18082,8 +18067,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: RunGameLevel1
-        m_Mode: 1
+        m_MethodName: RungGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18410,8 +18395,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: CarGameLevel1
-        m_Mode: 1
+        m_MethodName: CarGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19446,12 +19431,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: BicycleGameLevel4
-        m_Mode: 1
+        m_MethodName: BicycleGameMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

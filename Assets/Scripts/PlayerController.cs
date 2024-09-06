@@ -89,66 +89,7 @@ public class PlayerController : MonoBehaviour
                     finalPanel.SetActive(true);
                 }
             }
-            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
-            //{
-            //    if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 >= 34 && stopCounter == 0)
-            //    {
-            //        stopCounter = 1;
-            //        Geekplay.Instance.PlayerData.RunningSaveProgressLevel1 = 34;
-            //        Geekplay.Instance.PlayerData.RunningFillAmountLevel1 = 1;
-            //        Geekplay.Instance.Save();
-            //        moveSpeed = 0;
-            //        finalPanel.SetActive(true);
-            //    }
-            //}
-            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
-            //{
-            //    if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 >= 34 && stopCounter == 0)
-            //    {
-            //        stopCounter = 1;
-            //        Geekplay.Instance.PlayerData.RunningSaveProgressLevel2 = 34;
-            //        Geekplay.Instance.PlayerData.RunningFillAmountLevel2 = 1;
-            //        Geekplay.Instance.Save();
-            //        moveSpeed = 0;
-            //        finalPanel.SetActive(true);
-            //    }
-            //}
-            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
-            //{
-            //    if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 >= 67 && stopCounter == 0)
-            //    {
-            //        stopCounter = 1;
-            //        Geekplay.Instance.PlayerData.RunningSaveProgressLevel3 = 67;
-            //        Geekplay.Instance.PlayerData.RunningFillAmountLevel3 = 1;
-            //        Geekplay.Instance.Save();
-            //        moveSpeed = 0;
-            //        finalPanel.SetActive(true);
-            //    }
-            //}
-            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 4)
-            //{
-            //    if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 >= 67 && stopCounter == 0)
-            //    {
-            //        stopCounter = 1;
-            //        Geekplay.Instance.PlayerData.RunningSaveProgressLevel4 = 67;
-            //        Geekplay.Instance.PlayerData.RunningFillAmountLevel4 = 1;
-            //        Geekplay.Instance.Save();
-            //        moveSpeed = 0;
-            //        finalPanel.SetActive(true);
-            //    }
-            //}
-            //if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
-            //{
-            //    if (Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 >= 100 && stopCounter == 0)
-            //    {
-            //        stopCounter = 1;
-            //        Geekplay.Instance.PlayerData.RunningSaveProgressLevel5 = 100;
-            //        Geekplay.Instance.PlayerData.RunningFillAmountLevel5 = 1;
-            //        Geekplay.Instance.Save();
-            //        moveSpeed = 0;
-            //        finalPanel.SetActive(true);
-            //    }
-            //}
+          
         }
 
         if (gamemodeBicycle)
@@ -213,66 +154,7 @@ public class PlayerController : MonoBehaviour
                     finalPanel.SetActive(true);
                 }
             }
-            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
-            //{
-            //    if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 >= 34 && stopCounter == 0)
-            //    {
-            //        stopCounter = 1;
-            //        Geekplay.Instance.PlayerData.BicycleSaveProgressLevel1 = 34;
-            //        Geekplay.Instance.PlayerData.BicycleFillAmountLevel1 = 1;
-            //        Geekplay.Instance.Save();
-            //        moveSpeed = 0;
-            //        finalPanel.SetActive(true);
-            //    }
-            //}
-            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
-            //{
-            //    if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 >= 34 && stopCounter == 0)
-            //    {
-            //        stopCounter = 1;
-            //        Geekplay.Instance.PlayerData.BicycleSaveProgressLevel2 = 34;
-            //        Geekplay.Instance.PlayerData.BicycleFillAmountLevel2 = 1;
-            //        Geekplay.Instance.Save();
-            //        moveSpeed = 0;
-            //        finalPanel.SetActive(true);
-            //    }
-            //}
-            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
-            //{
-            //    if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 >= 67 && stopCounter == 0)
-            //    {
-            //        stopCounter = 1;
-            //        Geekplay.Instance.PlayerData.BicycleSaveProgressLevel3 = 67;
-            //        Geekplay.Instance.PlayerData.BicycleFillAmountLevel3 = 1;
-            //        Geekplay.Instance.Save();
-            //        moveSpeed = 0;
-            //        finalPanel.SetActive(true);
-            //    }
-            //}
-            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 4)
-            //{
-            //    if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 >= 67 && stopCounter == 0)
-            //    {
-            //        stopCounter = 1;
-            //        Geekplay.Instance.PlayerData.BicycleSaveProgressLevel4 = 67;
-            //        Geekplay.Instance.PlayerData.BicycleFillAmountLevel4 = 1;
-            //        Geekplay.Instance.Save();
-            //        moveSpeed = 0;
-            //        finalPanel.SetActive(true);
-            //    }
-            //}
-            //if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
-            //{
-            //    if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 >= 100 && stopCounter == 0)
-            //    {
-            //        stopCounter = 1;
-            //        Geekplay.Instance.PlayerData.BicycleSaveProgressLevel5 = 100;
-            //        Geekplay.Instance.PlayerData.BicycleFillAmountLevel5 = 1;
-            //        Geekplay.Instance.Save();
-            //        moveSpeed = 0;
-            //        finalPanel.SetActive(true);
-            //    }
-            //}
+           
         }
     }
     public void FixedUpdate()
