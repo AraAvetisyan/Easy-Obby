@@ -964,64 +964,56 @@ MonoBehaviour:
   shopPanel: {fileID: 1545663737}
   coinsText: {fileID: 420819753}
   diamondsText: {fileID: 1422083299}
-  ContinueRun: 0
-  ContinueBicycle: 0
-  ContinueCar: 0
-  runGamePanel: {fileID: 1148507749}
-  bicycleGamePanel: {fileID: 1967836254}
-  carGamePanel: {fileID: 2068814274}
+  Continue: 0
   runMenu: {fileID: 1353316191}
   bicycleMenu: {fileID: 2136976009}
   carMenu: {fileID: 1373801123}
-  bicycleTimerLevels:
-  - {fileID: 1836682142}
-  - {fileID: 544202405}
-  - {fileID: 188412265}
-  - {fileID: 1310683494}
-  - {fileID: 1243583184}
-  bicycleProgressPercentLevels:
-  - {fileID: 1310623587}
-  - {fileID: 837507901}
-  - {fileID: 598044755}
-  - {fileID: 1854725448}
-  - {fileID: 13629610}
-  bicycleProgressLevels:
-  - {fileID: 1113067694}
-  - {fileID: 804095382}
-  - {fileID: 624317836}
-  - {fileID: 1402444639}
-  - {fileID: 1865401948}
-  runningTimerLevels:
+  runPanel: {fileID: 1148507749}
+  bicyclePanel: {fileID: 1967836254}
+  carPanel: {fileID: 2068814274}
+  timerLevels:
   - {fileID: 769021619}
   - {fileID: 350558523}
   - {fileID: 1380195714}
   - {fileID: 834943671}
   - {fileID: 1874434236}
-  runningProgressLevels:
-  - {fileID: 201451546}
-  - {fileID: 982339465}
-  - {fileID: 1863417181}
-  - {fileID: 1081887528}
-  - {fileID: 896675495}
-  runningProgressPercentLevels:
-  - {fileID: 1506236968}
-  - {fileID: 530175043}
-  - {fileID: 621179402}
-  - {fileID: 1323291248}
-  - {fileID: 1190141206}
-  carTimerLevels:
+  - {fileID: 1836682142}
+  - {fileID: 544202405}
+  - {fileID: 188412265}
+  - {fileID: 1310683494}
+  - {fileID: 1243583184}
   - {fileID: 504549414}
   - {fileID: 488829104}
   - {fileID: 1643194446}
   - {fileID: 1457503517}
   - {fileID: 1466101116}
-  carProgressLevels:
+  progressLevels:
+  - {fileID: 201451546}
+  - {fileID: 982339465}
+  - {fileID: 1863417181}
+  - {fileID: 1081887528}
+  - {fileID: 896675495}
+  - {fileID: 1113067694}
+  - {fileID: 804095382}
+  - {fileID: 624317836}
+  - {fileID: 1402444639}
+  - {fileID: 1865401948}
   - {fileID: 743668424}
   - {fileID: 2064012546}
   - {fileID: 1148912062}
   - {fileID: 407041851}
   - {fileID: 1236555728}
-  carProgressPercentLevels:
+  progressPercentLevels:
+  - {fileID: 1506236968}
+  - {fileID: 530175043}
+  - {fileID: 621179402}
+  - {fileID: 1323291248}
+  - {fileID: 1190141206}
+  - {fileID: 1310623587}
+  - {fileID: 837507901}
+  - {fileID: 598044755}
+  - {fileID: 1854725448}
+  - {fileID: 13629610}
   - {fileID: 1302656865}
   - {fileID: 777094854}
   - {fileID: 2134603443}
@@ -1548,7 +1540,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PressedContinueRun
+        m_MethodName: PressedContinue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1686,12 +1678,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: BicycleGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2302,7 +2294,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: RungGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2441,7 +2433,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: RungGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3056,12 +3048,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: CarGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 12
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3398,7 +3390,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PressedContinueBicycle
+        m_MethodName: PressedContinue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3801,7 +3793,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PressedNewGameBicycle
+        m_MethodName: PressedNewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3938,12 +3930,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: BicycleGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4957,12 +4949,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: CarGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 13
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5224,7 +5216,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PressedContinueCar
+        m_MethodName: PressedContinue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6819,12 +6811,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: BicycleGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 9
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7579,11 +7571,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PressedBicycleMenu
-        m_Mode: 1
+        m_MethodName: PressedMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1967836254}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7787,7 +7779,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PressedNewGameCar
+        m_MethodName: PressedNewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9479,12 +9471,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: CarGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 11
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13726,11 +13718,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PressedRunMenu
-        m_Mode: 1
+        m_MethodName: PressedMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1148507749}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14401,7 +14393,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: RungGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14540,12 +14532,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: CarGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 14
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15828,7 +15820,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PressedNewGameRun
+        m_MethodName: PressedNewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16371,7 +16363,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: RungGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16808,11 +16800,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: PressedCarMenu
-        m_Mode: 1
+        m_MethodName: PressedMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2068814274}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -17363,12 +17355,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: BicycleGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -18067,7 +18059,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: RungGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18395,12 +18387,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: CarGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -19431,12 +19423,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 142686539}
         m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: BicycleGameMenu
+        m_MethodName: GameMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

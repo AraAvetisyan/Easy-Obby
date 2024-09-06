@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public enum ControlMode { simple = 1, touch = 2 }
 
@@ -456,7 +457,68 @@ public class VehicleControl : MonoBehaviour
     {
        // MyInitializeButtons();
     }
-
+    private void OnEnable()
+    {
+        MainMenuUI.NewGame += NewGameAnal;
+        MainMenuUI.ContinueGame += ContinueGameAnal;
+        Teleport.GameEnds += GameEnds;
+    }
+    private void OnDisable()
+    {
+        MainMenuUI.NewGame -= NewGameAnal;
+        MainMenuUI.ContinueGame -= ContinueGameAnal;
+        Teleport.GameEnds -= GameEnds;
+    }
+    public void GameEnds(bool bb)
+    {
+        if (Geekplay.Instance.PlayerData.MapIndex == 10 || Geekplay.Instance.PlayerData.MapIndex == 11)
+        {
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
+            {
+                speed = 0;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+                Geekplay.Instance.Save();
+                brake = true;
+                myRigidbody.velocity = Vector3.zero;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Geekplay.Instance.PlayerData.MapIndex == 12 || Geekplay.Instance.PlayerData.MapIndex == 13)
+        {
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
+            {
+                speed = 0;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+                Geekplay.Instance.Save();
+                brake = true;
+                myRigidbody.velocity = Vector3.zero;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Geekplay.Instance.PlayerData.MapIndex == 14)
+        {
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 100 && stopCounter == 0)
+            {
+                speed = 0;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 100;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+                Geekplay.Instance.Save();
+                brake = true;
+                myRigidbody.velocity = Vector3.zero;
+                finalPanel.SetActive(true);
+            }
+        }
+    }
+    public void NewGameAnal(bool bb)
+    {
+        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Start_New_Game");
+    }
+    public void ContinueGameAnal(bool bb)
+    {
+        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Continue_Game");
+    }
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -482,71 +544,7 @@ public class VehicleControl : MonoBehaviour
 
             }
         }
-        if (Geekplay.Instance.PlayerData.CarMapIndex == 0)
-        {
-            if (Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] >= 34 && stopCounter == 0)
-            {
-                speed = 0;
-                Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 34;
-                Geekplay.Instance.PlayerData.CarFillAmountLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 1;
-                Geekplay.Instance.Save();
-                brake = true;
-                myRigidbody.velocity = Vector3.zero;
-                finalPanel.SetActive(true);
-            }
-        }
-        if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
-        {
-            if (Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] >= 34 && stopCounter == 0)
-            {
-                speed = 0;
-                Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 34;
-                Geekplay.Instance.PlayerData.CarFillAmountLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 1;
-                Geekplay.Instance.Save();
-                brake = true;
-                myRigidbody.velocity = Vector3.zero;
-                finalPanel.SetActive(true);
-            }
-        }
-        if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
-        {
-            if (Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] >= 50 && stopCounter == 0)
-            {
-                speed = 0;
-                Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 50;
-                Geekplay.Instance.PlayerData.CarFillAmountLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 1;
-                Geekplay.Instance.Save();
-                brake = true;
-                myRigidbody.velocity = Vector3.zero;
-                finalPanel.SetActive(true);
-            }
-        }
-        if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
-        {
-            if (Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] >= 50 && stopCounter == 0)
-            {
-                speed = 0;
-                Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 50;
-                Geekplay.Instance.PlayerData.CarFillAmountLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 1;
-                Geekplay.Instance.Save();
-                brake = true;
-                myRigidbody.velocity = Vector3.zero;
-                finalPanel.SetActive(true);
-            }
-        }
-        if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
-        {
-            if (Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] >= 100 && stopCounter == 0)
-            {
-                speed = 0;
-                Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 100;
-                Geekplay.Instance.PlayerData.CarFillAmountLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 1;
-                Geekplay.Instance.Save();
-                brake = true;
-                myRigidbody.velocity = Vector3.zero;
-                finalPanel.SetActive(true);
-            }
-        }
+       
 
     }
 

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,136 +27,65 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject finalPanel;
 
     float currentRotation;
-    private void Update()
+    private void OnEnable()
     {
-        if (gamemodeRunning)
+        MainMenuUI.NewGame += NewGameAnal;
+        MainMenuUI.ContinueGame += ContinueGameAnal;
+        Teleport.GameEnds += GameEnds;
+    }
+    private void OnDisable()
+    {
+        MainMenuUI.NewGame -= NewGameAnal;
+        MainMenuUI.ContinueGame -= ContinueGameAnal;
+        Teleport.GameEnds -= GameEnds;
+    }
+    public void NewGameAnal(bool bb)
+    {
+        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Start_New_Game");
+    }
+    public void ContinueGameAnal(bool bb)
+    {
+        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Continue_Game");
+    }
+    public void GameEnds(bool bb)
+    {
+        Debug.Log("NU");
+        if (Geekplay.Instance.PlayerData.MapIndex == 0 || Geekplay.Instance.PlayerData.MapIndex == 1 || Geekplay.Instance.PlayerData.MapIndex == 5 || Geekplay.Instance.PlayerData.MapIndex == 6)
         {
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 0)
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[0] >= 34 && stopCounter == 0)
             {
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevels[0] >= 34 && stopCounter == 0)
-                {
-                    stopCounter = 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevels[0] = 34;
-                    Geekplay.Instance.PlayerData.RunningFillAmountLevels[0] = 1;
-                    Geekplay.Instance.Save();
-                    moveSpeed = 0;
-                    finalPanel.SetActive(true);
-                }
-            }
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 1)
-            {
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevels[1] >= 34 && stopCounter == 0)
-                {
-                    stopCounter = 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevels[1] = 34;
-                    Geekplay.Instance.PlayerData.RunningFillAmountLevels[1] = 1;
-                    Geekplay.Instance.Save();
-                    moveSpeed = 0;
-                    finalPanel.SetActive(true);
-                }
-            }
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
-            {
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevels[2] >= 50 && stopCounter == 0)
-                {
-                    stopCounter = 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevels[2] = 50;
-                    Geekplay.Instance.PlayerData.RunningFillAmountLevels[2] = 1;
-                    Geekplay.Instance.Save();
-                    moveSpeed = 0;
-                    finalPanel.SetActive(true);
-                }
-            }
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 3)
-            {
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevels[3] >= 50 && stopCounter == 0)
-                {
-                    stopCounter = 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevels[3] = 50;
-                    Geekplay.Instance.PlayerData.RunningFillAmountLevels[3] = 1;
-                    Geekplay.Instance.Save();
-                    moveSpeed = 0;
-                    finalPanel.SetActive(true);
-                }
-            }
-            if (Geekplay.Instance.PlayerData.RunningMapIndex == 5)
-            {
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevels[5] >= 100 && stopCounter == 0)
-                {
-                    stopCounter = 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevels[5] = 100;
-                    Geekplay.Instance.PlayerData.RunningFillAmountLevels[5] = 1;
-                    Geekplay.Instance.Save();
-                    moveSpeed = 0;
-                    finalPanel.SetActive(true);
-                }
-            }
-          
-        }
+                stopCounter = 1;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[0] = 34;
+                Geekplay.Instance.PlayerData.FillAmountLevels[0] = 1;
+                Geekplay.Instance.Save();
+                moveSpeed = 0;
+                finalPanel.SetActive(true);
 
-        if (gamemodeBicycle)
+            }
+        }
+        if (Geekplay.Instance.PlayerData.MapIndex == 2 || Geekplay.Instance.PlayerData.MapIndex == 3 || Geekplay.Instance.PlayerData.MapIndex == 7 || Geekplay.Instance.PlayerData.MapIndex == 8)
         {
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 0)
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[2] >= 50 && stopCounter == 0)
             {
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[0] >= 34 && stopCounter == 0)
-                {
-                    stopCounter = 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[0] = 34;
-                    Geekplay.Instance.PlayerData.BicycleFillAmountLevels[0] = 1;
-                    Geekplay.Instance.Save();
-                    moveSpeed = 0;
-                    finalPanel.SetActive(true);
-                }
+                stopCounter = 1;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[2] = 50;
+                Geekplay.Instance.PlayerData.FillAmountLevels[2] = 1;
+                Geekplay.Instance.Save();
+                moveSpeed = 0;
+                finalPanel.SetActive(true);
             }
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 1)
+        }
+        if (Geekplay.Instance.PlayerData.MapIndex == 4 || Geekplay.Instance.PlayerData.MapIndex == 9)
+        {
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[5] >= 100 && stopCounter == 0 || Geekplay.Instance.PlayerData.MapIndex == 10)
             {
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[1] >= 34 && stopCounter == 0)
-                {
-                    stopCounter = 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[1] = 34;
-                    Geekplay.Instance.PlayerData.BicycleFillAmountLevels[1] = 1;
-                    Geekplay.Instance.Save();
-                    moveSpeed = 0;
-                    finalPanel.SetActive(true);
-                }
+                stopCounter = 1;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[5] = 100;
+                Geekplay.Instance.PlayerData.FillAmountLevels[5] = 1;
+                Geekplay.Instance.Save();
+                moveSpeed = 0;
+                finalPanel.SetActive(true);
             }
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
-            {
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[2] >= 50 && stopCounter == 0)
-                {
-                    stopCounter = 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[2] = 50;
-                    Geekplay.Instance.PlayerData.BicycleFillAmountLevels[2] = 1;
-                    Geekplay.Instance.Save();
-                    moveSpeed = 0;
-                    finalPanel.SetActive(true);
-                }
-            }
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 3)
-            {
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[3] >= 50 && stopCounter == 0)
-                {
-                    stopCounter = 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[3] = 50;
-                    Geekplay.Instance.PlayerData.BicycleFillAmountLevels[3] = 1;
-                    Geekplay.Instance.Save();
-                    moveSpeed = 0;
-                    finalPanel.SetActive(true);
-                }
-            }
-            if (Geekplay.Instance.PlayerData.BicycleMapIndex == 5)
-            {
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[5] >= 100 && stopCounter == 0)
-                {
-                    stopCounter = 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[5] = 100;
-                    Geekplay.Instance.PlayerData.BicycleFillAmountLevels[5] = 1;
-                    Geekplay.Instance.Save();
-                    moveSpeed = 0;
-                    finalPanel.SetActive(true);
-                }
-            }
-           
         }
     }
     public void FixedUpdate()
