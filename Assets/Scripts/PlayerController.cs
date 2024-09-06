@@ -55,10 +55,10 @@ public class PlayerController : MonoBehaviour
             }
             if (Geekplay.Instance.PlayerData.RunningMapIndex == 2)
             {
-                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevels[2] >= 51 && stopCounter == 0)
+                if (Geekplay.Instance.PlayerData.RunningSaveProgressLevels[2] >= 50 && stopCounter == 0)
                 {
                     stopCounter = 1;
-                    Geekplay.Instance.PlayerData.RunningSaveProgressLevels[2] = 51;
+                    Geekplay.Instance.PlayerData.RunningSaveProgressLevels[2] = 50;
                     Geekplay.Instance.PlayerData.RunningFillAmountLevels[2] = 1;
                     Geekplay.Instance.Save();
                     moveSpeed = 0;
@@ -179,10 +179,10 @@ public class PlayerController : MonoBehaviour
             }
             if (Geekplay.Instance.PlayerData.BicycleMapIndex == 2)
             {
-                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[2] >= 51 && stopCounter == 0)
+                if (Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[2] >= 50 && stopCounter == 0)
                 {
                     stopCounter = 1;
-                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[2] = 51;
+                    Geekplay.Instance.PlayerData.BicycleSaveProgressLevels[2] = 50;
                     Geekplay.Instance.PlayerData.BicycleFillAmountLevels[2] = 1;
                     Geekplay.Instance.Save();
                     moveSpeed = 0;

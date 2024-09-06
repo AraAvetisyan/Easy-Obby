@@ -377,137 +377,159 @@ public class Teleport : MonoBehaviour
         }
         if (gamemodeCar)
         {
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+            fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevels[Geekplay.Instance.PlayerData.CarMapIndex];
+            fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevels[Geekplay.Instance.PlayerData.CarMapIndex];
+            coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex];
+            fillImage.fillAmount = fillAmount;
+            fillText.text = fillCount.ToString() + "%";
+            if (Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] < allTP.Length)
             {
-                fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel1;
-                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel1;
-                coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevel1;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel1 < allTP.Length)
-                {
-                    Debug.Log("Tp = " + allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel1].name);
-                    tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel1];
-                }
-                else
-                {
-                    Debug.Log("Tp = " + allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel1].name);
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel1)
-                    {
-                        boxColliders[i].enabled = false;
-                        startLines[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
+                tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex]];
             }
+            else
+            {
+                tp = allTP[allTP.Length - 1];
+            }
+            for (int i = 0; i < boxColliders.Length; i++)
+            {
+                if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex])
+                {
+                    boxColliders[i].enabled = false;
+                    startLines[i].enabled = false;
+                }
+            }
+            transform.position = tp.position;
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel1;
+            //    fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel1;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevel1;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel1 < allTP.Length)
+            //    {
+            //        Debug.Log("Tp = " + allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel1].name);
+            //        tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel1];
+            //    }
+            //    else
+            //    {
+            //        Debug.Log("Tp = " + allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel1].name);
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel1)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            startLines[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
 
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel2;
-                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel2;
-                coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevel2;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel2 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel2];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel2)
-                    {
-                        boxColliders[i].enabled = false;
-                        startLines[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel2;
+            //    fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel2;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevel2;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel2 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel2];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel2)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            startLines[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
 
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel3;
-                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel3;
-                coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevel3;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel3 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel3];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel3)
-                    {
-                        boxColliders[i].enabled = false;
-                        startLines[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel3;
+            //    fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel3;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevel3;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel3 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel3];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel3)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            startLines[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
 
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel4;
-                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel4;
-                coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevel4;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel4 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel4];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel4)
-                    {
-                        boxColliders[i].enabled = false;
-                        startLines[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel4;
+            //    fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel4;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevel4;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel4 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel4];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel4)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            startLines[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
 
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
-            {
-                fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel5;
-                fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel5;
-                coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevel5;
-                fillImage.fillAmount = fillAmount;
-                fillText.text = fillCount.ToString() + "%";
-                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel5 < allTP.Length)
-                {
-                    tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel5];
-                }
-                else
-                {
-                    tp = allTP[allTP.Length - 1];
-                }
-                for (int i = 0; i < boxColliders.Length; i++)
-                {
-                    if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel5)
-                    {
-                        boxColliders[i].enabled = false;
-                        startLines[i].enabled = false;
-                    }
-                }
-                transform.position = tp.position;
-            }
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
+            //{
+            //    fillAmount = Geekplay.Instance.PlayerData.CarFillAmountLevel5;
+            //    fillCount = Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel5;
+            //    coinMeshCounter = Geekplay.Instance.PlayerData.CarSaveProgressLevel5;
+            //    fillImage.fillAmount = fillAmount;
+            //    fillText.text = fillCount.ToString() + "%";
+            //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel5 < allTP.Length)
+            //    {
+            //        tp = allTP[Geekplay.Instance.PlayerData.CarSaveProgressLevel5];
+            //    }
+            //    else
+            //    {
+            //        tp = allTP[allTP.Length - 1];
+            //    }
+            //    for (int i = 0; i < boxColliders.Length; i++)
+            //    {
+            //        if (i <= Geekplay.Instance.PlayerData.CarSaveProgressLevel5)
+            //        {
+            //            boxColliders[i].enabled = false;
+            //            startLines[i].enabled = false;
+            //        }
+            //    }
+            //    transform.position = tp.position;
+            //}
         }
 
         StartCoroutine(tpcor());
@@ -743,51 +765,57 @@ public class Teleport : MonoBehaviour
             }
             if (gamemodeCar)
             {
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
-                {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel1 += 1;
-                    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel1 += progressCountTest;
-                    Geekplay.Instance.PlayerData.CarFillAmountLevel1 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] += 1;
+                Geekplay.Instance.PlayerData.CarSaveProgressMenuLevels[Geekplay.Instance.PlayerData.CarMapIndex] += progressCountTest;
+                Geekplay.Instance.PlayerData.CarFillAmountLevels[Geekplay.Instance.PlayerData.CarMapIndex] += fillAmountTest;
+                Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneCar 1 Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevel1);
-                }
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
-                {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel2 += 1;
-                    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel2 += progressCountTest;
-                    Geekplay.Instance.PlayerData.CarFillAmountLevel2 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                Analytics.instance.SendEvent("Reach SampleSceneCar " + (Geekplay.Instance.PlayerData.CarMapIndex + 1) + " Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex]);
+                //if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+                //{
+                //    Geekplay.Instance.PlayerData.CarSaveProgressLevel1 += 1;
+                //    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel1 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.CarFillAmountLevel1 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneCar 2 Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevel2);
-                }
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
-                {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel3 += 1;
-                    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel3 += progressCountTest;
-                    Geekplay.Instance.PlayerData.CarFillAmountLevel3 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                //    Analytics.instance.SendEvent("Reach SampleSceneCar 1 Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevel1);
+                //}
+                //if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+                //{
+                //    Geekplay.Instance.PlayerData.CarSaveProgressLevel2 += 1;
+                //    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel2 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.CarFillAmountLevel2 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneCar 3 Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevel3);
-                }
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
-                {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel4 += 1;
-                    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel4 += progressCountTest;
-                    Geekplay.Instance.PlayerData.CarFillAmountLevel4 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                //    Analytics.instance.SendEvent("Reach SampleSceneCar 2 Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevel2);
+                //}
+                //if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+                //{
+                //    Geekplay.Instance.PlayerData.CarSaveProgressLevel3 += 1;
+                //    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel3 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.CarFillAmountLevel3 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneCar 4 Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevel4);
-                }
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
-                {
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel5 += 1;
-                    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel5 += progressCountTest;
-                    Geekplay.Instance.PlayerData.CarFillAmountLevel5 += fillAmountTest;
-                    Geekplay.Instance.Save();
+                //    Analytics.instance.SendEvent("Reach SampleSceneCar 3 Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevel3);
+                //}
+                //if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
+                //{
+                //    Geekplay.Instance.PlayerData.CarSaveProgressLevel4 += 1;
+                //    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel4 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.CarFillAmountLevel4 += fillAmountTest;
+                //    Geekplay.Instance.Save();
 
-                    Analytics.instance.SendEvent("Reach SampleSceneCar 5 Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevel5);
-                }
+                //    Analytics.instance.SendEvent("Reach SampleSceneCar 4 Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevel4);
+                //}
+                //if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
+                //{
+                //    Geekplay.Instance.PlayerData.CarSaveProgressLevel5 += 1;
+                //    Geekplay.Instance.PlayerData.CarSaveProgressMenuLevel5 += progressCountTest;
+                //    Geekplay.Instance.PlayerData.CarFillAmountLevel5 += fillAmountTest;
+                //    Geekplay.Instance.Save();
+
+                //    Analytics.instance.SendEvent("Reach SampleSceneCar 5 Checkpoint " + Geekplay.Instance.PlayerData.CarSaveProgressLevel5);
+                //}
             }
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
 

@@ -341,135 +341,157 @@ public class TimerScript : MonoBehaviour
 
         if (carMode)
         {
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+            if (Minutes < 10)
             {
-                if (Minutes < 10)
+                if (Seconds < 10)
                 {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
-                    }
+                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString("F2", culture);
                 }
-                if (Minutes >= 10)
+                else
                 {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
-                    }
+                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString("F2", culture);
                 }
             }
+            if (Minutes >= 10)
+            {
+                if (Seconds < 10)
+                {
+                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString("F2", culture);
+                }
+                else
+                {
+                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString("F2", culture);
+                }
+            }
+            //    if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+            //    {
+            //        if (Minutes < 10)
+            //        {
+            //            if (Seconds < 10)
+            //            {
+            //                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
+            //            }
+            //            else
+            //            {
+            //                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
+            //            }
+            //        }
+            //        if (Minutes >= 10)
+            //        {
+            //            if (Seconds < 10)
+            //            {
+            //                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
+            //            }
+            //            else
+            //            {
+            //                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
+            //            }
+            //        }
+            //    }
 
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
-                    }
-                }
-            }
+            //    if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+            //    {
+            //        if (Minutes < 10)
+            //        {
+            //            if (Seconds < 10)
+            //            {
+            //                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
+            //            }
+            //            else
+            //            {
+            //                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
+            //            }
+            //        }
+            //        if (Minutes >= 10)
+            //        {
+            //            if (Seconds < 10)
+            //            {
+            //                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
+            //            }
+            //            else
+            //            {
+            //                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
+            //            }
+            //        }
+            //    }
 
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
-                    }
-                }
-            }
+            //    if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+            //    {
+            //        if (Minutes < 10)
+            //        {
+            //            if (Seconds < 10)
+            //            {
+            //                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
+            //            }
+            //            else
+            //            {
+            //                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
+            //            }
+            //        }
+            //        if (Minutes >= 10)
+            //        {
+            //            if (Seconds < 10)
+            //            {
+            //                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
+            //            }
+            //            else
+            //            {
+            //                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
+            //            }
+            //        }
+            //    }
 
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
-                    }
-                }
-            }
+            //    if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
+            //    {
+            //        if (Minutes < 10)
+            //        {
+            //            if (Seconds < 10)
+            //            {
+            //                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
+            //            }
+            //            else
+            //            {
+            //                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
+            //            }
+            //        }
+            //        if (Minutes >= 10)
+            //        {
+            //            if (Seconds < 10)
+            //            {
+            //                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
+            //            }
+            //            else
+            //            {
+            //                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
+            //            }
+            //        }
+            //    }
 
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
-            {
-                if (Minutes < 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
-                    }
-                }
-                if (Minutes >= 10)
-                {
-                    if (Seconds < 10)
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
-                    }
-                    else
-                    {
-                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
-                    }
-                }
-            }
+            //    if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
+            //    {
+            //        if (Minutes < 10)
+            //        {
+            //            if (Seconds < 10)
+            //            {
+            //                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
+            //            }
+            //            else
+            //            {
+            //                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
+            //            }
+            //        }
+            //        if (Minutes >= 10)
+            //        {
+            //            if (Seconds < 10)
+            //            {
+            //                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
+            //            }
+            //            else
+            //            {
+            //                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
+            //            }
+            //        }
+            //    }
         }
     }
 
@@ -555,31 +577,33 @@ public class TimerScript : MonoBehaviour
         {
             if (MainMenuUI.Instance.ContinueCar)
             {
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel1;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel1;
-                }
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel2;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel2;
-                }
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel3;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel3;
-                }
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel4;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel4;
-                }
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
-                {
-                    Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel5;
-                    Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel5;
-                }
+                Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex];
+                Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex];
+                //if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel1;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel1;
+                //}
+                //if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel2;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel2;
+                //}
+                //if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel3;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel3;
+                //}
+                //if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel4;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel4;
+                //}
+                //if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
+                //{
+                //    Minutes = Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel5;
+                //    Seconds = Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel5;
+                //}
             }
         }
     }
@@ -1194,252 +1218,300 @@ public class TimerScript : MonoBehaviour
         {
             if (StopTimer && stopCounter == 0)
             {
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+                Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex] = Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex];
+                Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex] = Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex];
+                var culture = new CultureInfo("en-EN");
+                stopCounter = 1;
+                if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex] > Minutes)
                 {
-                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel1 = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1;
-                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel1 = Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1 > Minutes)
+                    Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex] = Minutes;
+                    Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex] = Seconds;
+                }
+                if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex] == Minutes)
+                {
+                    if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex] > Seconds)
                     {
-                        Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1 = Minutes;
-                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1 == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1 == 0)
-                    {
-
-                        Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1 = Minutes;
-                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
-                        }
-                    }
-                    else
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
-                        }
+                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex] = Seconds;
                     }
                 }
-
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+                if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex] == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex] == 0)
                 {
-                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel2 = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2;
-                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel2 = Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2 > Minutes)
-                    {
-                        Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2 = Minutes;
-                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2 == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2 == 0)
-                    {
 
-                        Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2 = Minutes;
-                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
+                    Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex] = Minutes;
+                    Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex] = Seconds;
+                }
+                Geekplay.Instance.Save();
+                if (Minutes < 10)
+                {
+                    if (Seconds < 10)
                     {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString("F2", culture);
                     }
                     else
                     {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString("F2", culture);
                     }
                 }
-
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+                else
                 {
-                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel3 = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3;
-                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel3 = Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3 > Minutes)
+                    if (Seconds < 10)
                     {
-                        Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3 = Minutes;
-                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3 == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3 == 0)
-                    {
-
-                        Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3 = Minutes;
-                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString("F2", culture);
                     }
                     else
                     {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
-                        }
-                    }
-                }
-
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
-                {
-                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel4 = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4;
-                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel4 = Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4 > Minutes)
-                    {
-                        Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4 = Minutes;
-                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4 == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4 == 0)
-                    {
-
-                        Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4 = Minutes;
-                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
-                        }
-                    }
-                    else
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
-                        }
-                    }
-                }
-
-                if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
-                {
-                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel5 = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5;
-                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel5 = Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5;
-                    var culture = new CultureInfo("en-EN");
-                    stopCounter = 1;
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5 > Minutes)
-                    {
-                        Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5 = Minutes;
-                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5 = Seconds;
-                    }
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5 == Minutes)
-                    {
-                        if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5 > Seconds)
-                        {
-                            Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5 = Seconds;
-                        }
-                    }
-                    if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5 == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5 == 0)
-                    {
-
-                        Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5 = Minutes;
-                        Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5 = Seconds;
-                    }
-                    Geekplay.Instance.Save();
-                    if (Minutes < 10)
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
-                        }
-                    }
-                    else
-                    {
-                        if (Seconds < 10)
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
-                        }
-                        else
-                        {
-                            finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
-                        }
+                        finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex].ToString("F2", culture);
                     }
                 }
             }
-        }
+                //    if (StopTimer && stopCounter == 0)
+                //    {
+                //        if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+                //        {
+                //            Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel1 = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1;
+                //            Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel1 = Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1;
+                //            var culture = new CultureInfo("en-EN");
+                //            stopCounter = 1;
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1 > Minutes)
+                //            {
+                //                Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1 = Minutes;
+                //                Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1 = Seconds;
+                //            }
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1 == Minutes)
+                //            {
+                //                if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1 > Seconds)
+                //                {
+                //                    Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1 = Seconds;
+                //                }
+                //            }
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1 == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1 == 0)
+                //            {
+
+                //                Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1 = Minutes;
+                //                Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1 = Seconds;
+                //            }
+                //            Geekplay.Instance.Save();
+                //            if (Minutes < 10)
+                //            {
+                //                if (Seconds < 10)
+                //                {
+                //                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
+                //                }
+                //                else
+                //                {
+                //                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
+                //                }
+                //            }
+                //            else
+                //            {
+                //                if (Seconds < 10)
+                //                {
+                //                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
+                //                }
+                //                else
+                //                {
+                //                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel1.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel1.ToString("F2", culture);
+                //                }
+                //            }
+                //        }
+
+                //        if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+                //        {
+                //            Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel2 = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2;
+                //            Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel2 = Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2;
+                //            var culture = new CultureInfo("en-EN");
+                //            stopCounter = 1;
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2 > Minutes)
+                //            {
+                //                Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2 = Minutes;
+                //                Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2 = Seconds;
+                //            }
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2 == Minutes)
+                //            {
+                //                if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2 > Seconds)
+                //                {
+                //                    Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2 = Seconds;
+                //                }
+                //            }
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2 == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2 == 0)
+                //            {
+
+                //                Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2 = Minutes;
+                //                Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2 = Seconds;
+                //            }
+                //            Geekplay.Instance.Save();
+                //            if (Minutes < 10)
+                //            {
+                //                if (Seconds < 10)
+                //                {
+                //                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
+                //                }
+                //                else
+                //                {
+                //                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
+                //                }
+                //            }
+                //            else
+                //            {
+                //                if (Seconds < 10)
+                //                {
+                //                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
+                //                }
+                //                else
+                //                {
+                //                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel2.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel2.ToString("F2", culture);
+                //                }
+                //            }
+                //        }
+
+                //        if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+                //        {
+                //            Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel3 = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3;
+                //            Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel3 = Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3;
+                //            var culture = new CultureInfo("en-EN");
+                //            stopCounter = 1;
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3 > Minutes)
+                //            {
+                //                Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3 = Minutes;
+                //                Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3 = Seconds;
+                //            }
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3 == Minutes)
+                //            {
+                //                if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3 > Seconds)
+                //                {
+                //                    Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3 = Seconds;
+                //                }
+                //            }
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3 == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3 == 0)
+                //            {
+
+                //                Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3 = Minutes;
+                //                Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3 = Seconds;
+                //            }
+                //            Geekplay.Instance.Save();
+                //            if (Minutes < 10)
+                //            {
+                //                if (Seconds < 10)
+                //                {
+                //                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
+                //                }
+                //                else
+                //                {
+                //                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
+                //                }
+                //            }
+                //            else
+                //            {
+                //                if (Seconds < 10)
+                //                {
+                //                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
+                //                }
+                //                else
+                //                {
+                //                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel3.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel3.ToString("F2", culture);
+                //                }
+                //            }
+                //        }
+
+                //        if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
+                //        {
+                //            Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel4 = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4;
+                //            Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel4 = Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4;
+                //            var culture = new CultureInfo("en-EN");
+                //            stopCounter = 1;
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4 > Minutes)
+                //            {
+                //                Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4 = Minutes;
+                //                Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4 = Seconds;
+                //            }
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4 == Minutes)
+                //            {
+                //                if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4 > Seconds)
+                //                {
+                //                    Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4 = Seconds;
+                //                }
+                //            }
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4 == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4 == 0)
+                //            {
+
+                //                Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4 = Minutes;
+                //                Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4 = Seconds;
+                //            }
+                //            Geekplay.Instance.Save();
+                //            if (Minutes < 10)
+                //            {
+                //                if (Seconds < 10)
+                //                {
+                //                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
+                //                }
+                //                else
+                //                {
+                //                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
+                //                }
+                //            }
+                //            else
+                //            {
+                //                if (Seconds < 10)
+                //                {
+                //                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
+                //                }
+                //                else
+                //                {
+                //                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel4.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel4.ToString("F2", culture);
+                //                }
+                //            }
+                //        }
+
+                //        if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
+                //        {
+                //            Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel5 = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5;
+                //            Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel5 = Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5;
+                //            var culture = new CultureInfo("en-EN");
+                //            stopCounter = 1;
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5 > Minutes)
+                //            {
+                //                Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5 = Minutes;
+                //                Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5 = Seconds;
+                //            }
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5 == Minutes)
+                //            {
+                //                if (Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5 > Seconds)
+                //                {
+                //                    Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5 = Seconds;
+                //                }
+                //            }
+                //            if (Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5 == 0 && Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5 == 0)
+                //            {
+
+                //                Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5 = Minutes;
+                //                Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5 = Seconds;
+                //            }
+                //            Geekplay.Instance.Save();
+                //            if (Minutes < 10)
+                //            {
+                //                if (Seconds < 10)
+                //                {
+                //                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
+                //                }
+                //                else
+                //                {
+                //                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
+                //                }
+                //            }
+                //            else
+                //            {
+                //                if (Seconds < 10)
+                //                {
+                //                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
+                //                }
+                //                else
+                //                {
+                //                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestCarMapMinutesLevel5.ToString() + "." + Geekplay.Instance.PlayerData.BestCarMapSecondsLevel5.ToString("F2", culture);
+                //                }
+                //            }
+                //        }
+                //    }
+            }
     }
 
 

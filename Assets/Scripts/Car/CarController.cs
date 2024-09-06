@@ -27,51 +27,51 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
-        {
-            if (Geekplay.Instance.PlayerData.CarSaveProgressLevel1 == 100 && stopCounter == 0)
-            {
-                stopCounter = 1;
-                moveSpeed = 0;
-                finalPanel.SetActive(true);
-            }
-        }
-        if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
-        {
-            if (Geekplay.Instance.PlayerData.CarSaveProgressLevel2 == 100 && stopCounter == 0)
-            {
-                stopCounter = 1;
-                moveSpeed = 0;
-                finalPanel.SetActive(true);
-            }
-        }
-        if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
-        {
-            if (Geekplay.Instance.PlayerData.CarSaveProgressLevel3 == 100 && stopCounter == 0)
-            {
-                stopCounter = 1;
-                moveSpeed = 0;
-                finalPanel.SetActive(true);
-            }
-        }
-        if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
-        {
-            if (Geekplay.Instance.PlayerData.CarSaveProgressLevel4 == 100 && stopCounter == 0)
-            {
-                stopCounter = 1;
-                moveSpeed = 0;
-                finalPanel.SetActive(true);
-            }
-        }
-        if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
-        {
-            if (Geekplay.Instance.PlayerData.CarSaveProgressLevel5 == 100 && stopCounter == 0)
-            {
-                stopCounter = 1;
-                moveSpeed = 0;
-                finalPanel.SetActive(true);
-            }
-        }
+        //if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+        //{
+        //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel1 == 100 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
+        //if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+        //{
+        //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel2 == 100 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
+        //if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+        //{
+        //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel3 == 100 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
+        //if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
+        //{
+        //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel4 == 100 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
+        //if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
+        //{
+        //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel5 == 100 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
 
     }
     public void FixedUpdate()

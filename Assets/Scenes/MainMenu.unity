@@ -970,21 +970,11 @@ MonoBehaviour:
   runGamePanel: {fileID: 1148507749}
   bicycleGamePanel: {fileID: 1967836254}
   carGamePanel: {fileID: 2068814274}
-  runningProgressLevel1: {fileID: 201451546}
-  runningProgressLevel2: {fileID: 982339465}
-  runningProgressLevel3: {fileID: 1863417181}
-  runningProgressLevel4: {fileID: 1081887528}
-  runningProgressLevel5: {fileID: 896675495}
   carProgressLevel1: {fileID: 743668424}
   carProgressLevel2: {fileID: 2064012546}
   carProgressLevel3: {fileID: 1148912062}
   carProgressLevel4: {fileID: 407041851}
   carProgressLevel5: {fileID: 1236555728}
-  runningTimerLevel1: {fileID: 769021619}
-  runningTimerLevel2: {fileID: 350558523}
-  runningTimerLevel3: {fileID: 1380195714}
-  runningTimerLevel4: {fileID: 834943671}
-  runningTimerLevel5: {fileID: 1874434236}
   carTimerLevel1: {fileID: 504549414}
   carTimerLevel2: {fileID: 488829104}
   carTimerLevel3: {fileID: 1643194446}
@@ -993,11 +983,6 @@ MonoBehaviour:
   runMenu: {fileID: 1353316191}
   bicycleMenu: {fileID: 2136976009}
   carMenu: {fileID: 1373801123}
-  runningProgressPercentLevel1: {fileID: 1506236968}
-  runningProgressPercentLevel2: {fileID: 530175043}
-  runningProgressPercentLevel3: {fileID: 621179402}
-  runningProgressPercentLevel4: {fileID: 1323291248}
-  runningProgressPercentLevel5: {fileID: 1190141206}
   carProgressPercentLevel1: {fileID: 1302656865}
   carProgressPercentLevel2: {fileID: 777094854}
   carProgressPercentLevel3: {fileID: 2134603443}
@@ -1039,6 +1024,24 @@ MonoBehaviour:
   - {fileID: 621179402}
   - {fileID: 1323291248}
   - {fileID: 1190141206}
+  carTimerLevels:
+  - {fileID: 504549414}
+  - {fileID: 488829104}
+  - {fileID: 1643194446}
+  - {fileID: 1457503517}
+  - {fileID: 1466101116}
+  carProgressLevels:
+  - {fileID: 743668424}
+  - {fileID: 2064012546}
+  - {fileID: 1148912062}
+  - {fileID: 407041851}
+  - {fileID: 1236555728}
+  carProgressPercentLevels:
+  - {fileID: 1302656865}
+  - {fileID: 777094854}
+  - {fileID: 2134603443}
+  - {fileID: 1773909965}
+  - {fileID: 235117550}
 --- !u!1 &173220093
 GameObject:
   m_ObjectHideFlags: 0
@@ -8498,6 +8501,22 @@ PrefabInstance:
       value: AppForDiamond5
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
+      propertyPath: PlayerData.CarFillAmountLevels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
+      propertyPath: PlayerData.CarSaveProgressLevels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
+      propertyPath: PlayerData.BestCarMapMinutesLevels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
+      propertyPath: PlayerData.BestCarMapSecondsLevels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: PlayerData.BicycleFillAmountLevels.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -8510,7 +8529,19 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
+      propertyPath: PlayerData.CarSaveProgressMenuLevels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: PlayerData.RunningSaveProgressLevels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
+      propertyPath: PlayerData.CurrentCarMapMinutesLevels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
+      propertyPath: PlayerData.CurrentCarMapSecondsLevels.Array.size
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}

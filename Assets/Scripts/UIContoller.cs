@@ -86,36 +86,39 @@ public class UIContoller : MonoBehaviour
         }
         if (isCarMode)
         {
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
-            {
-                Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel1 = _timerScript.Minutes;
-                Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel1 = _timerScript.Seconds;
-                Analytics.instance.SendEvent("SampleSceneCar 1 Exit Level");
-            }
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
-            {
-                Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel2 = _timerScript.Minutes;
-                Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel2 = _timerScript.Seconds;
-                Analytics.instance.SendEvent("SampleSceneCar 2 Exit Level");
-            }
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
-            {
-                Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel3 = _timerScript.Minutes;
-                Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel3 = _timerScript.Seconds;
-                Analytics.instance.SendEvent("SampleSceneCar 3 Exit Level");
-            }
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
-            {
-                Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel4 = _timerScript.Minutes;
-                Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel4 = _timerScript.Seconds;
-                Analytics.instance.SendEvent("SampleSceneCar 4 Exit Level");
-            }
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
-            {
-                Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel5 = _timerScript.Minutes;
-                Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel5 = _timerScript.Seconds;
-                Analytics.instance.SendEvent("SampleSceneCar 5 Exit Level");
-            }
+            Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex] = _timerScript.Minutes;
+            Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex] = _timerScript.Seconds;
+            Analytics.instance.SendEvent("SampleSceneCar " + (Geekplay.Instance.PlayerData.CarMapIndex + 1) + " Exit Level");
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 1)
+            //{
+            //    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel1 = _timerScript.Minutes;
+            //    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel1 = _timerScript.Seconds;
+            //    Analytics.instance.SendEvent("SampleSceneCar 1 Exit Level");
+            //}
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 2)
+            //{
+            //    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel2 = _timerScript.Minutes;
+            //    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel2 = _timerScript.Seconds;
+            //    Analytics.instance.SendEvent("SampleSceneCar 2 Exit Level");
+            //}
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 3)
+            //{
+            //    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel3 = _timerScript.Minutes;
+            //    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel3 = _timerScript.Seconds;
+            //    Analytics.instance.SendEvent("SampleSceneCar 3 Exit Level");
+            //}
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 4)
+            //{
+            //    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel4 = _timerScript.Minutes;
+            //    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel4 = _timerScript.Seconds;
+            //    Analytics.instance.SendEvent("SampleSceneCar 4 Exit Level");
+            //}
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
+            //{
+            //    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel5 = _timerScript.Minutes;
+            //    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel5 = _timerScript.Seconds;
+            //    Analytics.instance.SendEvent("SampleSceneCar 5 Exit Level");
+            //}
             Geekplay.Instance.Save();
         }
         SceneManager.LoadScene("MainMenu");
@@ -313,76 +316,95 @@ public class UIContoller : MonoBehaviour
         }
         if (isCarMode)
         {
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 1 && nextCount == 0)
+            if (nextCount == 0)
             {
                 nextCount = 1;
-                Geekplay.Instance.PlayerData.CarMapIndex = 2;
-                if(Geekplay.Instance.PlayerData.CarSaveProgressLevel2  >= 100)
+                Geekplay.Instance.PlayerData.CarMapIndex += 1;
+                if (Geekplay.Instance.PlayerData.CarMapIndex == 5)
                 {
-                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel2 = 0;
-                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel2 = 0;
-                    Geekplay.Instance.PlayerData.CarFillAmountLevel2 = 0;
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel2 = 0;
+                    Geekplay.Instance.PlayerData.CarMapIndex = 0;
+                }
+                if (Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] >= 100)
+                {
+                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 0;
+                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 0;
+                    Geekplay.Instance.PlayerData.CarFillAmountLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 0;
+                    Geekplay.Instance.PlayerData.CarSaveProgressLevels[Geekplay.Instance.PlayerData.CarMapIndex] = 0;
                 }
                 Geekplay.Instance.Save();
-                SceneManager.LoadScene("SampleSceneCar 2");
+                SceneManager.LoadScene("SampleSceneCar " + (Geekplay.Instance.PlayerData.CarMapIndex + 1));
+
             }
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 2 && nextCount == 0)
-            {
-                nextCount = 1;
-                Geekplay.Instance.PlayerData.CarMapIndex = 3;
-                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel3 >= 100)
-                {
-                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel3 = 0;
-                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel3 = 0;
-                    Geekplay.Instance.PlayerData.CarFillAmountLevel3 = 0;
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel3 = 0;
-                }
-                Geekplay.Instance.Save();
-                SceneManager.LoadScene("SampleSceneCar 3");
-            }
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 3 && nextCount == 0)
-            {
-                nextCount = 1;
-                Geekplay.Instance.PlayerData.CarMapIndex = 4;
-                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel4 >= 100)
-                {
-                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel4 = 0;
-                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel4 = 0;
-                    Geekplay.Instance.PlayerData.CarFillAmountLevel4 = 0;
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel4 = 0;
-                }
-                Geekplay.Instance.Save();
-                SceneManager.LoadScene("SampleSceneCar 4");
-            }
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 4 && nextCount == 0)
-            {
-                nextCount = 1;
-                Geekplay.Instance.PlayerData.CarMapIndex = 5;
-                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel5 >= 100)
-                {
-                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel5 = 0;
-                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel5 = 0;
-                    Geekplay.Instance.PlayerData.CarFillAmountLevel5 = 0;
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel5 = 0;
-                }
-                Geekplay.Instance.Save();
-                SceneManager.LoadScene("SampleSceneCar 5");
-            }
-            if (Geekplay.Instance.PlayerData.CarMapIndex == 5 && nextCount == 0)
-            {
-                nextCount = 1;
-                Geekplay.Instance.PlayerData.CarMapIndex = 1;
-                if (Geekplay.Instance.PlayerData.CarSaveProgressLevel1 >= 100)
-                {
-                    Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel1 = 0;
-                    Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel1 = 0;
-                    Geekplay.Instance.PlayerData.CarFillAmountLevel1 = 0;
-                    Geekplay.Instance.PlayerData.CarSaveProgressLevel1 = 0;
-                }
-                Geekplay.Instance.Save();
-                SceneManager.LoadScene("SampleSceneCar 1");
-            }
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 1 && nextCount == 0)
+            //{
+            //    nextCount = 1;
+            //    Geekplay.Instance.PlayerData.CarMapIndex = 2;
+            //    if(Geekplay.Instance.PlayerData.CarSaveProgressLevel2  >= 100)
+            //    {
+            //        Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel2 = 0;
+            //        Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel2 = 0;
+            //        Geekplay.Instance.PlayerData.CarFillAmountLevel2 = 0;
+            //        Geekplay.Instance.PlayerData.CarSaveProgressLevel2 = 0;
+            //    }
+            //    Geekplay.Instance.Save();
+            //    SceneManager.LoadScene("SampleSceneCar 2");
+            //}
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 2 && nextCount == 0)
+            //{
+            //    nextCount = 1;
+            //    Geekplay.Instance.PlayerData.CarMapIndex = 3;
+            //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel3 >= 100)
+            //    {
+            //        Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel3 = 0;
+            //        Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel3 = 0;
+            //        Geekplay.Instance.PlayerData.CarFillAmountLevel3 = 0;
+            //        Geekplay.Instance.PlayerData.CarSaveProgressLevel3 = 0;
+            //    }
+            //    Geekplay.Instance.Save();
+            //    SceneManager.LoadScene("SampleSceneCar 3");
+            //}
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 3 && nextCount == 0)
+            //{
+            //    nextCount = 1;
+            //    Geekplay.Instance.PlayerData.CarMapIndex = 4;
+            //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel4 >= 100)
+            //    {
+            //        Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel4 = 0;
+            //        Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel4 = 0;
+            //        Geekplay.Instance.PlayerData.CarFillAmountLevel4 = 0;
+            //        Geekplay.Instance.PlayerData.CarSaveProgressLevel4 = 0;
+            //    }
+            //    Geekplay.Instance.Save();
+            //    SceneManager.LoadScene("SampleSceneCar 4");
+            //}
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 4 && nextCount == 0)
+            //{
+            //    nextCount = 1;
+            //    Geekplay.Instance.PlayerData.CarMapIndex = 5;
+            //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel5 >= 100)
+            //    {
+            //        Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel5 = 0;
+            //        Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel5 = 0;
+            //        Geekplay.Instance.PlayerData.CarFillAmountLevel5 = 0;
+            //        Geekplay.Instance.PlayerData.CarSaveProgressLevel5 = 0;
+            //    }
+            //    Geekplay.Instance.Save();
+            //    SceneManager.LoadScene("SampleSceneCar 5");
+            //}
+            //if (Geekplay.Instance.PlayerData.CarMapIndex == 5 && nextCount == 0)
+            //{
+            //    nextCount = 1;
+            //    Geekplay.Instance.PlayerData.CarMapIndex = 1;
+            //    if (Geekplay.Instance.PlayerData.CarSaveProgressLevel1 >= 100)
+            //    {
+            //        Geekplay.Instance.PlayerData.CurrentCarMapSecondsLevel1 = 0;
+            //        Geekplay.Instance.PlayerData.CurrentCarMapMinutesLevel1 = 0;
+            //        Geekplay.Instance.PlayerData.CarFillAmountLevel1 = 0;
+            //        Geekplay.Instance.PlayerData.CarSaveProgressLevel1 = 0;
+            //    }
+            //    Geekplay.Instance.Save();
+            //    SceneManager.LoadScene("SampleSceneCar 1");
+            //}
         }
     }
 }
