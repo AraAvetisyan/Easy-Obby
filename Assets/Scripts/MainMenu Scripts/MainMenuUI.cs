@@ -72,6 +72,10 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.CurrentMapSecondsLevels = new float[15];
 
         }
+        if (Geekplay.Instance.PlayerData.Rotation == null)
+        {
+            Geekplay.Instance.PlayerData.Rotation = new int[15];
+        }
         Geekplay.Instance.Save();
     }
     private void OnEnable()
@@ -148,16 +152,15 @@ public class MainMenuUI : MonoBehaviour
     public void PressedContinue()
     {
         Continue = true;
-        Geekplay.Instance.PlayerData.IsFirstTry = 1;
-
-        if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 100)
+        if (Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] >= 100)
         {
             Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
+            Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
+            Geekplay.Instance.Save();
         }
-        Geekplay.Instance.Save();
         ContinueGame?.Invoke(true);
         SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
     }

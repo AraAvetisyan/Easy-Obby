@@ -11,7 +11,6 @@ public class PlayerData
 
     public int Coins;
     public int Diamond;
-    public int IsFirstTry;
 
     public int MapIndex;
 
@@ -22,4 +21,5 @@ public class PlayerData
     public float[] BestMapSecondsLevels;
     public float[] CurrentMapMinutesLevels;
     public float[] CurrentMapSecondsLevels;
+    public int[] Rotation; // 0 - Front, 1 - Back, 2 - Right, 3 - Left
 }

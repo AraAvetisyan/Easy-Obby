@@ -143,7 +143,7 @@ public class VehicleControl : MonoBehaviour
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private float steer = 0;
+    public float steer = 0;
     public float accel = 0.0f;
     
     public bool brake;
@@ -160,7 +160,6 @@ public class VehicleControl : MonoBehaviour
     private float torque = 100f;
 
     public float speed = 0.0f;
-
     private float lastSpeed = -10.0f;
 
 
@@ -222,7 +221,7 @@ public class VehicleControl : MonoBehaviour
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    private WheelComponent[] wheels;
+    public WheelComponent[] wheels;
     public bool MobileInput;
 
     public bool CarQuit;
@@ -232,10 +231,11 @@ public class VehicleControl : MonoBehaviour
 
 
 
+
     private int stopCounter;
     [SerializeField] private GameObject finalPanel;
-
-    private class WheelComponent
+    [SerializeField] private Teleport _teleport;
+    public class WheelComponent
     {
 
         public Transform wheel;
@@ -455,61 +455,17 @@ public class VehicleControl : MonoBehaviour
 
     private void Start()
     {
-       // MyInitializeButtons();
+     //   MyInitializeButtons();
     }
     private void OnEnable()
     {
         MainMenuUI.NewGame += NewGameAnal;
         MainMenuUI.ContinueGame += ContinueGameAnal;
-        Teleport.GameEnds += GameEnds;
     }
     private void OnDisable()
     {
         MainMenuUI.NewGame -= NewGameAnal;
         MainMenuUI.ContinueGame -= ContinueGameAnal;
-        Teleport.GameEnds -= GameEnds;
-    }
-    public void GameEnds(bool bb)
-    {
-        if (Geekplay.Instance.PlayerData.MapIndex == 10 || Geekplay.Instance.PlayerData.MapIndex == 11)
-        {
-            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
-            {
-                speed = 0;
-                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
-                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
-                Geekplay.Instance.Save();
-                brake = true;
-                myRigidbody.velocity = Vector3.zero;
-                finalPanel.SetActive(true);
-            }
-        }
-        if (Geekplay.Instance.PlayerData.MapIndex == 12 || Geekplay.Instance.PlayerData.MapIndex == 13)
-        {
-            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
-            {
-                speed = 0;
-                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
-                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
-                Geekplay.Instance.Save();
-                brake = true;
-                myRigidbody.velocity = Vector3.zero;
-                finalPanel.SetActive(true);
-            }
-        }
-        if (Geekplay.Instance.PlayerData.MapIndex == 14)
-        {
-            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 100 && stopCounter == 0)
-            {
-                speed = 0;
-                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 100;
-                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
-                Geekplay.Instance.Save();
-                brake = true;
-                myRigidbody.velocity = Vector3.zero;
-                finalPanel.SetActive(true);
-            }
-        }
     }
     public void NewGameAnal(bool bb)
     {
@@ -544,8 +500,79 @@ public class VehicleControl : MonoBehaviour
 
             }
         }
-       
+        if (Geekplay.Instance.PlayerData.MapIndex == 10)
+        {
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
+            {
+                speed = 0;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+                Geekplay.Instance.Save();
+                brake = true;
+                myRigidbody.velocity = Vector3.zero;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Geekplay.Instance.PlayerData.MapIndex == 11)
+        {
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
+            {
+                speed = 0;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+                Geekplay.Instance.Save();
+                brake = true;
+                myRigidbody.velocity = Vector3.zero;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Geekplay.Instance.PlayerData.MapIndex == 12)
+        {
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
+            {
+                speed = 0;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+                Geekplay.Instance.Save();
+                brake = true;
+                myRigidbody.velocity = Vector3.zero;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Geekplay.Instance.PlayerData.MapIndex == 13)
+        {
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
+            {
+                speed = 0;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+                Geekplay.Instance.Save();
+                brake = true;
+                myRigidbody.velocity = Vector3.zero;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Geekplay.Instance.PlayerData.MapIndex == 14)
+        {
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 100 && stopCounter == 0)
+            {
+                speed = 0;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 100;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+                Geekplay.Instance.Save();
+                brake = true;
+                myRigidbody.velocity = Vector3.zero;
+                finalPanel.SetActive(true);
+            }
+        }
+        if (Input.GetButtonDown("Vertical"))
+        {
+            _teleport.mustBrake = false;
+            brake = false;
 
+            carWheels.wheels.frontWheelDrive = true;
+            carWheels.wheels.backWheelDrive = true;
+        }
     }
 
 
@@ -553,7 +580,14 @@ public class VehicleControl : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        if (_teleport.mustBrake)
+        {
+            brake = true;
+            speed = 0;
+            carWheels.wheels.frontWheelDrive = false;
+            carWheels.wheels.backWheelDrive = false;
+            
+        }
 
         // speed of car
         speed = myRigidbody.velocity.magnitude * 2.7f;
@@ -585,10 +619,8 @@ public class VehicleControl : MonoBehaviour
 
             if (controlMode == ControlMode.simple)
             {
-
-
                 accel = 0;
-                brake = false;
+               
                 shift = false;
 
                 if (carWheels.wheels.frontWheelDrive || carWheels.wheels.backWheelDrive)
@@ -597,8 +629,6 @@ public class VehicleControl : MonoBehaviour
                     accel = Input.GetAxis("Vertical");
                     brake = Input.GetButton("Jump");
                     shift = Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift);
-
-
                 }
 
             }

@@ -16,7 +16,7 @@ EditorBuildSettings:
     guid: 28eb845dc3b8cdd4f93ac21cae7f79a8
   - enabled: 1
     path: Assets/Scenes/SampleSceneRunning 3.unity
-    guid: 44daaccabb57ccd4d8bf68bc9ffe3f4b
+    guid: 941cfb797b302d44e81934136a8fcbf2
   - enabled: 1
     path: Assets/Scenes/SampleSceneRunning 4.unity
     guid: 66ee54d4c7c707c4dbe6566517c5413d

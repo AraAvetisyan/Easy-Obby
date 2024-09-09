@@ -31,13 +31,11 @@ public class PlayerController : MonoBehaviour
     {
         MainMenuUI.NewGame += NewGameAnal;
         MainMenuUI.ContinueGame += ContinueGameAnal;
-        Teleport.GameEnds += GameEnds;
     }
     private void OnDisable()
     {
         MainMenuUI.NewGame -= NewGameAnal;
         MainMenuUI.ContinueGame -= ContinueGameAnal;
-        Teleport.GameEnds -= GameEnds;
     }
     public void NewGameAnal(bool bb)
     {
@@ -47,46 +45,132 @@ public class PlayerController : MonoBehaviour
     {
         Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Continue_Game");
     }
-    public void GameEnds(bool bb)
+
+    private void Update()
     {
-        Debug.Log("NU");
         if (Geekplay.Instance.PlayerData.MapIndex == 0 || Geekplay.Instance.PlayerData.MapIndex == 1 || Geekplay.Instance.PlayerData.MapIndex == 5 || Geekplay.Instance.PlayerData.MapIndex == 6)
         {
-            if (Geekplay.Instance.PlayerData.SaveProgressLevels[0] >= 34 && stopCounter == 0)
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
             {
                 stopCounter = 1;
-                Geekplay.Instance.PlayerData.SaveProgressLevels[0] = 34;
-                Geekplay.Instance.PlayerData.FillAmountLevels[0] = 1;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
                 Geekplay.Instance.Save();
                 moveSpeed = 0;
                 finalPanel.SetActive(true);
-
             }
         }
+
+        //if (Geekplay.Instance.PlayerData.MapIndex == 1)
+        //{
+        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
+        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+        //        Geekplay.Instance.Save();
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
+        //if (Geekplay.Instance.PlayerData.MapIndex == 5)
+        //{
+        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
+        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+        //        Geekplay.Instance.Save();
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
+        //if (Geekplay.Instance.PlayerData.MapIndex == 6)
+        //{
+        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
+        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+        //        Geekplay.Instance.Save();
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
+
         if (Geekplay.Instance.PlayerData.MapIndex == 2 || Geekplay.Instance.PlayerData.MapIndex == 3 || Geekplay.Instance.PlayerData.MapIndex == 7 || Geekplay.Instance.PlayerData.MapIndex == 8)
         {
-            if (Geekplay.Instance.PlayerData.SaveProgressLevels[2] >= 50 && stopCounter == 0)
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
             {
                 stopCounter = 1;
-                Geekplay.Instance.PlayerData.SaveProgressLevels[2] = 50;
-                Geekplay.Instance.PlayerData.FillAmountLevels[2] = 1;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
                 Geekplay.Instance.Save();
                 moveSpeed = 0;
                 finalPanel.SetActive(true);
             }
         }
+        //if (Geekplay.Instance.PlayerData.MapIndex == 3)
+        //{
+        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
+        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+        //        Geekplay.Instance.Save();
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
+        //if (Geekplay.Instance.PlayerData.MapIndex == 7)
+        //{
+        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
+        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+        //        Geekplay.Instance.Save();
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
+        //if (Geekplay.Instance.PlayerData.MapIndex == 8)
+        //{
+        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
+        //    {
+        //        stopCounter = 1;
+        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
+        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+        //        Geekplay.Instance.Save();
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
+
         if (Geekplay.Instance.PlayerData.MapIndex == 4 || Geekplay.Instance.PlayerData.MapIndex == 9)
         {
-            if (Geekplay.Instance.PlayerData.SaveProgressLevels[5] >= 100 && stopCounter == 0 || Geekplay.Instance.PlayerData.MapIndex == 10)
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 100 && stopCounter == 0 || Geekplay.Instance.PlayerData.MapIndex == 10)
             {
                 stopCounter = 1;
-                Geekplay.Instance.PlayerData.SaveProgressLevels[5] = 100;
-                Geekplay.Instance.PlayerData.FillAmountLevels[5] = 1;
+                Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 100;
+                Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
                 Geekplay.Instance.Save();
                 moveSpeed = 0;
                 finalPanel.SetActive(true);
             }
         }
+        //if (Geekplay.Instance.PlayerData.MapIndex == 9)
+        //{
+        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 100 && stopCounter == 0 || Geekplay.Instance.PlayerData.MapIndex == 10)
+        //    {
+        //        stopCounter = 1;
+        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 100;
+        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
+        //        Geekplay.Instance.Save();
+        //        moveSpeed = 0;
+        //        finalPanel.SetActive(true);
+        //    }
+        //}
     }
     public void FixedUpdate()
     {

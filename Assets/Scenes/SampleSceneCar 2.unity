@@ -5548,7 +5548,7 @@ MonoBehaviour:
   left: 0
   right: 0
   carObject: {fileID: 0}
-  mustBreak: 0
+  mustBrake: 0
 --- !u!114 &111055851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5637,6 +5637,7 @@ MonoBehaviour:
     - 2.5
     LimitBackwardSpeed: 30
     LimitForwardSpeed: 80
+  steer: 0
   accel: 0
   brake: 0
   curTorque: 100
@@ -5653,6 +5654,7 @@ MonoBehaviour:
   MobileInput: 0
   CarQuit: 0
   finalPanel: {fileID: 1706072600}
+  _teleport: {fileID: 111055850}
 --- !u!54 &111055853
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99050,7 +99052,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1706072602
 MonoBehaviour:
@@ -114025,7 +114027,7 @@ MonoBehaviour:
   left: 0
   right: 0
   carObject: {fileID: 0}
-  mustBreak: 0
+  mustBrake: 0
 --- !u!1 &1981410221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5681936383310860492, guid: 7629da1901248bc49b02c95f7524fc8d, type: 3}

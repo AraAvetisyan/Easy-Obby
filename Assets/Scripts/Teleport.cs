@@ -9,8 +9,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Teleport : MonoBehaviour
-{
-    public static Action<bool> GameEnds; 
+{ 
     [SerializeField] private TimerScript _timerScript;
     [SerializeField] private Transform tp;
     [SerializeField] private Transform[] allTP;
@@ -44,7 +43,8 @@ public class Teleport : MonoBehaviour
     [SerializeField] private bool front, back, left, right;
 
     [SerializeField] private GameObject carObject;
-    public bool mustBreak;
+    private Coroutine enumerator;
+    public bool mustBrake;
     private void Start()
     {
 
@@ -92,7 +92,26 @@ public class Teleport : MonoBehaviour
             }
         }
         transform.position = tp.position;
-
+        if (Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] == 0)
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = targetRotation;
+        }
+        if (Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] == 1)
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = targetRotation;
+        }
+        if (Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] == 2)
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, 90, 0);
+            transform.rotation = targetRotation;
+        }
+        if (Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] == 3)
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, -90, 0);
+            transform.rotation = targetRotation;
+        }
         StartCoroutine(tpcor());
         IEnumerator tpcor()
         {
@@ -100,22 +119,18 @@ public class Teleport : MonoBehaviour
             transform.position = tp.position;
         }
     }
-    private void Update()
-    {
-        if (mustBreak)
-        {
-            _vehicleControl.brake = true;
-        }
-    }
     private void OnEnable()
     {
         Rewarder.ChangeDiamond += ChangeDimondsText;
-       
+        HelicopterButton.StopBrake += EndBrake;
+
+
     }
     private void OnDisable()
     {
         Rewarder.ChangeDiamond -= ChangeDimondsText;
-        
+        HelicopterButton.StopBrake -= EndBrake;
+
     }
    
     public void ChangeDimondsText(bool bb)
@@ -126,6 +141,7 @@ public class Teleport : MonoBehaviour
     {
         if (other.CompareTag("Front"))
         {
+            Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] = 0;
             front = true;
             back = false;
             right = false;
@@ -133,6 +149,8 @@ public class Teleport : MonoBehaviour
         }
         if (other.CompareTag("Back"))
         {
+
+            Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] = 1;
             front = false;
             back = true;
             right = false;
@@ -140,6 +158,7 @@ public class Teleport : MonoBehaviour
         }
         if (other.CompareTag("Right"))
         {
+            Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] = 2;
             front = false;
             back = false;
             right = true;
@@ -147,6 +166,7 @@ public class Teleport : MonoBehaviour
         }
         if (other.CompareTag("Left"))
         {
+            Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] = 3;
             front = false;
             back = false;
             right = false;
@@ -175,7 +195,11 @@ public class Teleport : MonoBehaviour
                 Quaternion targetRotation = Quaternion.Euler(0, -90, 0);
                 transform.rotation = targetRotation;
             }
-            rb.velocity = Vector3.zero;           
+            rb.velocity = Vector3.zero;
+            if (gamemodeCar)
+            {
+                StartCorutine();
+            }
         }
 
         if (other.CompareTag("TeleportPoint"))
@@ -210,13 +234,14 @@ public class Teleport : MonoBehaviour
             if (fillCount >= 100)
             {
                 Geekplay.Instance.PlayerData.Coins += 100;
-                GameEnds?.Invoke(true);
                 _timerScript.StopTimer = true;
             }
             coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
             Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] += 1;
             Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] += progressCountTest;
             Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] += fillAmountTest;
+            Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = _timerScript.Minutes;
+            Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = _timerScript.Seconds;
             Geekplay.Instance.Save();
 
 
@@ -225,6 +250,59 @@ public class Teleport : MonoBehaviour
 
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
+    }
+    public void EndBrake(bool bb)
+    {
+        mustBrake = false;
+    }
+    public void StartCorutine()
+    {
+        enumerator = StartCoroutine(StopCar());
+    }
+    public void StopCorutine()
+    {
+        if (enumerator != null)
+        {
+            StopCoroutine(enumerator);
+            enumerator = null;
+        }
+        _vehicleControl.carSetting.carPower = 120;
+        _vehicleControl.carSetting.shiftPower = 150;
+        _vehicleControl.carSetting.LimitForwardSpeed = 80;
+        _vehicleControl.carSetting.LimitBackwardSpeed = 30;
+        _vehicleControl.carSetting.automaticGear = true;
+        _vehicleControl.curTorque = 100;
+        _vehicleControl.carSetting.maxSteerAngle = 25;
+
+        rb.constraints = RigidbodyConstraints.None;
+
+    }
+    public IEnumerator StopCar()
+    {
+        mustBrake = true;
+        _vehicleControl.carSetting.carPower = 0;
+        _vehicleControl.carSetting.shiftPower = 0;
+        _vehicleControl.carSetting.LimitForwardSpeed = 0;
+        _vehicleControl.carSetting.LimitBackwardSpeed = 0;
+        _vehicleControl.carSetting.automaticGear = false;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezePosition;
+        _vehicleControl.accel = 0;
+        _vehicleControl.steer = 0;
+        _vehicleControl.carSetting.maxSteerAngle = 0;
+        for(int i = 0; i < _vehicleControl.wheels.Length; i++)
+        {
+
+            _vehicleControl.wheels[i].rotation = 0;
+            _vehicleControl.wheels[i].rotation2 = 0;
+
+        }
+        _vehicleControl.curTorque = 0;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        yield return new WaitForSeconds(0.01f);
+        StopCorutine();
     }
     private void OnCollisionEnter(Collision other)
     {
