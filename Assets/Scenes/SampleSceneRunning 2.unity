@@ -37131,7 +37131,7 @@ MonoBehaviour:
   _sprintButtonScript: {fileID: 1485953710}
   gamemodeRunning: 1
   gamemodeBicycle: 0
-  isMobile: 0
+  isMobile: 1
   Jumping: 0
   graundObjects: []
   IsGrounded: 0
@@ -37346,7 +37346,7 @@ MonoBehaviour:
   left: 0
   right: 0
   carObject: {fileID: 0}
-  mustBreak: 0
+  mustBrake: 0
 --- !u!95 &1043353388
 Animator:
   serializedVersion: 5

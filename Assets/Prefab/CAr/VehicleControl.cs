@@ -455,7 +455,7 @@ public class VehicleControl : MonoBehaviour
 
     private void Start()
     {
-     //   MyInitializeButtons();
+        MyInitializeButtons();
     }
     private void OnEnable()
     {
