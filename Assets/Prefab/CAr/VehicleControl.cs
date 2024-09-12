@@ -586,11 +586,17 @@ public class VehicleControl : MonoBehaviour
             speed = 0;
             carWheels.wheels.frontWheelDrive = false;
             carWheels.wheels.backWheelDrive = false;
-            
+        }
+        else
+        {
+            brake = false; 
+            speed = myRigidbody.velocity.magnitude * 2.7f;
+            carWheels.wheels.frontWheelDrive = true;
+            carWheels.wheels.backWheelDrive = true;
         }
 
         // speed of car
-        speed = myRigidbody.velocity.magnitude * 2.7f;
+        
 
 
 

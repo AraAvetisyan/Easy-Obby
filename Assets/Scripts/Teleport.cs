@@ -122,14 +122,13 @@ public class Teleport : MonoBehaviour
     private void OnEnable()
     {
         Rewarder.ChangeDiamond += ChangeDimondsText;
-        HelicopterButton.StopBrake += EndBrake;
 
 
     }
     private void OnDisable()
     {
         Rewarder.ChangeDiamond -= ChangeDimondsText;
-        HelicopterButton.StopBrake -= EndBrake;
+        //HelicopterButton.StopBrake -= EndBrake;
 
     }
    
@@ -234,7 +233,8 @@ public class Teleport : MonoBehaviour
             if (fillCount >= 100)
             {
                 Geekplay.Instance.PlayerData.Coins += 100;
-                _timerScript.StopTimer = true;
+                _timerScript.StopTimer();
+                _timerScript.FinishTime();
             }
             coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
             Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] += 1;
@@ -251,7 +251,7 @@ public class Teleport : MonoBehaviour
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
-    public void EndBrake(bool bb)
+    public void EndBrake()
     {
         mustBrake = false;
     }

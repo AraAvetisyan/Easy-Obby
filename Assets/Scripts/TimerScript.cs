@@ -9,131 +9,123 @@ public class TimerScript : MonoBehaviour
     public float Seconds;
     public float Minutes;
 
-    public bool StopTimer;
-    [SerializeField] private bool runningMode, bicycleMode, carMode;
     [SerializeField] private TextMeshProUGUI finalBestTimerText;
     private int stopCounter;
-    private void Start()
+    private float timer = 0f;
+    private bool isRunning = true;
+    [SerializeField] private TextMeshProUGUI finalText;
+    void Start()
     {
-        Continue();
-        StartCoroutine(UpdateTimer());
-        var culture = new CultureInfo("en-EN");
-        if (Minutes < 10)
+        // Загружаем сохраненное время при старте игры
+        LoadTime();
+    }
+
+    void Update()
+    {
+        if (isRunning)
         {
-            if (Seconds < 10)
-            {
-                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex].ToString("F2", culture);
-            }
-            else
-            {
-                finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex].ToString("F2", culture);
-            }
-        }
-        if (Minutes >= 10)
-        {
-            if (Seconds < 10)
-            {
-                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex].ToString("F2", culture);
-            }
-            else
-            {
-                finalBestTimerText.text = Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex].ToString("F2", culture);
-            }
+            timer += Time.deltaTime;
+            DisplayTime(timer);
         }
     }
-    public void Continue()
+
+    void DisplayTime(float timeToDisplay)
     {
-        if (MainMenuUI.Instance.Continue)
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        float milliseconds = Mathf.FloorToInt((timeToDisplay * 100) % 100);
+
+        timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, (int)milliseconds);
+    }
+
+    // Сохранение времени в PlayerPrefs
+    public void SaveTime()
+    {
+        float totalMinutes = Mathf.FloorToInt(timer / 60);
+        float totalSeconds = Mathf.FloorToInt(timer % 60);
+        float totalMilliseconds = Mathf.FloorToInt((timer * 100) % 100);
+
+        Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = totalMinutes;
+        Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = totalSeconds;
+        Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = totalMilliseconds;
+        Geekplay.Instance.Save();
+    }
+    public void FinishTime()
+    {
+        if(Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] == 0 && Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] == 0)
         {
-            Minutes = Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex];
-            Seconds = Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+            Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex];
+            Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+            Geekplay.Instance.PlayerData.BestMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+            finalText.text = string.Format("{0:00}:{1:00}:{2:00}", Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex], Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex], (int)Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex]);
+
+        }
+        if (Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] > Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex])
+        {
+            Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex];
+            Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+            Geekplay.Instance.PlayerData.BestMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+            finalText.text = string.Format("{0:00}:{1:00}:{2:00}", Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex], Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex], (int)Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex]);
+
+        }
+        if (Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] == Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex])
+        {
+            if (Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] > Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex])
+            {
+                Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex];
+                Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+                Geekplay.Instance.PlayerData.BestMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+                finalText.text = string.Format("{0:00}:{1:00}:{2:00}", Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex], Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex], (int)Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex]);
+
+            }
+        }
+        if (Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] == Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex])
+        {
+            if (Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] == Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex])
+            {
+                if (Geekplay.Instance.PlayerData.BestMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex] > Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex])
+                {
+                    Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex];
+                    Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+                    Geekplay.Instance.PlayerData.BestMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+
+                    finalText.text = string.Format("{0:00}:{1:00}:{2:00}", Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex], Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex], (int)Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex]);
+                }
+            }
+        }
+        if(Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] > Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex])
+        {
+            finalText.text = string.Format("{0:00}:{1:00}:{2:00}", Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex], Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex], (int)Geekplay.Instance.PlayerData.BestMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex]);
+
+        }
+        Geekplay.Instance.Save();
+    }
+    // Загрузка времени из PlayerPrefs
+    public void LoadTime()
+    {
+        if (Geekplay.Instance.PlayerData.IsContinue[Geekplay.Instance.PlayerData.MapIndex] == true)
+        {
+            float savedMinutes = Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex];
+            float savedSeconds = Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+            float savedMilliseconds = Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
+
+            // Рассчитываем полное сохраненное время в секундах
+            timer = (savedMinutes * 60) + savedSeconds + (savedMilliseconds / 100);
+        }
+        else
+        {
+            timer = 0f;  // Если сохранений нет, начинаем с нуля
         }
     }
-    private void Update()
+
+    public void StartTimer()
     {
-        if (StopTimer && stopCounter == 0)
-        {
-            Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex];
-            Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex];
-            var culture = new CultureInfo("en-EN");
-            stopCounter = 1;
-            if (Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] > Minutes)
-            {
-                Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = Minutes;
-                Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Seconds;
-            }
-            if (Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] == Minutes)
-            {
-                if (Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] > Seconds)
-                {
-                    Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Seconds;
-                }
-            }
-            if (Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] == 0 && Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] == 0)
-            {
-                Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = Minutes;
-                Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = Seconds;
-            }
-            Geekplay.Instance.Save();
-            if (Minutes < 10)
-            {
-                if (Seconds < 10)
-                {
-                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex].ToString("F2", culture);
-                }
-                else
-                {
-                    finalBestTimerText.text = "0" + Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex].ToString("F2", culture);
-                }
-            }
-            else
-            {
-                if (Seconds < 10)
-                {
-                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex].ToString() + "." + "0" + Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex].ToString("F2", culture);
-                }
-                else
-                {
-                    finalBestTimerText.text = Geekplay.Instance.PlayerData.BestMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex].ToString() + "." + Geekplay.Instance.PlayerData.BestMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex].ToString("F2", culture);
-                }
-            }
-        }      
+        isRunning = true;
     }
-    private IEnumerator UpdateTimer()
+
+    public void StopTimer()
     {
-        while (!StopTimer)
-        {
-            Seconds += 0.01f;
-            UpdateTimer();
-            yield return new WaitForSeconds(0.01f);
-            if(Seconds >= 60)
-            {
-                Seconds = 0;
-                Minutes++;
-            }
-            var culture = new CultureInfo("en-EN");
-            if (Minutes < 10)
-            {
-                if (Seconds < 10)
-                {
-                    timerText.text = "0" + Minutes.ToString() + "." + "0" + Seconds.ToString("F2", culture);
-                }
-                else
-                {
-                    timerText.text = "0" + Minutes.ToString() + "." + Seconds.ToString("F2", culture);
-                }
-            }
-            else
-            {
-                if (Seconds < 10)
-                {
-                    timerText.text = Minutes.ToString() + "." + "0" + Seconds.ToString("F2", culture);
-                }
-                else
-                {
-                    timerText.text = Minutes.ToString() + "." + Seconds.ToString("F2", culture);
-                }
-            }           
-        }
+        isRunning = false;
+        SaveTime();  // Сохраняем время при остановке таймера
     }
 }

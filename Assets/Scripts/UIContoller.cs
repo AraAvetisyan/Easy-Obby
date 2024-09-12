@@ -9,9 +9,7 @@ public class UIContoller : MonoBehaviour
     [SerializeField] private TimerScript _timerScript;
     public void PressedHome()
     {
-
-        Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = _timerScript.Minutes;
-        Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = _timerScript.Seconds;
+        _timerScript.SaveTime();
         Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Exit Level");
         Geekplay.Instance.Save();
         SceneManager.LoadScene("MainMenu");
@@ -26,6 +24,7 @@ public class UIContoller : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
+            Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
         }
