@@ -18,10 +18,12 @@ public class SprintButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUp
         if (_playerController.IsGrounded)
         {
             SprintSpeed = SprintSpeedMultiplier;
+            _playerController.IsSprint = true;
         }
     }
     public void OnPointerUp(PointerEventData eventData)
     {
         SprintSpeed = 1f;
+        _playerController.IsSprint = false;
     }
 }

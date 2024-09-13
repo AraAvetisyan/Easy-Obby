@@ -3869,7 +3869,7 @@ MonoBehaviour:
     cameraSwitchView: []
     springs: 25000
     dampers: 1500
-    carPower: 120
+    carPower: 90
     shiftPower: 150
     brakePower: 20000
     shiftCentre: {x: 0, y: -0.8, z: 0}

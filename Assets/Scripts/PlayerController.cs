@@ -20,12 +20,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool gamemodeBicycle;
     [SerializeField] private bool isMobile;
     public bool Jumping;
+    public bool IsFalling;
+    public bool IsSprint;
     [SerializeField] private List<GameObject> graundObjects;
     public bool IsGrounded;
     public Animator Animator;
     private int stopCounter;
     [SerializeField] private GameObject finalPanel;
-
+    [SerializeField] private GameObject[] trails;
     float currentRotation;
     private void OnEnable()
     {
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Geekplay.Instance.PlayerData.MapIndex == 0 || Geekplay.Instance.PlayerData.MapIndex == 1 || Geekplay.Instance.PlayerData.MapIndex == 5 || Geekplay.Instance.PlayerData.MapIndex == 6)
+        if (Geekplay.Instance.PlayerData.MapIndex == 0 || Geekplay.Instance.PlayerData.MapIndex == 1 || Geekplay.Instance.PlayerData.MapIndex == 2 || Geekplay.Instance.PlayerData.MapIndex == 3)
         {
             if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
             {
@@ -60,43 +62,6 @@ public class PlayerController : MonoBehaviour
                 finalPanel.SetActive(true);
             }
         }
-
-        //if (Geekplay.Instance.PlayerData.MapIndex == 1)
-        //{
-        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
-        //    {
-        //        stopCounter = 1;
-        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
-        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
-        //        Geekplay.Instance.Save();
-        //        moveSpeed = 0;
-        //        finalPanel.SetActive(true);
-        //    }
-        //}
-        //if (Geekplay.Instance.PlayerData.MapIndex == 5)
-        //{
-        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
-        //    {
-        //        stopCounter = 1;
-        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
-        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
-        //        Geekplay.Instance.Save();
-        //        moveSpeed = 0;
-        //        finalPanel.SetActive(true);
-        //    }
-        //}
-        //if (Geekplay.Instance.PlayerData.MapIndex == 6)
-        //{
-        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
-        //    {
-        //        stopCounter = 1;
-        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 34;
-        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
-        //        Geekplay.Instance.Save();
-        //        moveSpeed = 0;
-        //        finalPanel.SetActive(true);
-        //    }
-        //}
 
         if (Geekplay.Instance.PlayerData.MapIndex == 2 || Geekplay.Instance.PlayerData.MapIndex == 3 || Geekplay.Instance.PlayerData.MapIndex == 7 || Geekplay.Instance.PlayerData.MapIndex == 8)
         {
@@ -110,42 +75,7 @@ public class PlayerController : MonoBehaviour
                 finalPanel.SetActive(true);
             }
         }
-        //if (Geekplay.Instance.PlayerData.MapIndex == 3)
-        //{
-        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
-        //    {
-        //        stopCounter = 1;
-        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
-        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
-        //        Geekplay.Instance.Save();
-        //        moveSpeed = 0;
-        //        finalPanel.SetActive(true);
-        //    }
-        //}
-        //if (Geekplay.Instance.PlayerData.MapIndex == 7)
-        //{
-        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
-        //    {
-        //        stopCounter = 1;
-        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
-        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
-        //        Geekplay.Instance.Save();
-        //        moveSpeed = 0;
-        //        finalPanel.SetActive(true);
-        //    }
-        //}
-        //if (Geekplay.Instance.PlayerData.MapIndex == 8)
-        //{
-        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 50 && stopCounter == 0)
-        //    {
-        //        stopCounter = 1;
-        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 50;
-        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
-        //        Geekplay.Instance.Save();
-        //        moveSpeed = 0;
-        //        finalPanel.SetActive(true);
-        //    }
-        //}
+       
 
         if (Geekplay.Instance.PlayerData.MapIndex == 4 || Geekplay.Instance.PlayerData.MapIndex == 9)
         {
@@ -159,18 +89,6 @@ public class PlayerController : MonoBehaviour
                 finalPanel.SetActive(true);
             }
         }
-        //if (Geekplay.Instance.PlayerData.MapIndex == 9)
-        //{
-        //    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 100 && stopCounter == 0 || Geekplay.Instance.PlayerData.MapIndex == 10)
-        //    {
-        //        stopCounter = 1;
-        //        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 100;
-        //        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 1;
-        //        Geekplay.Instance.Save();
-        //        moveSpeed = 0;
-        //        finalPanel.SetActive(true);
-        //    }
-        //}
     }
     public void FixedUpdate()
     {
@@ -210,13 +128,40 @@ public class PlayerController : MonoBehaviour
         }
         if (gamemodeRunning)
         {
-            if (CurrentSpeed > 0)
+            if (CurrentSpeed > 0 && !IsSprint && !IsFalling)
             {
                 Animator.SetBool("IsRunning", true);
             }
-            if (CurrentSpeed == 0)
+            if (CurrentSpeed == 0 && !IsFalling)
             {
                 Animator.SetBool("IsRunning", false);
+            }
+
+            if (IsSprint && CurrentSpeed > 0 && !IsFalling)
+            {
+                Animator.SetBool("IsSprint", true);
+                Animator.SetBool("IsRunning", false);
+                for(int i = 0; i<trails.Length; i++)
+                {
+                    trails[i].SetActive(true);
+                }
+            }
+            if (!IsSprint || CurrentSpeed == 0)
+            {
+                Animator.SetBool("IsSprint", false);
+                for (int i = 0; i < trails.Length; i++)
+                {
+                    trails[i].SetActive(false);
+                }
+            }
+
+            if (IsFalling)
+            {
+                Animator.SetBool("IsFalling", true);
+            }
+            else
+            {
+                Animator.SetBool("IsFalling", false);
             }
         }
 

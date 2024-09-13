@@ -25,7 +25,7 @@ public class Analytics : MonoBehaviour
 
     void Start()
     {
-        GameAnalytics.Initialize();
+      // GameAnalytics.Initialize();
     }
 
     public void SendEvent(string eventStr)
@@ -35,17 +35,13 @@ public class Analytics : MonoBehaviour
         {
             try
             {
-                GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, eventStr);
-                //AppMetrica.Instance.ReportEvent(eventStr);
+                //GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, eventStr);
+                AppMetrica.Instance.ReportEvent(eventStr);
             }
             catch (Exception e)
             {
-
+                Debug.Log(e);
             }
-        }
-        else
-        {
-            Debug.Log("????????? ?????:" + eventStr);
         }
     }
 }

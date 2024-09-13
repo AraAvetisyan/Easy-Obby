@@ -39,39 +39,39 @@ public class MainMenuUI : MonoBehaviour
 
         if (Geekplay.Instance.PlayerData.SaveProgressLevels == null)
         {
-            Geekplay.Instance.PlayerData.SaveProgressLevels = new int[15];
+            Geekplay.Instance.PlayerData.SaveProgressLevels = new int[6];
         }
         if (Geekplay.Instance.PlayerData.SaveProgressMenuLevels == null)
         {
-            Geekplay.Instance.PlayerData.SaveProgressMenuLevels = new int[15];
+            Geekplay.Instance.PlayerData.SaveProgressMenuLevels = new int[6];
         }
         if (Geekplay.Instance.PlayerData.FillAmountLevels == null)
         {
-            Geekplay.Instance.PlayerData.FillAmountLevels = new float[15];
+            Geekplay.Instance.PlayerData.FillAmountLevels = new float[6];
         }
         if (Geekplay.Instance.PlayerData.BestMapMinutesLevels == null)
         {
-            Geekplay.Instance.PlayerData.BestMapMinutesLevels = new float[15];
+            Geekplay.Instance.PlayerData.BestMapMinutesLevels = new float[6];
         }
         if (Geekplay.Instance.PlayerData.BestMapSecondsLevels == null)
         {
-            Geekplay.Instance.PlayerData.BestMapSecondsLevels = new float[15];
+            Geekplay.Instance.PlayerData.BestMapSecondsLevels = new float[6];
         }
         if (Geekplay.Instance.PlayerData.BestMapMilisecondsLevels == null)
         {
-            Geekplay.Instance.PlayerData.BestMapMilisecondsLevels = new float[15];
+            Geekplay.Instance.PlayerData.BestMapMilisecondsLevels = new float[6];
         }
         if (Geekplay.Instance.PlayerData.CurrentMapMinutesLevels == null)
         {
-            Geekplay.Instance.PlayerData.CurrentMapMinutesLevels = new float[15];
+            Geekplay.Instance.PlayerData.CurrentMapMinutesLevels = new float[6];
         }
         if (Geekplay.Instance.PlayerData.CurrentMapSecondsLevels == null)
         {
-            Geekplay.Instance.PlayerData.CurrentMapSecondsLevels = new float[15];
+            Geekplay.Instance.PlayerData.CurrentMapSecondsLevels = new float[6];
         }
         if (Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels == null)
         {
-            Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels = new float[15];
+            Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels = new float[6];
         }
         if (Geekplay.Instance.PlayerData.Rotation == null)
         {
@@ -159,13 +159,15 @@ public class MainMenuUI : MonoBehaviour
         Continue = true;
         Geekplay.Instance.PlayerData.IsContinue[Geekplay.Instance.PlayerData.MapIndex] = true;
 
-        if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 100)
+        if (Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] >= 100)
         {
             Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
+            Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
+            Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] = 0;
         }
         ContinueGame?.Invoke(true);
         SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
@@ -180,6 +182,7 @@ public class MainMenuUI : MonoBehaviour
         Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
         Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
         Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
+        Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] = 0;
         Geekplay.Instance.Save();
         NewGame?.Invoke(true);
         SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);

@@ -500,7 +500,7 @@ public class VehicleControl : MonoBehaviour
 
             }
         }
-        if (Geekplay.Instance.PlayerData.MapIndex == 10)
+        if (Geekplay.Instance.PlayerData.MapIndex == 4)
         {
             if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
             {
@@ -513,7 +513,7 @@ public class VehicleControl : MonoBehaviour
                 finalPanel.SetActive(true);
             }
         }
-        if (Geekplay.Instance.PlayerData.MapIndex == 11)
+        if (Geekplay.Instance.PlayerData.MapIndex == 5)
         {
             if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
             {
@@ -1192,10 +1192,10 @@ public class VehicleControl : MonoBehaviour
        // CarButtons.instance.DownEngine.GetComponent<HelicopterButton>().TranslatingFloat = -1f;
       //  CarButtons.instance.DownEngine.GetComponent<HelicopterButton>().ActionOnHold += Brake;
 
-        CarButtons.instance.GoLeft.GetComponent<HelicopterButton>().TranslatingFloat = -1f;
+        CarButtons.instance.GoLeft.GetComponent<HelicopterButton>().TranslatingFloat = -2f;
         CarButtons.instance.GoLeft.GetComponent<HelicopterButton>().ActionOnHold += GoLeftAndRight;
 
-        CarButtons.instance.GoRight.GetComponent<HelicopterButton>().TranslatingFloat = 1f;
+        CarButtons.instance.GoRight.GetComponent<HelicopterButton>().TranslatingFloat = 2f;
         CarButtons.instance.GoRight.GetComponent<HelicopterButton>().ActionOnHold += GoLeftAndRight;
 
 

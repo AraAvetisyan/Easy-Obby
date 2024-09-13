@@ -128,4 +128,8 @@ public class TimerScript : MonoBehaviour
         isRunning = false;
         SaveTime();  // Сохраняем время при остановке таймера
     }
+    private void OnApplicationQuit()
+    {
+        SaveTime();
+    }
 }

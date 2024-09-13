@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class Teleport : MonoBehaviour
 { 
     [SerializeField] private TimerScript _timerScript;
+    [SerializeField] private PlayerController _playerController;
     [SerializeField] private Transform tp;
     [SerializeField] private Transform[] allTP;
     [SerializeField] private Image fillImage;
@@ -26,7 +27,6 @@ public class Teleport : MonoBehaviour
     [SerializeField] private TextMeshProUGUI diamondsText;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private VehicleControl _vehicleControl;
-
 
 
     [SerializeField] private bool isTest;
@@ -171,8 +171,21 @@ public class Teleport : MonoBehaviour
             right = false;
             left = true;
         }
+
+        if (other.gameObject.CompareTag("ToTeleport"))
+        {
+            if (gamemodeRunning)
+            {
+                Debug.Log("Stexic");
+                _playerController.IsFalling = true;
+            }
+        }
         if (other.CompareTag("Teleport"))
         {
+            if (gamemodeRunning)
+            {
+                _playerController.IsFalling = false;
+            }
             transform.position = tp.position;
             if (front)
             {
@@ -245,7 +258,7 @@ public class Teleport : MonoBehaviour
             Geekplay.Instance.Save();
 
 
-            Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Checkpoint " + Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex]);
+            Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "Checkpoint" + Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex]);
 
 
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -309,6 +322,7 @@ public class Teleport : MonoBehaviour
         if (other.gameObject.CompareTag("Teleport"))
         {
             transform.position = tp.position;
+           
         }
     }   
 }

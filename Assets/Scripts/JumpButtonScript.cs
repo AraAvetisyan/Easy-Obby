@@ -21,7 +21,8 @@ public class JumpButtonScript : MonoBehaviour, IPointerDownHandler
         {
             _playerController.IsGrounded = false;
             //rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-            rb.AddForce(jumpForce * player.transform.up);
+             rb.AddForce(jumpForce * player.transform.up);
+          //  player.transform.Translate(transform.up * jumpForce * Time.deltaTime, Space.World);
             _playerController.Jumping = true;
             if (gamemodeRunning)
             {
