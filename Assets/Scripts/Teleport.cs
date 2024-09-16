@@ -176,7 +176,6 @@ public class Teleport : MonoBehaviour
         {
             if (gamemodeRunning)
             {
-                Debug.Log("Stexic");
                 _playerController.IsFalling = true;
             }
         }

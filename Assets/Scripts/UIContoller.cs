@@ -28,11 +28,12 @@ public class UIContoller : MonoBehaviour
             Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex + 1] = 0;
             Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex + 1] = 0;
             Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex + 1] = 0;
+            Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex + 1] = 0;
         }
         Geekplay.Instance.PlayerData.MapIndex += 1;
 
         Geekplay.Instance.Save();
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
     }
 }

@@ -3630,6 +3630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timerScript: {fileID: 256549533}
+  _playerController: {fileID: 0}
   tp: {fileID: 1309634239}
   allTP:
   - {fileID: 1309634239}
@@ -68339,7 +68340,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 2}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1706072602
 MonoBehaviour:
@@ -78698,6 +78699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timerScript: {fileID: 256549533}
+  _playerController: {fileID: 0}
   tp: {fileID: 1309634239}
   allTP:
   - {fileID: 1309634239}

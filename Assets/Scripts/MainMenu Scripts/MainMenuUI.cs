@@ -39,39 +39,39 @@ public class MainMenuUI : MonoBehaviour
 
         if (Geekplay.Instance.PlayerData.SaveProgressLevels == null)
         {
-            Geekplay.Instance.PlayerData.SaveProgressLevels = new int[6];
+            Geekplay.Instance.PlayerData.SaveProgressLevels = new int[15];
         }
         if (Geekplay.Instance.PlayerData.SaveProgressMenuLevels == null)
         {
-            Geekplay.Instance.PlayerData.SaveProgressMenuLevels = new int[6];
+            Geekplay.Instance.PlayerData.SaveProgressMenuLevels = new int[15];
         }
         if (Geekplay.Instance.PlayerData.FillAmountLevels == null)
         {
-            Geekplay.Instance.PlayerData.FillAmountLevels = new float[6];
+            Geekplay.Instance.PlayerData.FillAmountLevels = new float[15];
         }
         if (Geekplay.Instance.PlayerData.BestMapMinutesLevels == null)
         {
-            Geekplay.Instance.PlayerData.BestMapMinutesLevels = new float[6];
+            Geekplay.Instance.PlayerData.BestMapMinutesLevels = new float[15];
         }
         if (Geekplay.Instance.PlayerData.BestMapSecondsLevels == null)
         {
-            Geekplay.Instance.PlayerData.BestMapSecondsLevels = new float[6];
+            Geekplay.Instance.PlayerData.BestMapSecondsLevels = new float[15];
         }
         if (Geekplay.Instance.PlayerData.BestMapMilisecondsLevels == null)
         {
-            Geekplay.Instance.PlayerData.BestMapMilisecondsLevels = new float[6];
+            Geekplay.Instance.PlayerData.BestMapMilisecondsLevels = new float[15];
         }
         if (Geekplay.Instance.PlayerData.CurrentMapMinutesLevels == null)
         {
-            Geekplay.Instance.PlayerData.CurrentMapMinutesLevels = new float[6];
+            Geekplay.Instance.PlayerData.CurrentMapMinutesLevels = new float[15];
         }
         if (Geekplay.Instance.PlayerData.CurrentMapSecondsLevels == null)
         {
-            Geekplay.Instance.PlayerData.CurrentMapSecondsLevels = new float[6];
+            Geekplay.Instance.PlayerData.CurrentMapSecondsLevels = new float[15];
         }
         if (Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels == null)
         {
-            Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels = new float[6];
+            Geekplay.Instance.PlayerData.CurrentMapMilisecondsLevels = new float[15];
         }
         if (Geekplay.Instance.PlayerData.Rotation == null)
         {

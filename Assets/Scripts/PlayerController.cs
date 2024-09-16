@@ -19,9 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool gamemodeRunning;
     [SerializeField] private bool gamemodeBicycle;
     [SerializeField] private bool isMobile;
-    public bool Jumping;
     public bool IsFalling;
     public bool IsSprint;
+    public bool IsJumping;
     [SerializeField] private List<GameObject> graundObjects;
     public bool IsGrounded;
     public Animator Animator;
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Geekplay.Instance.PlayerData.MapIndex == 0 || Geekplay.Instance.PlayerData.MapIndex == 1 || Geekplay.Instance.PlayerData.MapIndex == 2 || Geekplay.Instance.PlayerData.MapIndex == 3)
+        if (Geekplay.Instance.PlayerData.MapIndex == 0 || Geekplay.Instance.PlayerData.MapIndex == 1 || Geekplay.Instance.PlayerData.MapIndex == 5 || Geekplay.Instance.PlayerData.MapIndex == 6)
         {
             if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
             {
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
                 finalPanel.SetActive(true);
             }
         }
-       
+
 
         if (Geekplay.Instance.PlayerData.MapIndex == 4 || Geekplay.Instance.PlayerData.MapIndex == 9)
         {
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
         CurrentSpeed = Mathf.SmoothDamp(CurrentSpeed, targertSpeed, ref speedVelocity, smootSpeedTimer);
 
         transform.Translate(transform.forward * CurrentSpeed * Time.deltaTime, Space.World);
-        if (IsGrounded && rb.velocity != Vector3.zero && !Jumping)
+        if (IsGrounded && rb.velocity != Vector3.zero && !IsJumping)
         {
             rb.velocity = Vector3.zero;
         }
@@ -125,6 +125,25 @@ public class PlayerController : MonoBehaviour
         else
         {
             IsGrounded = false;
+        }
+        if (gamemodeBicycle)
+        {
+            if (IsSprint && CurrentSpeed > 0 && !IsFalling)
+            {
+                for (int i = 0; i < trails.Length; i++)
+                {
+                    trails[i].SetActive(true);
+                }
+            }
+            if (!IsSprint || CurrentSpeed == 0)
+            {
+                
+                for (int i = 0; i < trails.Length; i++)
+                {
+                    trails[i].SetActive(false);
+                }
+            }
+
         }
         if (gamemodeRunning)
         {
@@ -141,7 +160,7 @@ public class PlayerController : MonoBehaviour
             {
                 Animator.SetBool("IsSprint", true);
                 Animator.SetBool("IsRunning", false);
-                for(int i = 0; i<trails.Length; i++)
+                for (int i = 0; i < trails.Length; i++)
                 {
                     trails[i].SetActive(true);
                 }
@@ -167,21 +186,16 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
    
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            rb.velocity = Vector3.zero;
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
             graundObjects.Add(other.gameObject);
-            
+
         }
+
     }
     private void OnTriggerExit(Collider other)
     {
