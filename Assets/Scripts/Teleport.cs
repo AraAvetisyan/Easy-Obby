@@ -215,12 +215,6 @@ public class Teleport : MonoBehaviour
 
         if (other.CompareTag("TeleportPoint"))
         {
-            if (gamemodeRunning)
-            {
-                coinMeshCounter++;
-                coinMeshes[coinMeshCounter].enabled = false;
-                teleportParticles[coinMeshCounter].SetActive(true);
-            }
             if (gamemodeBicycle)
             {
                 coinMeshCounter++;
@@ -241,14 +235,12 @@ public class Teleport : MonoBehaviour
             fillCount += fillCountTest;
             fillImage.fillAmount += fillAmountTest;
             fillText.text = fillCount.ToString() + "%";
-            Geekplay.Instance.PlayerData.Coins += 1;
             if (fillCount >= 100)
             {
                 Geekplay.Instance.PlayerData.Coins += 100;
                 _timerScript.StopTimer();
                 _timerScript.FinishTime();
             }
-            coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
             Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] += 1;
             Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] += progressCountTest;
             Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] += fillAmountTest;

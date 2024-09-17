@@ -1480,6 +1480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timerScript: {fileID: 256549533}
+  _playerController: {fileID: 0}
   tp: {fileID: 1309634239}
   allTP:
   - {fileID: 1309634239}
@@ -1711,7 +1712,7 @@ MonoBehaviour:
   left: 0
   right: 0
   carObject: {fileID: 0}
-  mustBreak: 0
+  mustBrake: 0
 --- !u!114 &111055851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1783,7 +1784,7 @@ MonoBehaviour:
     dampers: 1500
     carPower: 120
     shiftPower: 150
-    brakePower: 20000
+    brakePower: 200000
     shiftCentre: {x: 0, y: -0.8, z: 0}
     maxSteerAngle: 25
     shiftDownRPM: 1500
@@ -1800,6 +1801,7 @@ MonoBehaviour:
     - 2.5
     LimitBackwardSpeed: 30
     LimitForwardSpeed: 100
+  steer: 0
   accel: 0
   brake: 0
   curTorque: 100
@@ -1816,6 +1818,7 @@ MonoBehaviour:
   MobileInput: 0
   CarQuit: 0
   finalPanel: {fileID: 1706072600}
+  _teleport: {fileID: 0}
 --- !u!54 &111055853
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3737,6 +3740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPressed: 0
   TranslatingFloat: 0
+  _teleport: {fileID: 0}
 --- !u!114 &232934003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4061,11 +4065,8 @@ MonoBehaviour:
   timerText: {fileID: 256549534}
   Seconds: 0
   Minutes: 0
-  StopTimer: 0
-  runningMode: 0
-  bicycleMode: 0
-  carMode: 1
   finalBestTimerText: {fileID: 619469588}
+  finalText: {fileID: 0}
 --- !u!114 &256549534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4721,6 +4722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPressed: 0
   TranslatingFloat: 0
+  _teleport: {fileID: 0}
 --- !u!114 &295610807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9366,6 +9368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPressed: 0
   TranslatingFloat: 0
+  _teleport: {fileID: 0}
 --- !u!114 &591366761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41797,6 +41800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPressed: 0
   TranslatingFloat: 0
+  _teleport: {fileID: 0}
 --- !u!114 &1935705736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42901,6 +42905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timerScript: {fileID: 256549533}
+  _playerController: {fileID: 0}
   tp: {fileID: 1309634239}
   allTP:
   - {fileID: 1309634239}
@@ -43132,7 +43137,7 @@ MonoBehaviour:
   left: 0
   right: 0
   carObject: {fileID: 0}
-  mustBreak: 0
+  mustBrake: 0
 --- !u!1 &1981410221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5681936383310860492, guid: 7629da1901248bc49b02c95f7524fc8d, type: 3}
