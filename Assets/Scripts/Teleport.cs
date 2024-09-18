@@ -35,6 +35,7 @@ public class Teleport : MonoBehaviour
     [SerializeField] private int progressCountTest;
 
     [SerializeField] private GameObject[] teleportParticles;
+    [SerializeField] private GameObject[] teleportObjects;
     [SerializeField] private MeshRenderer[] coinMeshes;
     [SerializeField] private MeshRenderer[] startLines;
     [SerializeField] private MeshRenderer[] flagMeshes, cloatMeshes;
@@ -215,44 +216,57 @@ public class Teleport : MonoBehaviour
 
         if (other.CompareTag("TeleportPoint"))
         {
-            if (gamemodeBicycle)
+            for (int i = 0; i < teleportObjects.Length; i++)
             {
-                coinMeshCounter++;
-                flagMeshes[coinMeshCounter].enabled = false;
-                cloatMeshes[coinMeshCounter].enabled = false;
-                teleportParticles[coinMeshCounter].SetActive(true);
+                if (other.name == teleportObjects[i].name)
+                {
+                    if (gamemodeRunning)
+                    {
+                        coinMeshes[i].enabled = false;
+                    }
+                    if (gamemodeBicycle)
+                    {
+                        flagMeshes[i].enabled = false;
+                        cloatMeshes[i].enabled = false;
+                        teleportParticles[i].SetActive(true);
+                    }
+                    if (gamemodeCar)
+                    {
+                        startLines[i].enabled = false;
+                        teleportParticles[i].SetActive(true);
+                    }
+                    other.GetComponent<BoxCollider>().enabled = false;
+                    teleportParticles[i].SetActive(true);
+
+                    if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] < i)
+                    {
+
+                        tp = other.gameObject.transform;
+                        fillCount = i * fillCountTest;
+                        fillImage.fillAmount = i * fillAmountTest;
+                        Geekplay.Instance.PlayerData.Coins += 1;
+                        coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
+                        Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = i;
+                        Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] = fillCount;
+                        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = fillImage.fillAmount;
+                        Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = _timerScript.Minutes;
+                        Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = _timerScript.Seconds;
+                        Geekplay.Instance.Save();
+                        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "Checkpoint" + Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex]);
+                        Debug.Log(SceneManager.GetActiveScene().name + "Checkpoint" + Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex]);
+                        if (fillCount >= 100)
+                        {
+                            Geekplay.Instance.PlayerData.Coins += 100;
+                            _timerScript.StopTimer();
+                            _timerScript.FinishTime();
+                        }
+
+                        fillText.text = fillCount.ToString() + "%";
+                    }
+                }
             }
-            if (gamemodeCar)
-            {
-                coinMeshCounter++;
-                startLines[coinMeshCounter].enabled = false;
-                teleportParticles[coinMeshCounter].SetActive(true);
-            }
 
-
-            tp = other.gameObject.transform;
-
-            fillCount += fillCountTest;
-            fillImage.fillAmount += fillAmountTest;
-            fillText.text = fillCount.ToString() + "%";
-            if (fillCount >= 100)
-            {
-                Geekplay.Instance.PlayerData.Coins += 100;
-                _timerScript.StopTimer();
-                _timerScript.FinishTime();
-            }
-            Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] += 1;
-            Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] += progressCountTest;
-            Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] += fillAmountTest;
-            Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = _timerScript.Minutes;
-            Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = _timerScript.Seconds;
-            Geekplay.Instance.Save();
-
-
-            Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "Checkpoint" + Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex]);
-
-
-            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+           
         }
     }
     public void EndBrake()

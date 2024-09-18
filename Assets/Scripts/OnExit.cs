@@ -6,6 +6,6 @@ public class OnExit : MonoBehaviour
 {
     private void OnApplicationQuit()
     {
-        Analytics.instance.SendEvent("Application Quit");
+        Analytics.instance.SendEvent("ApplicationQuit");
     }
 }

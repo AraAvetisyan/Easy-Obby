@@ -29,27 +29,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject finalPanel;
     [SerializeField] private GameObject[] trails;
     float currentRotation;
-    private void OnEnable()
-    {
-        MainMenuUI.NewGame += NewGameAnal;
-        MainMenuUI.ContinueGame += ContinueGameAnal;
-    }
-    private void OnDisable()
-    {
-        MainMenuUI.NewGame -= NewGameAnal;
-        MainMenuUI.ContinueGame -= ContinueGameAnal;
-    }
-    public void NewGameAnal(bool bb)
-    {
-        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Start_New_Game");
-    }
-    public void ContinueGameAnal(bool bb)
-    {
-        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Continue_Game");
-    }
+    int anal;
+  
+  
 
     private void Update()
     {
+        if (anal == 0 && MainMenuUI.Instance.NewGame)
+        {
+            anal = 1;
+            Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "StartNewGame");
+            Debug.Log(SceneManager.GetActiveScene().name + "StartNewGame");
+        }
+        if (anal == 0 && MainMenuUI.Instance.ContinueGame)
+        {
+            anal = 1;
+            Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "ContinueGame");
+            Debug.Log(SceneManager.GetActiveScene().name + "ContinueGame");
+        }
+
         if (Geekplay.Instance.PlayerData.MapIndex == 0 || Geekplay.Instance.PlayerData.MapIndex == 1 || Geekplay.Instance.PlayerData.MapIndex == 5 || Geekplay.Instance.PlayerData.MapIndex == 6)
         {
             if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] >= 34 && stopCounter == 0)
@@ -121,6 +119,7 @@ public class PlayerController : MonoBehaviour
         if (graundObjects.Count > 0)
         {
             IsGrounded = true;
+            IsFalling = false;
         }
         else
         {

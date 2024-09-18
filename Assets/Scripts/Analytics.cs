@@ -31,17 +31,18 @@ public class Analytics : MonoBehaviour
     public void SendEvent(string eventStr)
     {
 
-        if (Geekplay.Instance.Platform != Platform.Editor)
-        {
+  //      if (Geekplay.Instance.Platform != Platform.Editor)
+    //    {
             try
             {
                 //GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, eventStr);
                 AppMetrica.Instance.ReportEvent(eventStr);
+                Debug.Log(eventStr);
             }
             catch (Exception e)
             {
                 Debug.Log(e);
             }
         }
-    }
+    //}
 }

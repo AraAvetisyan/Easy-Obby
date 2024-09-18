@@ -961,6 +961,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cebb7ea759bb740976b1ded7d8728b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NewGame: 0
+  ContinueGame: 0
   shopPanel: {fileID: 1545663737}
   coinsText: {fileID: 420819753}
   diamondsText: {fileID: 1422083299}
@@ -19755,7 +19757,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2019772678
 RectTransform:
   m_ObjectHideFlags: 0

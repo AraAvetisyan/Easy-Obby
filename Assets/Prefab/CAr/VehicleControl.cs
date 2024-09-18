@@ -235,6 +235,7 @@ public class VehicleControl : MonoBehaviour
     private int stopCounter;
     [SerializeField] private GameObject finalPanel;
     [SerializeField] private Teleport _teleport;
+    [SerializeField] private int anal;
     public class WheelComponent
     {
 
@@ -457,30 +458,27 @@ public class VehicleControl : MonoBehaviour
     {
         MyInitializeButtons();
     }
-    private void OnEnable()
-    {
-        MainMenuUI.NewGame += NewGameAnal;
-        MainMenuUI.ContinueGame += ContinueGameAnal;
-    }
-    private void OnDisable()
-    {
-        MainMenuUI.NewGame -= NewGameAnal;
-        MainMenuUI.ContinueGame -= ContinueGameAnal;
-    }
-    public void NewGameAnal(bool bb)
-    {
-        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Start_New_Game");
-    }
-    public void ContinueGameAnal(bool bb)
-    {
-        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Continue_Game");
-    }
+    
+  
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     void Update()
     {
+        if(anal == 0 && MainMenuUI.Instance.NewGame)
+        {
+            anal = 1; 
+            Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "StartNewGame");
+            Debug.Log(SceneManager.GetActiveScene().name + "StartNewGame");
+        }
+        if (anal == 0 && MainMenuUI.Instance.ContinueGame)
+        {
+            anal = 1;
+            Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "ContinueGame");
+            Debug.Log(SceneManager.GetActiveScene().name + "ContinueGame");
+        }
+
         if (CarQuit)
         {
             myRigidbody.velocity = myRigidbody.velocity / 1.009f;

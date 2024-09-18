@@ -6,6 +6,7 @@ public class SphereSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject spherePrefab;
     private GameObject sphere;
+    [SerializeField] private Material[] materials;
     void Start()
     {
         StartCoroutine(Spawn());
@@ -13,8 +14,11 @@ public class SphereSpawner : MonoBehaviour
 
     public IEnumerator Spawn()
     {
+        int mat = Random.RandomRange(0, materials.Length);
         yield return new WaitForSeconds(3);
+        
         sphere = Instantiate(spherePrefab,transform.position,transform.rotation);
+        sphere.GetComponent<MeshRenderer>().material = materials[mat];
         StartCoroutine(DestroyObject());
         StartCoroutine(Spawn());
     }

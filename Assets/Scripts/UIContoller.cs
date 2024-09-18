@@ -10,7 +10,7 @@ public class UIContoller : MonoBehaviour
     public void PressedHome()
     {
         _timerScript.SaveTime();
-        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + " Exit Level");
+        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "Exit Level");
         Geekplay.Instance.Save();
         SceneManager.LoadScene("MainMenu");
     }

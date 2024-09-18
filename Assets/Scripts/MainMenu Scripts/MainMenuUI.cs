@@ -10,8 +10,8 @@ using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour
 {
-    public static Action<bool> NewGame;
-    public static Action<bool> ContinueGame;
+    public bool NewGame;
+    public bool ContinueGame;
     public static MainMenuUI Instance;
     [SerializeField] private GameObject  shopPanel;
     [SerializeField] private TextMeshProUGUI coinsText;
@@ -169,7 +169,7 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
             Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] = 0;
         }
-        ContinueGame?.Invoke(true);
+        ContinueGame = true;
         SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
     }
     public void PressedNewGame()
@@ -184,7 +184,7 @@ public class MainMenuUI : MonoBehaviour
         Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
         Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] = 0;
         Geekplay.Instance.Save();
-        NewGame?.Invoke(true);
+        NewGame = true;
         SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
     }
     public void GameMenu(int LevelIndex)
