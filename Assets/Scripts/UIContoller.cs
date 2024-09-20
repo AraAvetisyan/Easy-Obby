@@ -7,16 +7,24 @@ public class UIContoller : MonoBehaviour
 {
     [SerializeField] private bool isRunningMode, isBicycleMode, isCarMode;
     [SerializeField] private TimerScript _timerScript;
+    [SerializeField] private AudioSource uiAudio;
+    private bool isHome;
     public void PressedHome()
     {
         _timerScript.SaveTime();
-        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "Exit Level");
+        Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "ExitLevel");
         Geekplay.Instance.Save();
-        SceneManager.LoadScene("MainMenu");
+        uiAudio.Play();
+        isHome = true;
+        StartCoroutine(LoadScene());
+        //  SceneManager.LoadScene("MainMenu");
     }
     public void PressedHomeFinal()
     {
-        SceneManager.LoadScene("MainMenu");
+        uiAudio.Play();
+        isHome = true;
+        StartCoroutine(LoadScene());
+        //   SceneManager.LoadScene("MainMenu"); 
     }
     public void PressedNext()
     {
@@ -33,7 +41,22 @@ public class UIContoller : MonoBehaviour
         Geekplay.Instance.PlayerData.MapIndex += 1;
 
         Geekplay.Instance.Save();
+        uiAudio.Play();
+        StartCoroutine(LoadScene());
+       // SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
 
-        SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
+    }
+
+    public IEnumerator LoadScene()
+    {
+        yield return new WaitForSeconds(0.3f);
+        if (!isHome)
+        {
+            SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }

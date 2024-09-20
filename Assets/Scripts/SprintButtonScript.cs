@@ -9,6 +9,7 @@ public class SprintButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUp
     public float SprintSpeed;
     [SerializeField] private float SprintSpeedMultiplier;
     [SerializeField] private PlayerController _playerController;
+    //[SerializeField] private AudioSource sprintAudio;
     private void Start()
     {
         SprintSpeed = 1;
@@ -19,6 +20,7 @@ public class SprintButtonScript : MonoBehaviour, IPointerDownHandler, IPointerUp
         {
             SprintSpeed = SprintSpeedMultiplier;
             _playerController.IsSprint = true;
+         //   sprintAudio.Play();
         }
     }
     public void OnPointerUp(PointerEventData eventData)

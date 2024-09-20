@@ -14,7 +14,8 @@ public class Teleport : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private Transform tp;
     [SerializeField] private Transform[] allTP;
-    [SerializeField] private Image fillImage;
+    [SerializeField] private Slider fillImage;
+    [SerializeField] private GameObject fillImageObject;
     [SerializeField] private int fillCount;
     [SerializeField] private TextMeshProUGUI fillText;
     [SerializeField] private bool gamemodeRunning;
@@ -46,9 +47,28 @@ public class Teleport : MonoBehaviour
     [SerializeField] private GameObject carObject;
     private Coroutine enumerator;
     public bool mustBrake;
+
+    [SerializeField] private GameObject[] parts;
+    [SerializeField] private GameObject playerObject;
+    [SerializeField] private GameObject bicycleObject;
+    [SerializeField] private Transform[] meshTransforms;
+    private Coroutine endEnumerator;
+    private bool isDead;
+
+    [SerializeField] private AudioSource checkpointAudio;
+    [SerializeField] private AudioSource deadAudio;
+    [SerializeField] private AudioSource finishAudio;
+
+
+    [SerializeField] private AudioSource[] carSounds;
+    int deadAudioCount;
     private void Start()
     {
-
+        for(int i = 0; i < parts.Length; i++)
+        {
+            meshTransforms[i].position = parts[i].transform.position;
+            meshTransforms[i].rotation = parts[i].transform.rotation;
+        }
         if (isTest)
         {
             fillAmountTest = 0.25f;
@@ -62,7 +82,11 @@ public class Teleport : MonoBehaviour
         fillAmount = Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex];
         fillCount = Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex];
         coinMeshCounter = Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex];
-        fillImage.fillAmount = fillAmount;
+        fillImage.value = fillAmount;
+        if(fillAmount == 0)
+        {
+            fillImageObject.SetActive(false);
+        }
         fillText.text = fillCount.ToString() + "%";
         if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] < allTP.Length)
         {
@@ -123,14 +147,10 @@ public class Teleport : MonoBehaviour
     private void OnEnable()
     {
         Rewarder.ChangeDiamond += ChangeDimondsText;
-
-
     }
     private void OnDisable()
     {
         Rewarder.ChangeDiamond -= ChangeDimondsText;
-        //HelicopterButton.StopBrake -= EndBrake;
-
     }
    
     public void ChangeDimondsText(bool bb)
@@ -180,13 +200,12 @@ public class Teleport : MonoBehaviour
                 _playerController.IsFalling = true;
             }
         }
-        if (other.CompareTag("Teleport"))
+        if (other.CompareTag("TeleportFalling"))
         {
             if (gamemodeRunning)
             {
                 _playerController.IsFalling = false;
             }
-            transform.position = tp.position;
             if (front)
             {
                 Quaternion targetRotation = Quaternion.Euler(0, 0, 0);
@@ -211,6 +230,53 @@ public class Teleport : MonoBehaviour
             if (gamemodeCar)
             {
                 StartCorutine();
+            }
+            transform.position = tp.position;
+            deadAudio.Play();
+        }
+        if (other.CompareTag("Teleport"))
+        {
+            if (!gamemodeCar)
+            {
+                if (!isDead)
+                {
+                    Destroy();
+                }
+            }
+            if (gamemodeRunning)
+            {
+                _playerController.IsFalling = false;
+            }
+            if (front)
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, 0, 0);
+                transform.rotation = targetRotation;
+            }
+            if (back)
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
+                transform.rotation = targetRotation;
+            }
+            if (right)
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, 90, 0);
+                transform.rotation = targetRotation;
+            }
+            if (left)
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, -90, 0);
+                transform.rotation = targetRotation;
+            }
+            rb.velocity = Vector3.zero;
+            if (gamemodeCar)
+            {
+                StartCorutine();
+                transform.position = tp.position;
+            }
+            if (deadAudioCount == 0)
+            {
+                deadAudioCount = 1;
+                deadAudio.Play();
             }
         }
 
@@ -237,18 +303,22 @@ public class Teleport : MonoBehaviour
                     }
                     other.GetComponent<BoxCollider>().enabled = false;
                     teleportParticles[i].SetActive(true);
-
+                    if (fillCount < 100)
+                    {
+                        checkpointAudio.Play();
+                    }
                     if (Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] < i)
                     {
 
                         tp = other.gameObject.transform;
                         fillCount = i * fillCountTest;
-                        fillImage.fillAmount = i * fillAmountTest;
+                        fillImageObject.SetActive(true);
+                        fillImage.value = i * fillAmountTest;
                         Geekplay.Instance.PlayerData.Coins += 1;
                         coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
                         Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = i;
                         Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] = fillCount;
-                        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = fillImage.fillAmount;
+                        Geekplay.Instance.PlayerData.FillAmountLevels[Geekplay.Instance.PlayerData.MapIndex] = fillImage.value;
                         Geekplay.Instance.PlayerData.CurrentMapMinutesLevels[Geekplay.Instance.PlayerData.MapIndex] = _timerScript.Minutes;
                         Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = _timerScript.Seconds;
                         Geekplay.Instance.Save();
@@ -256,9 +326,17 @@ public class Teleport : MonoBehaviour
                         Debug.Log(SceneManager.GetActiveScene().name + "Checkpoint" + Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex]);
                         if (fillCount >= 100)
                         {
+                            if (gamemodeCar)
+                            {
+                                for (int j = 0; j < carSounds.Length; j++)
+                                {
+                                    carSounds[j].enabled = false;
+                                }
+                            }
                             Geekplay.Instance.PlayerData.Coins += 100;
                             _timerScript.StopTimer();
                             _timerScript.FinishTime();
+                            finishAudio.Play();
                         }
 
                         fillText.text = fillCount.ToString() + "%";
@@ -266,7 +344,7 @@ public class Teleport : MonoBehaviour
                 }
             }
 
-           
+
         }
     }
     public void EndBrake()
@@ -322,12 +400,55 @@ public class Teleport : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         StopCorutine();
     }
-    private void OnCollisionEnter(Collision other)
+    public void Destroy()
     {
-        if (other.gameObject.CompareTag("Teleport"))
+        isDead = true;
+        _playerController.enabled = false;
+
+        for (int i = 0; i < parts.Length; i++)
         {
-            transform.position = tp.position;
-           
+            parts[i].transform.position = meshTransforms[i].position;
+            parts[i].transform.rotation = meshTransforms[i].rotation;            
+            parts[i].SetActive(true);
+            if (gamemodeRunning)
+            {
+                int rand = UnityEngine.Random.Range(100, 200);
+                parts[i].GetComponent<Rigidbody>().AddForce(rand * parts[i].transform.up);
+            }
         }
-    }   
+        playerObject.SetActive(false);
+        if (gamemodeBicycle)
+        {
+            bicycleObject.SetActive(false);
+        }
+       endEnumerator = StartCoroutine(Wait());
+    }
+    public IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
+        EndCorutine();
+    }
+    public void EndCorutine()
+    {
+        for (int i = 0; i < parts.Length; i++)
+        {
+            parts[i].SetActive(false);
+            parts[i].transform.position = meshTransforms[i].position;
+            parts[i].transform.rotation = meshTransforms[i].rotation;
+        }
+        playerObject.SetActive(true);
+        if (gamemodeBicycle)
+        {
+            bicycleObject.SetActive(true);
+        }
+        _playerController.enabled = true;
+        transform.position = tp.position;
+        isDead = false;
+        if (endEnumerator != null)
+        {
+            StopCoroutine(endEnumerator);
+            endEnumerator = null;
+        }
+        deadAudioCount = 0;
+    }
 }

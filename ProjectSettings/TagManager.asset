@@ -12,6 +12,8 @@ TagManager:
   - Right
   - Left
   - ToTeleport
+  - CinemachineTarget
+  - TeleportFalling
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Water
   - UI
   - Ladder
-  - 
+  - Meshes
   - 
   - 
   - 

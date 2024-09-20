@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -20,8 +21,11 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject runMenu, bicycleMenu, carMenu;
     [SerializeField] private GameObject runPanel, bicyclePanel, carPanel;
     [SerializeField] private TextMeshProUGUI[] timerLevels;
-    [SerializeField] private Image[] progressLevels;
+    //[SerializeField] private Image[] progressLevels;
+    [SerializeField] private UnityEngine.UI.Slider[] progressLevels;
+    [SerializeField] private GameObject[] progressLevelsObjects;
     [SerializeField] private TextMeshProUGUI[] progressPercentLevels;
+    [SerializeField] private AudioSource uiAudio;
     private void Awake()
     {
         Instance = this;
@@ -81,6 +85,13 @@ public class MainMenuUI : MonoBehaviour
         {
             Geekplay.Instance.PlayerData.IsContinue = new bool[15];
         }
+        for (int i = 0;i< progressLevels.Length; i++)
+        {
+            if (Geekplay.Instance.PlayerData.SaveProgressLevels[i] == 0)
+            {
+                progressLevelsObjects[i].gameObject.SetActive(false);
+            }
+        }
         Geekplay.Instance.Save();
     }
     private void OnEnable()
@@ -98,6 +109,7 @@ public class MainMenuUI : MonoBehaviour
     }
     public void PressedMenu(GameObject panel)
     {
+        uiAudio.Play();
         panel.SetActive(true);
 
         for (int i = 0; i < Geekplay.Instance.PlayerData.FillAmountLevels.Length; i++)
@@ -106,7 +118,7 @@ public class MainMenuUI : MonoBehaviour
             {
                 Geekplay.Instance.PlayerData.SaveProgressMenuLevels[i] = 100;
             }
-            progressLevels[i].fillAmount = Geekplay.Instance.PlayerData.FillAmountLevels[i];
+            progressLevels[i].value = Geekplay.Instance.PlayerData.FillAmountLevels[i];
             progressPercentLevels[i].text = Geekplay.Instance.PlayerData.SaveProgressMenuLevels[i].ToString() + "%";
         }      
 
@@ -141,10 +153,12 @@ public class MainMenuUI : MonoBehaviour
 
     public void PressedShopMenu()
     {
+        uiAudio.Play();
         shopPanel.SetActive(true);
     }
     public void PressedBack()
     {
+        uiAudio.Play();
         runMenu.SetActive(false);
         bicycleMenu.SetActive(false);
         carMenu.SetActive(false);
@@ -156,6 +170,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void PressedContinue()
     {
+        uiAudio.Play();
         Continue = true;
         Geekplay.Instance.PlayerData.IsContinue[Geekplay.Instance.PlayerData.MapIndex] = true;
 
@@ -170,10 +185,12 @@ public class MainMenuUI : MonoBehaviour
             Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] = 0;
         }
         ContinueGame = true;
-        SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
+        StartCoroutine(LoadScene());
+      //  SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
     }
     public void PressedNewGame()
     {
+        uiAudio.Play();
         Continue = false;
         Geekplay.Instance.PlayerData.IsContinue[Geekplay.Instance.PlayerData.MapIndex] = false;
         Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex] = 0;
@@ -185,10 +202,12 @@ public class MainMenuUI : MonoBehaviour
         Geekplay.Instance.PlayerData.Rotation[Geekplay.Instance.PlayerData.MapIndex] = 0;
         Geekplay.Instance.Save();
         NewGame = true;
-        SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
+        StartCoroutine(LoadScene());
+
     }
     public void GameMenu(int LevelIndex)
     {
+        uiAudio.Play();
         Geekplay.Instance.PlayerData.MapIndex = LevelIndex;
         Geekplay.Instance.Save();
         if(LevelIndex>=0 && LevelIndex <= 4)
@@ -205,5 +224,9 @@ public class MainMenuUI : MonoBehaviour
         }
         
     }
-   
+    public IEnumerator LoadScene()
+    {
+        yield return new WaitForSeconds(0.2f); 
+        SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
+    }
 }

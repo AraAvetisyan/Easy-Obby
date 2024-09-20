@@ -28,9 +28,11 @@ public class PlayerController : MonoBehaviour
     private int stopCounter;
     [SerializeField] private GameObject finalPanel;
     [SerializeField] private GameObject[] trails;
+    public bool CanOnTrail;
     float currentRotation;
     int anal;
-  
+    [SerializeField] private AudioSource walkSound;
+    public bool CanPlaySound;
   
 
     private void Update()
@@ -96,10 +98,12 @@ public class PlayerController : MonoBehaviour
         if (isMobile)
         {
             input = new Vector2(_floatingJoystick.Horizontal, _floatingJoystick.Vertical);
+            
         }
         else
         {
             input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            
         }
         Vector2 inputDir = input.normalized;
 
@@ -131,12 +135,13 @@ public class PlayerController : MonoBehaviour
             {
                 for (int i = 0; i < trails.Length; i++)
                 {
+
                     trails[i].SetActive(true);
+
                 }
             }
             if (!IsSprint || CurrentSpeed == 0)
             {
-                
                 for (int i = 0; i < trails.Length; i++)
                 {
                     trails[i].SetActive(false);
@@ -148,20 +153,33 @@ public class PlayerController : MonoBehaviour
         {
             if (CurrentSpeed > 0 && !IsSprint && !IsFalling)
             {
+                walkSound.pitch = 1.5f;
                 Animator.SetBool("IsRunning", true);
+                CanPlaySound = true;
             }
             if (CurrentSpeed == 0 && !IsFalling)
             {
+                CanPlaySound = false;
                 Animator.SetBool("IsRunning", false);
             }
 
             if (IsSprint && CurrentSpeed > 0 && !IsFalling)
             {
+
+                if (!CanOnTrail)
+                {
+                    StartCoroutine(CanTrail());
+                }
+                walkSound.pitch = 1.75f;
                 Animator.SetBool("IsSprint", true);
                 Animator.SetBool("IsRunning", false);
+                CanPlaySound = true;
                 for (int i = 0; i < trails.Length; i++)
                 {
-                    trails[i].SetActive(true);
+                    if (CanOnTrail)
+                    {
+                        trails[i].SetActive(true);
+                    }
                 }
             }
             if (!IsSprint || CurrentSpeed == 0)
@@ -171,21 +189,40 @@ public class PlayerController : MonoBehaviour
                 {
                     trails[i].SetActive(false);
                 }
+                CanOnTrail = false;
             }
 
             if (IsFalling)
             {
+                CanPlaySound = false;
+                
                 Animator.SetBool("IsFalling", true);
             }
             else
             {
                 Animator.SetBool("IsFalling", false);
             }
+            if (IsJumping)
+            {
+                CanPlaySound = false;
+            }
+            if (CanPlaySound)
+            {
+                walkSound.volume = 1;
+            }
+            if (!CanPlaySound)
+            {
+                walkSound.volume = 0;
+            }
         }
-
+       
 
     }
-
+    public IEnumerator CanTrail()
+    {
+        yield return new WaitForSeconds(0.25f);
+        CanOnTrail = true;
+    }
    
     private void OnTriggerEnter(Collider other)
     {

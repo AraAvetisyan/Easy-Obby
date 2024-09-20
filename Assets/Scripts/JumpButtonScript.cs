@@ -13,20 +13,22 @@ public class JumpButtonScript : MonoBehaviour, IPointerDownHandler
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject player;
-
     [SerializeField] private bool gamemodeRunning;
+    [SerializeField] private AudioSource jumpAudio;
+    [SerializeField] private AudioSource jumpAudio2;
     public void OnPointerDown(PointerEventData eventData)
     {
         if (_playerController.IsGrounded)
         {
             rb.AddForce(jumpForce * player.transform.up);
             _playerController.IsGrounded = false;
-
             _playerController.IsJumping = true;
-            //rb.AddForce(jumpForce * player.transform.up);
+            jumpAudio2.Play();
+            jumpAudio.Play();
             if (gamemodeRunning)
             {
                 _playerController.Animator.SetTrigger("Jump");
+                _playerController.CanPlaySound = false;
             }
             StartCoroutine(OnJump());
         }
