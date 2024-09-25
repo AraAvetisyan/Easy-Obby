@@ -26,6 +26,8 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject[] progressLevelsObjects;
     [SerializeField] private TextMeshProUGUI[] progressPercentLevels;
     [SerializeField] private AudioSource uiAudio;
+    [SerializeField] private TextMeshProUGUI runPercent, bicyclePercet, carPercent;
+    private int runPercentCount, bicyclePercentCount, carPercentCount;
     private void Awake()
     {
         Instance = this;
@@ -93,6 +95,23 @@ public class MainMenuUI : MonoBehaviour
             }
         }
         Geekplay.Instance.Save();
+        for (int i = 0; i< Geekplay.Instance.PlayerData.SaveProgressMenuLevels.Length; i++)
+        {
+            if (i >= 0 && i < 5) {
+                runPercentCount += Geekplay.Instance.PlayerData.SaveProgressMenuLevels[i];
+            }
+            if(i >= 5 && i < 10)
+            {
+                bicyclePercentCount += Geekplay.Instance.PlayerData.SaveProgressMenuLevels[i];
+            }
+            if( i >= 10 && i < 15)
+            {
+                carPercentCount += Geekplay.Instance.PlayerData.SaveProgressMenuLevels[i];
+            }
+        }
+        runPercent.text = runPercentCount.ToString() + "/200%";
+        bicyclePercet.text = bicyclePercentCount.ToString() + "/200%";
+        carPercent.text = carPercentCount.ToString() + "/200%";
     }
     private void OnEnable()
     {

@@ -36,6 +36,7 @@ public class Teleport : MonoBehaviour
     [SerializeField] private int progressCountTest;
 
     [SerializeField] private GameObject[] teleportParticles;
+    [SerializeField] private GameObject[] coinParticles;
     [SerializeField] private GameObject[] teleportObjects;
     [SerializeField] private MeshRenderer[] coinMeshes;
     [SerializeField] private MeshRenderer[] startLines;
@@ -62,6 +63,7 @@ public class Teleport : MonoBehaviour
 
     [SerializeField] private AudioSource[] carSounds;
     int deadAudioCount;
+  
     private void Start()
     {
         for(int i = 0; i < parts.Length; i++)
@@ -104,6 +106,7 @@ public class Teleport : MonoBehaviour
                 if (gamemodeRunning)
                 {
                     coinMeshes[i].enabled = false;
+                    coinParticles[i].SetActive(false);
                 }
                 if (gamemodeBicycle)
                 {
@@ -289,6 +292,7 @@ public class Teleport : MonoBehaviour
                     if (gamemodeRunning)
                     {
                         coinMeshes[i].enabled = false;
+                        coinParticles[i].SetActive(false);
                     }
                     if (gamemodeBicycle)
                     {
@@ -412,15 +416,25 @@ public class Teleport : MonoBehaviour
             parts[i].SetActive(true);
             if (gamemodeRunning)
             {
-                int rand = UnityEngine.Random.Range(100, 200);
-                parts[i].GetComponent<Rigidbody>().AddForce(rand * parts[i].transform.up);
+                int rand1 = UnityEngine.Random.Range(100, 300);
+                int rand2 = UnityEngine.Random.Range(100, 150);
+
+                int rM = UnityEngine.Random.Range(0, 2);
+                parts[i].GetComponent<Rigidbody>().AddForce(rand1 * parts[i].transform.up);
+                if (rM == 0)
+                    parts[i].GetComponent<Rigidbody>().AddForce(rand2 * parts[i].transform.right);
+                else
+                    parts[i].GetComponent<Rigidbody>().AddForce(-rand2 * parts[i].transform.right);
             }
+            //parts[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //parts[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
         playerObject.SetActive(false);
         if (gamemodeBicycle)
         {
             bicycleObject.SetActive(false);
         }
+
        endEnumerator = StartCoroutine(Wait());
     }
     public IEnumerator Wait()

@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
         {
             if (CurrentSpeed > 0 && !IsSprint && !IsFalling)
             {
-                walkSound.pitch = 1.5f;
+                walkSound.pitch = 1.4f;
                 Animator.SetBool("IsRunning", true);
                 CanPlaySound = true;
             }
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
                 {
                     StartCoroutine(CanTrail());
                 }
-                walkSound.pitch = 1.75f;
+                walkSound.pitch = 1.55f;
                 Animator.SetBool("IsSprint", true);
                 Animator.SetBool("IsRunning", false);
                 CanPlaySound = true;
@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
             }
             if (CanPlaySound)
             {
-                walkSound.volume = 1;
+                walkSound.volume = 0.65f;
             }
             if (!CanPlaySound)
             {
