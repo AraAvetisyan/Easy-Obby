@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VehicleBehaviour;
 
 public class Teleport : MonoBehaviour
 { 
@@ -27,7 +28,7 @@ public class Teleport : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private TextMeshProUGUI diamondsText;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private VehicleControl _vehicleControl;
+    [SerializeField] private WheelVehicle _wheelVehicle;
 
 
     [SerializeField] private bool isTest;
@@ -366,41 +367,17 @@ public class Teleport : MonoBehaviour
             StopCoroutine(enumerator);
             enumerator = null;
         }
-        _vehicleControl.carSetting.carPower = 120;
-        _vehicleControl.carSetting.shiftPower = 150;
-        _vehicleControl.carSetting.LimitForwardSpeed = 80;
-        _vehicleControl.carSetting.LimitBackwardSpeed = 30;
-        _vehicleControl.carSetting.automaticGear = true;
-        _vehicleControl.curTorque = 100;
-        _vehicleControl.carSetting.maxSteerAngle = 25;
+       
 
         rb.constraints = RigidbodyConstraints.None;
 
     }
     public IEnumerator StopCar()
     {
-        mustBrake = true;
-        _vehicleControl.carSetting.carPower = 0;
-        _vehicleControl.carSetting.shiftPower = 0;
-        _vehicleControl.carSetting.LimitForwardSpeed = 0;
-        _vehicleControl.carSetting.LimitBackwardSpeed = 0;
-        _vehicleControl.carSetting.automaticGear = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        rb.constraints = RigidbodyConstraints.FreezePosition;
-        _vehicleControl.accel = 0;
-        _vehicleControl.steer = 0;
-        _vehicleControl.carSetting.maxSteerAngle = 0;
-        for(int i = 0; i < _vehicleControl.wheels.Length; i++)
-        {
-
-            _vehicleControl.wheels[i].rotation = 0;
-            _vehicleControl.wheels[i].rotation2 = 0;
-
-        }
-        _vehicleControl.curTorque = 0;
+        mustBrake = true;       
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-
+        _wheelVehicle.Handbrake = true;
         yield return new WaitForSeconds(0.01f);
         StopCorutine();
     }

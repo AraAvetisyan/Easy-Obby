@@ -1,8 +1,10 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -33,7 +35,35 @@ public class PlayerController : MonoBehaviour
     int anal;
     [SerializeField] private AudioSource walkSound;
     public bool CanPlaySound;
-  
+
+
+
+    [SerializeField]
+    private CinemachineVirtualCamera connectedCamera;
+    [SerializeField]
+    private TouchDeltaInput touchDeltaInput;
+    [SerializeField]
+    private Transform mainCameraPoint;
+    private CinemachinePOV cinemachinePOV;
+    private CinemachineFramingTransposer framingTransposer;
+    private float startFov;
+    private float startDistance;
+    private float targetFov;
+    private float targetDistance;
+    private Vector3 touchDeltaDir;
+    public Vector2 inputVector { get; private set; }
+
+    private void Start()
+    {
+        cinemachinePOV = connectedCamera.GetCinemachineComponent<CinemachinePOV>();
+        framingTransposer = connectedCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        startFov = connectedCamera.m_Lens.FieldOfView;
+        targetFov = startFov;
+        connectedCamera.LookAt = mainCameraPoint;
+        connectedCamera.Follow = mainCameraPoint;
+        startDistance = framingTransposer.m_CameraDistance;
+        targetDistance = startDistance;
+    }
 
     private void Update()
     {
@@ -90,8 +120,38 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    private void SetFov()
+    {
+        connectedCamera.m_Lens.FieldOfView = Mathf.Lerp(connectedCamera.m_Lens.FieldOfView, targetFov, 0.1f);
+        framingTransposer.m_CameraDistance = Mathf.Lerp(framingTransposer.m_CameraDistance, targetDistance, 0.1f);
+    }
+    private void LateUpdate()
+    {
+        Vector3 startRotPoint = connectedCamera.transform.position;
+        Vector3 endRotPoint = connectedCamera.LookAt.transform.position;
+        startRotPoint.y = 0;
+        endRotPoint.y = 0;
+        Vector3 direction = (Quaternion.LookRotation((endRotPoint - startRotPoint).normalized, Vector3.up) * new Vector3(inputVector.x, 0, inputVector.y)).normalized;
+    }
+    public void LocomotionProcess()
+    {
+        Vector3 startRotPoint = connectedCamera.transform.position;
+        Vector3 endRotPoint = connectedCamera.LookAt.transform.position;
+        startRotPoint.y = 0;
+        endRotPoint.y = 0;
+        Vector3 direction = (Quaternion.LookRotation((endRotPoint - startRotPoint).normalized, Vector3.up) * new Vector3(inputVector.x, 0, inputVector.y)).normalized;
+       
+    }
     public void FixedUpdate()
     {
+        touchDeltaDir = touchDeltaInput.TouchDelta * 0.35f;
+
+        cinemachinePOV.m_HorizontalAxis.m_InputAxisValue = touchDeltaDir.x;
+        cinemachinePOV.m_VerticalAxis.m_InputAxisValue = touchDeltaDir.y;
+        SetFov();
+
+
+        LocomotionProcess();
 
         Vector2 input = Vector2.zero;
 
@@ -215,8 +275,6 @@ public class PlayerController : MonoBehaviour
                 walkSound.volume = 0;
             }
         }
-       
-
     }
     public IEnumerator CanTrail()
     {

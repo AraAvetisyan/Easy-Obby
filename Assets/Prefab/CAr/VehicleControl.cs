@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public enum ControlMode { simple = 1, touch = 2 }
 
@@ -236,6 +237,23 @@ public class VehicleControl : MonoBehaviour
     [SerializeField] private GameObject finalPanel;
     [SerializeField] private Teleport _teleport;
     [SerializeField] private int anal;
+
+
+
+    [SerializeField]
+    private CinemachineVirtualCamera connectedCamera;
+    [SerializeField]
+    private TouchDeltaInput touchDeltaInput;
+    [SerializeField]
+    private Transform mainCameraPoint;
+    private CinemachinePOV cinemachinePOV;
+    private CinemachineFramingTransposer framingTransposer;
+    private float startFov;
+    private float startDistance;
+    private float targetFov;
+    private float targetDistance;
+    private Vector3 touchDeltaDir;
+    public Vector2 inputVector { get; private set; }
     public class WheelComponent
     {
 
@@ -457,9 +475,38 @@ public class VehicleControl : MonoBehaviour
     private void Start()
     {
         MyInitializeButtons();
+
+        cinemachinePOV = connectedCamera.GetCinemachineComponent<CinemachinePOV>();
+        framingTransposer = connectedCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        startFov = connectedCamera.m_Lens.FieldOfView;
+        targetFov = startFov;
+        connectedCamera.LookAt = mainCameraPoint;
+        connectedCamera.Follow = mainCameraPoint;
+        startDistance = framingTransposer.m_CameraDistance;
+        targetDistance = startDistance;
     }
-    
-  
+    private void LateUpdate()
+    {
+        Vector3 startRotPoint = connectedCamera.transform.position;
+        Vector3 endRotPoint = connectedCamera.LookAt.transform.position;
+        startRotPoint.y = 0;
+        endRotPoint.y = 0;
+        Vector3 direction = (Quaternion.LookRotation((endRotPoint - startRotPoint).normalized, Vector3.up) * new Vector3(inputVector.x, 0, inputVector.y)).normalized;
+    }
+    public void LocomotionProcess()
+    {
+        Vector3 startRotPoint = connectedCamera.transform.position;
+        Vector3 endRotPoint = connectedCamera.LookAt.transform.position;
+        startRotPoint.y = 0;
+        endRotPoint.y = 0;
+        Vector3 direction = (Quaternion.LookRotation((endRotPoint - startRotPoint).normalized, Vector3.up) * new Vector3(inputVector.x, 0, inputVector.y)).normalized;
+
+    }
+    private void SetFov()
+    {
+        connectedCamera.m_Lens.FieldOfView = Mathf.Lerp(connectedCamera.m_Lens.FieldOfView, targetFov, 0.1f);
+        framingTransposer.m_CameraDistance = Mathf.Lerp(framingTransposer.m_CameraDistance, targetDistance, 0.1f);
+    }
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -578,6 +625,13 @@ public class VehicleControl : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        touchDeltaDir = touchDeltaInput.TouchDelta * 0.35f;
+
+        cinemachinePOV.m_HorizontalAxis.m_InputAxisValue = touchDeltaDir.x;
+        cinemachinePOV.m_VerticalAxis.m_InputAxisValue = touchDeltaDir.y;
+
+
         if (_teleport.mustBrake)
         {
             brake = true;
