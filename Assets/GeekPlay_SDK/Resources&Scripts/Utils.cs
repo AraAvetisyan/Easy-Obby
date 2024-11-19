@@ -33,7 +33,7 @@ public class Utils : MonoBehaviour
     public static extern void AdReward();
 
     [DllImport("__Internal")]
-    public static extern void SetToLeaderboard(int value, string leaderboardName);
+    public static extern void SetToLeaderboard(float value, string leaderboardName);
 
     [DllImport("__Internal")]
     public static extern void BuyItem(string idOrTag, string jsonString);
@@ -43,9 +43,16 @@ public class Utils : MonoBehaviour
 
     [DllImport("__Internal")]
     public static extern void GameReady();
+    [DllImport("__Internal")]
+    public static extern void GameStop();
+
+    [DllImport("__Internal")]
+    public static extern void GameStart();
 
     [DllImport("__Internal")]
     public static extern void GetLeaderboard(string type, int number, string name);
-    
+
+    [DllImport("__Internal")]
+    public static extern void GetValueCode();
     //МЕТОДЫ YANDEX//
 }

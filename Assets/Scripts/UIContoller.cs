@@ -9,6 +9,11 @@ public class UIContoller : MonoBehaviour
     [SerializeField] private TimerScript _timerScript;
     [SerializeField] private AudioSource uiAudio;
     private bool isHome;
+    private void Start()
+    {
+
+        Geekplay.Instance.GameReady();
+    }
     public void PressedHome()
     {
         _timerScript.SaveTime();
@@ -16,6 +21,7 @@ public class UIContoller : MonoBehaviour
         Geekplay.Instance.Save();
         uiAudio.Play();
         isHome = true;
+        Geekplay.Instance.ShowInterstitialAd();
         StartCoroutine(LoadScene());
         //  SceneManager.LoadScene("MainMenu");
     }
@@ -23,11 +29,13 @@ public class UIContoller : MonoBehaviour
     {
         uiAudio.Play();
         isHome = true;
+        Geekplay.Instance.ShowInterstitialAd();
         StartCoroutine(LoadScene());
         //   SceneManager.LoadScene("MainMenu"); 
     }
     public void PressedNext()
     {
+        isHome = false;
         if (Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex+1] >= 100)
         {
             Geekplay.Instance.PlayerData.CurrentMapSecondsLevels[Geekplay.Instance.PlayerData.MapIndex + 1] = 0;
@@ -42,8 +50,10 @@ public class UIContoller : MonoBehaviour
 
         Geekplay.Instance.Save();
         uiAudio.Play();
+        Geekplay.Instance.ShowInterstitialAd();
         StartCoroutine(LoadScene());
-       // SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
+        // SceneManager.LoadScene(Geekplay.Instance.PlayerData.MapIndex + 1);
+
 
     }
 

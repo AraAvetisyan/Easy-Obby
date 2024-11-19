@@ -23,22 +23,24 @@ public class Purchases
     public UnityEvent purchaseEvent;
 }
 
-public enum Platform 
+public enum Platform
 {
     Editor,
-    Yandex, 
+    Yandex,
     VK,
     GameArter,
     CrazyGames,
-    VKPlay, 
+    VKPlay,
     Kongregate,
-    GameDistribution, 
+    GameDistribution,
     GamePix,
     OK
 }
 
 public class Geekplay : MonoBehaviour
 {
+
+    public string YanValueType;
     public string language; //язык
     public bool mobile; //Устройство игрока мобильное?
     public bool SoundOn = true; //Звук включен?
@@ -56,7 +58,7 @@ public class Geekplay : MonoBehaviour
 
     private IEnumerator cor;
     private string rewardTag; //Тэг награды
-    private bool adOpen; //Реклама открыта?
+    public bool adOpen; //Реклама открыта?
     private string purchasedTag; //Тэг покупки
     private bool wasLoad; //Игра загружалась?
     private bool canAd;
@@ -76,13 +78,16 @@ public class Geekplay : MonoBehaviour
 
     public event Action LeaderboardValuesReady;
     public event Action ShowedAdInEditor;
+    public bool GameIsReady;
+
+    public bool GameStoped;
     public void RunCoroutine(IEnumerator enumerator)
     {
         StartCoroutine(enumerator);
     }
-    public void SubscribeOnReward(string idOrTags , UnityAction action)
+    public void SubscribeOnReward(string idOrTags, UnityAction action)
     {
-        for(int i = 0; i < rewardsList.Length; i++)
+        for (int i = 0; i < rewardsList.Length; i++)
         {
             if (idOrTags == rewardsList[i].rewardName)
             {
@@ -108,6 +113,8 @@ public class Geekplay : MonoBehaviour
         //GameReady();
 
         //ShowInterstitialAd();
+        CheckBuysOnStart(PlayerData.lastBuy);
+        Utils.GetValueCode();
     }
     public void OnRewarded() //ВОЗНАГРАЖДЕНИЕ ПОСЛЕ ПРОСМОТРА РЕКЛАМЫ
     {
@@ -133,16 +140,12 @@ public class Geekplay : MonoBehaviour
         string value = parts[0];
         string leaderboardName = parts[1];
 
-        lS.Add(value);
+        lS[leaderNumber] = value;
 
-        if (leaderNumber < 9)
+        if (leaderNumber < 5)
         {
             leaderNumber += 1;
             Utils.GetLeaderboard("score", leaderNumber, leaderboardName);
-        }
-        else if (leaderNumber == 9)
-        {
-            EndGetLeaderboardsValue();
         }
     }
 
@@ -152,9 +155,9 @@ public class Geekplay : MonoBehaviour
         string value = parts[0];
         string leaderboardName = parts[1];
 
-        lN.Add(value);
+        lN[leaderNumberN] = value;
 
-        if (leaderNumberN < 9)
+        if (leaderNumberN < 5)
         {
             leaderNumberN += 1;
             Utils.GetLeaderboard("name", leaderNumberN, leaderboardName);
@@ -208,10 +211,10 @@ public class Geekplay : MonoBehaviour
                 }
                 break;
             case Platform.CrazyGames:
-               // if (canAd)
-               // {
-                    CrazyAds.Instance.beginAdBreak(ResumeMusAndGame, ResumeMusAndGame);
-                    StopMusAndGame();
+                // if (canAd)
+                // {
+                CrazyAds.Instance.beginAdBreak(ResumeMusAndGame, ResumeMusAndGame);
+                StopMusAndGame();
                 //}
                 break;
             case Platform.GameDistribution:
@@ -229,12 +232,12 @@ public class Geekplay : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P)) 
+        if (Input.GetKeyDown(KeyCode.P))
         {
             PlayerData = new PlayerData();
         }
 
-       // remainingTimeUntilUpdateLeaderboard -= Time.deltaTime;
+        remainingTimeUntilUpdateLeaderboard -= Time.deltaTime;
     }
 
     IEnumerator CanReward()
@@ -259,10 +262,10 @@ public class Geekplay : MonoBehaviour
                 Utils.AdReward();
                 break;
             case Platform.VK:
-                    canShowAd = false;
-                    StartCoroutine(CanAdShow());
-                    rewardTag = idOrTag;
-                    //Utils.VK_Rewarded();
+                canShowAd = false;
+                StartCoroutine(CanAdShow());
+                rewardTag = idOrTag;
+                //Utils.VK_Rewarded();
                 break;
             case Platform.CrazyGames:
                 rewardTag = idOrTag;
@@ -285,7 +288,7 @@ public class Geekplay : MonoBehaviour
         }
     }
 
-    public void ShowBannerAd() 
+    public void ShowBannerAd()
     {
         switch (Platform)
         {
@@ -339,7 +342,7 @@ public class Geekplay : MonoBehaviour
         }
     }
 
-    public void Leaderboard(string leaderboardName, int value) //ЗАНЕСТИ В ЛИДЕРБОРД
+    public void Leaderboard(string leaderboardName, float value) //ЗАНЕСТИ В ЛИДЕРБОРД
     {
         switch (Platform)
         {
@@ -349,10 +352,10 @@ public class Geekplay : MonoBehaviour
             case Platform.Yandex:
                 Utils.SetToLeaderboard(value, leaderboardName);
                 break;
-            //case Platform.VK:
-            //    if (mobile)
-                    //Utils.VK_OpenLeaderboard(value);
-            //    break;
+                //case Platform.VK:
+                //    if (mobile)
+                //Utils.VK_OpenLeaderboard(value);
+                //    break;
         }
     }
 
@@ -385,7 +388,7 @@ public class Geekplay : MonoBehaviour
                 break;
         }
     }
-    
+
     public void InvitePlayers() //ПРИГЛАСИТЬ ИГРОКОВ (ВК)
     {
         switch (Platform)
@@ -448,7 +451,7 @@ public class Geekplay : MonoBehaviour
 
                 if (CrazyAvailableCheck())
                 {
-                	CrazyUser.Instance.SyncUnityGameData();
+                    CrazyUser.Instance.SyncUnityGameData();
                 }
                 break;
             case Platform.Kongregate:
@@ -514,19 +517,18 @@ public class Geekplay : MonoBehaviour
                 if (PlayerPrefs.HasKey("PlayerData"))
                 {
                     string jsonString = PlayerPrefs.GetString("PlayerData");
-                    PlayerData =  JsonUtility.FromJson<PlayerData>(jsonString);     
+                    PlayerData = JsonUtility.FromJson<PlayerData>(jsonString);
                 }
                 else
                 {
                     PlayerData = new PlayerData();
                 }
-                language = "ru"; //ВЫБРАТЬ ЯЗЫК ДЛЯ ТЕСТОВ. ru/en/tr/
+                //  language = "ru"; //ВЫБРАТЬ ЯЗЫК ДЛЯ ТЕСТОВ. ru/en/tr/
                 Localization();
                 break;
             case Platform.Yandex:
                 language = Utils.GetLang();
                 Localization();
-                CheckBuysOnStart(PlayerData.lastBuy);
                 break;
             /*case Platform.VK:
                 language = "ru";
@@ -543,7 +545,7 @@ public class Geekplay : MonoBehaviour
                 if (PlayerPrefs.HasKey("PlayerData"))
                 {
                     string jsonString = PlayerPrefs.GetString("PlayerData");
-                    PlayerData =  JsonUtility.FromJson<PlayerData>(jsonString);     
+                    PlayerData = JsonUtility.FromJson<PlayerData>(jsonString);
                 }
                 else
                 {
@@ -551,7 +553,7 @@ public class Geekplay : MonoBehaviour
                 }
 
                 if (!CrazyAvailableCheck())
-                	CrazyAuth();
+                    CrazyAuth();
                 break;
             case Platform.Kongregate:
                 PlayerData = new PlayerData();
@@ -560,7 +562,7 @@ public class Geekplay : MonoBehaviour
                 if (PlayerPrefs.HasKey("PlayerData"))
                 {
                     string jsonString = PlayerPrefs.GetString("PlayerData");
-                    PlayerData =  JsonUtility.FromJson<PlayerData>(jsonString);     
+                    PlayerData = JsonUtility.FromJson<PlayerData>(jsonString);
                 }
                 else
                 {
@@ -574,7 +576,7 @@ public class Geekplay : MonoBehaviour
                 if (PlayerPrefs.HasKey("PlayerData"))
                 {
                     string jsonString = PlayerPrefs.GetString("PlayerData");
-                    PlayerData =  JsonUtility.FromJson<PlayerData>(jsonString);     
+                    PlayerData = JsonUtility.FromJson<PlayerData>(jsonString);
                 }
                 else
                 {
@@ -594,7 +596,7 @@ public class Geekplay : MonoBehaviour
                 if (PlayerPrefs.HasKey("PlayerData"))
                 {
                     string jsonString = PlayerPrefs.GetString("PlayerData");
-                    PlayerData =  JsonUtility.FromJson<PlayerData>(jsonString);     
+                    PlayerData = JsonUtility.FromJson<PlayerData>(jsonString);
                 }
                 else
                 {
@@ -605,7 +607,7 @@ public class Geekplay : MonoBehaviour
     }
 
     protected void Awake()
-    { 
+    {
         if (Instance == null)
         {
             Instance = this;
@@ -613,7 +615,7 @@ public class Geekplay : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         if (Platform == Platform.GameDistribution || Platform == Platform.CrazyGames || Platform == Platform.Editor)
@@ -629,7 +631,7 @@ public class Geekplay : MonoBehaviour
     void LoadBanner()
     {
         if (Platform == Platform.OK)
-        {   
+        {
             //Utils.OK_RequestBannerAds();
         }
     }
@@ -653,7 +655,7 @@ public class Geekplay : MonoBehaviour
     IEnumerator InterLoad()
     {
         while (true)
-        {   
+        {
             yield return new WaitForSeconds(15);
             switch (Platform)
             {
@@ -704,23 +706,23 @@ public class Geekplay : MonoBehaviour
                 purchasedTag = idOrTag;
                 //Utils.Kongregate_InApp(idOrTag);
                 break;
-            /*case Platform.CrazyGames:
-            	purchasedTag = idOrTag;
+                /*case Platform.CrazyGames:
+                    purchasedTag = idOrTag;
 
-            	GetXsollaToken();
+                    GetXsollaToken();
 
-            	XsollaCatalog.Purchase(
-					purchasedTag,
-					onSuccess => OnPurchasedItem(),
-					onError => OnPurchaseError());
-            	break;*/
+                    XsollaCatalog.Purchase(
+                        purchasedTag,
+                        onSuccess => OnPurchasedItem(),
+                        onError => OnPurchaseError());
+                    break;*/
         }
     }
 
     private void OnPurchaseError()
-	{
+    {
 
-	}
+    }
 
     private void OnPurchasedItem() //начислить покупку (при удачной оплате)
     {
@@ -743,69 +745,69 @@ public class Geekplay : MonoBehaviour
 
     public void SetPurchasedItem() //начислить уже купленные предметы на старте
     {
-            for (int i = 0; i < purchasesList.Length; i++)
+        for (int i = 0; i < purchasesList.Length; i++)
+        {
+            if (PlayerData.lastBuy == purchasesList[i].itemName)
             {
-                if (PlayerData.lastBuy == purchasesList[i].itemName)
-                {
-                    purchasesList[i].purchaseEvent.Invoke();
-                    PlayerData.lastBuy = "";
-                    Save();
-                }
+                purchasesList[i].purchaseEvent.Invoke();
+                PlayerData.lastBuy = "";
+                Save();
             }
+        }
     }
 
     //CRAZY GAMES ONLY
     public bool CrazyAvailableCheck()
     {
-    	bool b = false;
+        bool b = false;
 
-    	CrazyUser.Instance.IsUserAccountAvailable(available =>
-		{
-		    if (available)
-		    {
-		        b = true;
-		    }
-		});
+        CrazyUser.Instance.IsUserAccountAvailable(available =>
+        {
+            if (available)
+            {
+                b = true;
+            }
+        });
 
-		return b;
+        return b;
     }
 
     public bool CrazyUserCheck()
     {
-    	bool b = false;
+        bool b = false;
 
-    	CrazyUser.Instance.GetUser(user =>
-		{
-		    if (user != null)
-		    {
-		        b = true;
-		    }
-		});
+        CrazyUser.Instance.GetUser(user =>
+        {
+            if (user != null)
+            {
+                b = true;
+            }
+        });
 
-		return b;
+        return b;
     }
 
     public void CrazyAuth()
     {
-    	CrazyUser.Instance.ShowAuthPrompt((error, user) =>
-		{
-		    if (error != null)
-		    {
-		        return;
-		    }
-		});
+        CrazyUser.Instance.ShowAuthPrompt((error, user) =>
+        {
+            if (error != null)
+            {
+                return;
+            }
+        });
     }
 
     public void GetXsollaToken()
     {
-    	CrazyUser.Instance.GetXsollaUserToken((error, token) =>
-		{
-		    if (error != null)
-		    {
-		       // XsollaToken.Create(token);
-		        return;
-		    }
-		});
+        CrazyUser.Instance.GetXsollaUserToken((error, token) =>
+        {
+            if (error != null)
+            {
+                // XsollaToken.Create(token);
+                return;
+            }
+        });
     }
 
     //СОБЫТИЯ ДЛЯ GAMEDISTRIBUTION
@@ -831,6 +833,7 @@ public class Geekplay : MonoBehaviour
     //ПАУЗА И ПРОДОЛЖЕНИЕ ИГРЫ
     public void StopMusAndGame()
     {
+
         adOpen = true;
         canShowAd = false;
         StartCoroutine(CanAdShow());
@@ -843,9 +846,10 @@ public class Geekplay : MonoBehaviour
         adOpen = false;
         AudioListener.volume = 1;
         Time.timeScale = 1;
-
-
-
+        if (GameIsReady)
+        {
+            GameStart();
+        }
 
         ////////////////
     }
@@ -871,6 +875,11 @@ public class Geekplay : MonoBehaviour
             Time.timeScale = 0;
             AudioListener.volume = 0;
         }
+
+        if (GameStoped)
+        {
+            Time.timeScale = 0;
+        }
         //////////
     }
 
@@ -878,10 +887,40 @@ public class Geekplay : MonoBehaviour
     {
         mobile = true;
     }
-
-    public void GameReady()
+    public void GameStart()
     {
         if (Platform == Platform.Yandex)
+            Utils.GameStart();
+    }
+    public void GameReady()
+    {
+        GameIsReady = true;
+        if (Platform == Platform.Yandex)
             Utils.GameReady();
+    }
+    public void GameStop()
+    {
+        GameIsReady = false;
+        if (Platform == Platform.Yandex)
+            Utils.GameStop();
+    }
+
+
+    public void ChangeYanType()
+    {
+        YanValueType = "TST";
+        MainMenuLocalisation.Instance.ChangeYan();
+        //if (SceneManager.GetActiveScene().name != "MainMenu")
+        //{
+        //    LocalizationGameplay.lG.Localization();
+        //}
+        //if (LocalizationMenu.instance != null)
+        //{
+        //    LocalizationMenu.instance.YanLocalization();
+        //}
+        //if (GameplayLocalization.instance != null)
+        //{
+        //    GameplayLocalization.instance.YanLocalization();
+        //}
     }
 }

@@ -13,7 +13,7 @@ public class AppShopCell : MonoBehaviour
     private void Start()
     {
         SubscribeOnPurchase();
-        DiamondCount.text = Rewarder.instance.GetDiamondCountByName(PurName).ToString();
+       // DiamondCount.text = Rewarder.instance.GetDiamondCountByName(PurName).ToString();
     }   
     public void SubscribeOnPurchase()
     {

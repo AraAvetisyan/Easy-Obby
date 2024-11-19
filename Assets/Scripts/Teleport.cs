@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,6 +11,7 @@ using VehicleBehaviour;
 
 public class Teleport : MonoBehaviour
 { 
+    public static Teleport Instance;
     [SerializeField] private TimerScript _timerScript;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private Transform tp;
@@ -62,11 +63,48 @@ public class Teleport : MonoBehaviour
     [SerializeField] private AudioSource finishAudio;
 
 
-    [SerializeField] private AudioSource[] carSounds;
+    public AudioSource[] carSounds;
     int deadAudioCount;
-  
+
+    [Header("ShowAd")]
+    [SerializeField] private GameObject showAdPanel;
+    [SerializeField] private TextMeshProUGUI showAdText;
+    [SerializeField] private AudioSource music;
+    private Coroutine showAdCoroutine;
+    [SerializeField] private Button toMenuButton;
+    public bool CanMove;
+    public bool CanSoundOn;
+    private Coroutine startShowCoroutine;
+    private Coroutine finishCoroutine;
+    [SerializeField] private SprintButtonScript _sprintButtonScript;
+
+    public bool CanJump;
+
+    [Header("Sounds")]
+    [SerializeField] private GameObject carSoundsObject;
+    [SerializeField] private GameObject runSoundObject;
+
+    [Header("DoubleJump")]
+    [SerializeField] private int checkpointCounter;
+    [SerializeField] private GameObject[] rewardObjects;
+    [SerializeField] private TextMeshProUGUI[] doubleJumpText;
+    private IEnumerator rewardCoroutine;
+    private Coroutine doubleCoroutine;
+    public bool DoubleJump;
+    [SerializeField] private Image doubleJumpImage;
+    [SerializeField] private GameObject doubleJumpActiveObject;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
+        Geekplay.Instance.PlayerData.IsMenu = false;
+        CanMove = true;
+        CanSoundOn = true;
+        CanJump = true;
+        music = GameObject.Find("AudioSourceMusic").GetComponent<AudioSource>();
         for(int i = 0; i < parts.Length; i++)
         {
             meshTransforms[i].position = parts[i].transform.position;
@@ -147,7 +185,53 @@ public class Teleport : MonoBehaviour
             yield return new WaitForFixedUpdate();
             transform.position = tp.position;
         }
+
+
+        if (Geekplay.Instance.language == "en")
+        {
+            for (int i = 0; i < doubleJumpText.Length; i++)
+            {
+                doubleJumpText[i].text = "Double jump for a minute";
+            }
+        }
+        else if (Geekplay.Instance.language == "ru")
+        {
+            for (int i = 0; i < doubleJumpText.Length; i++)
+            {
+                doubleJumpText[i].text = "Двойной прыжок на минуту";
+            }
+        }
+        else if (Geekplay.Instance.language == "tr")
+        {
+            for (int i = 0; i < doubleJumpText.Length; i++)
+            {
+                doubleJumpText[i].text = "Bir dakikalığına çift zıplama";
+            }
+        }
+        else if (Geekplay.Instance.language == "ar")
+        {
+            for (int i = 0; i < doubleJumpText.Length; i++)
+            {
+                doubleJumpText[i].text = "قفزة مزدوجة لمدة دقيقة";
+            }
+        }
+        else if (Geekplay.Instance.language == "es")
+        {
+            for (int i = 0; i < doubleJumpText.Length; i++)
+            {
+                doubleJumpText[i].text = "Doble salto durante un minuto";
+            }
+        }
+        else if (Geekplay.Instance.language == "de")
+        {
+            for (int i = 0; i < doubleJumpText.Length; i++)
+            {
+                doubleJumpText[i].text = "Doppelsprung für eine Minute";
+            }
+        }
     }
+   
+   
     private void OnEnable()
     {
         Rewarder.ChangeDiamond += ChangeDimondsText;
@@ -156,10 +240,55 @@ public class Teleport : MonoBehaviour
     {
         Rewarder.ChangeDiamond -= ChangeDimondsText;
     }
-   
+    private void Update()
+    {
+        if (Geekplay.Instance.adOpen)
+        {
+            if (gamemodeCar)
+            {
+                for (int j = 0; j < carSounds.Length; j++)
+                {
+                    carSounds[j].enabled = false;
+                }
+            }
+        }
+        else
+        {
+            if (gamemodeCar)
+            {
+                for (int j = 0; j < carSounds.Length; j++)
+                {
+                    carSounds[j].enabled = true;
+                }
+            }
+        }
+    }
+
     public void ChangeDimondsText(bool bb)
     {
         diamondsText.text = Geekplay.Instance.PlayerData.Diamond.ToString();
+    }
+    public void StartStartShow()
+    {
+        if(startShowCoroutine == null)
+        {
+            startShowCoroutine = StartCoroutine(StartShow());
+        }
+    }
+    public void StopStartShow()
+    {
+        if(startShowCoroutine != null)
+        {
+            StopCoroutine(startShowCoroutine);
+            startShowCoroutine = null;
+        }
+    }
+    public IEnumerator StartShow()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        StartShowAdCoroutine();
+        StopStartShow();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -231,17 +360,25 @@ public class Teleport : MonoBehaviour
                 transform.rotation = targetRotation;
             }
             rb.velocity = Vector3.zero;
+           
+
+            transform.position = tp.position;
+            deadAudio.Play();
             if (gamemodeCar)
             {
                 StartCorutine();
             }
-            transform.position = tp.position;
-            deadAudio.Play();
+            else
+            {
+                StartStartShow();
+            }
         }
         if (other.CompareTag("Teleport"))
         {
+            
             if (!gamemodeCar)
             {
+                CanJump = false;
                 if (!isDead)
                 {
                     Destroy();
@@ -283,7 +420,15 @@ public class Teleport : MonoBehaviour
                 deadAudio.Play();
             }
         }
-
+        if (other.CompareTag("ADS"))
+        {
+            for (int i = 0; i < rewardObjects.Length; i++)
+            {
+                rewardObjects[i].SetActive(false);
+            }
+            Geekplay.Instance.ShowRewardedAd("DoubleJump");
+          
+        }
         if (other.CompareTag("TeleportPoint"))
         {
             for (int i = 0; i < teleportObjects.Length; i++)
@@ -308,6 +453,18 @@ public class Teleport : MonoBehaviour
                     }
                     other.GetComponent<BoxCollider>().enabled = false;
                     teleportParticles[i].SetActive(true);
+                    if (fillCount == 30)
+                    {
+                        Geekplay.Instance.RateGameFunc();
+                    }
+                    else if (fillCount == 60)
+                    {
+                        Geekplay.Instance.RateGameFunc();
+                    }
+                    else if (fillCount == 90)
+                    {
+                        Geekplay.Instance.RateGameFunc();
+                    }
                     if (fillCount < 100)
                     {
                         checkpointAudio.Play();
@@ -319,7 +476,7 @@ public class Teleport : MonoBehaviour
                         fillCount = i * fillCountTest;
                         fillImageObject.SetActive(true);
                         fillImage.value = i * fillAmountTest;
-                        Geekplay.Instance.PlayerData.Coins += 1;
+                        Geekplay.Instance.PlayerData.Coins += progressCountTest;
                         coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
                         Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex] = i;
                         Geekplay.Instance.PlayerData.SaveProgressMenuLevels[Geekplay.Instance.PlayerData.MapIndex] = fillCount;
@@ -329,28 +486,247 @@ public class Teleport : MonoBehaviour
                         Geekplay.Instance.Save();
                         Analytics.instance.SendEvent(SceneManager.GetActiveScene().name + "Checkpoint" + Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex]);
                         Debug.Log(SceneManager.GetActiveScene().name + "Checkpoint" + Geekplay.Instance.PlayerData.SaveProgressLevels[Geekplay.Instance.PlayerData.MapIndex]);
+
+
                         if (fillCount >= 100)
                         {
-                            if (gamemodeCar)
-                            {
-                                for (int j = 0; j < carSounds.Length; j++)
-                                {
-                                    carSounds[j].enabled = false;
-                                }
-                            }
-                            Geekplay.Instance.PlayerData.Coins += 100;
-                            _timerScript.StopTimer();
-                            _timerScript.FinishTime();
-                            finishAudio.Play();
+
+                            StartFinishCoroutine();
+
                         }
+
 
                         fillText.text = fillCount.ToString() + "%";
                     }
                 }
             }
+            if (fillCount < 100)
+            {
+                StartStartShow();
+            }
 
-
+            
         }
+    }
+    
+    public void DoubleJumpReward()
+    {
+        DoubleJump = true;
+       
+        StartDoubleJumpCoroutine();
+        if (rewardCoroutine != null)
+            StopCoroutine(rewardCoroutine);
+    }
+    public void StartDoubleJumpCoroutine()
+    {
+        if(doubleCoroutine != null)
+        {
+            StopCoroutine(doubleCoroutine);
+            doubleCoroutine = null;
+        }
+        if(doubleCoroutine == null)
+        {
+            doubleCoroutine = StartCoroutine(DoubleTimer());
+          
+        }
+    }
+    public void StopDoubleJumpCoroutine()
+    {
+        if(doubleCoroutine != null)
+        {
+            StopCoroutine(doubleCoroutine);
+            doubleCoroutine = null;
+        }
+    }
+    public IEnumerator DoubleTimer()
+    {
+        doubleJumpActiveObject.SetActive(true);
+        float duration = 60f;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            doubleJumpImage.fillAmount = (elapsed / duration);
+            yield return null;
+        }
+        for(int i = 0; i < rewardObjects.Length; i++)
+        {
+            rewardObjects[i].SetActive(true);
+        }
+        DoubleJump = false;
+        doubleJumpActiveObject.SetActive(false);
+        doubleJumpImage.fillAmount = 0;
+        StopDoubleJumpCoroutine();
+    }
+    public void ShowAd()
+    {
+        Geekplay.Instance.GameStoped = false;
+        Geekplay.Instance.ShowInterstitialAd();            
+        
+        CanMove = true;
+        showAdPanel.SetActive(false);
+
+
+        music.volume = 0.35f;
+        music.Play();       
+
+
+        toMenuButton.interactable = true;
+        
+        if (!gamemodeCar)
+        {
+            if(gamemodeRunning)
+                runSoundObject.SetActive(true);
+            _playerController.jumpButton.GetComponent<Button>().interactable = true;
+            _playerController.sptintButton.GetComponent<Button>().interactable = true;
+            _playerController._floatingJoystick.gameObject.SetActive(true);
+        }
+        if (gamemodeCar)
+        {
+            carSoundsObject.SetActive(true);
+            for (int i = 0; i < _vehicleControl.controllerButtons.Length; i++)
+            {
+                _vehicleControl.controllerButtons[i].interactable = true;
+            }
+        }
+
+        Geekplay.Instance.PlayerData.Coins += 50;
+        coinsText.text = Geekplay.Instance.PlayerData.Coins.ToString();
+
+        Geekplay.Instance.Save();
+        CanSoundOn = true;
+
+       
+        AdsTimerScript.Instance.StopMinutesCoroutine();
+    }
+    public void StartFinishCoroutine()
+    {
+        if(finishCoroutine == null)
+        {
+            finishCoroutine = StartCoroutine(StartFinish());
+        }
+    }
+    public void StopFinishCoroutine()
+    {
+        if(finishCoroutine != null)
+        {
+            StopCoroutine(finishCoroutine);
+            finishCoroutine = null;
+        }
+    }
+    IEnumerator StartFinish()
+    {
+        yield return new WaitForSeconds(0.25f);
+        if (gamemodeCar)
+        {
+            carSoundsObject.SetActive(false);
+            for (int j = 0; j < carSounds.Length; j++)
+            {
+                carSounds[j].enabled = false;
+            }
+        }
+        if (Geekplay.Instance.PlayerData.MapIndex == 0 || Geekplay.Instance.PlayerData.MapIndex == 5 || Geekplay.Instance.PlayerData.MapIndex == 10)
+        {
+            Geekplay.Instance.PlayerData.Coins += 50;
+        }
+        if (Geekplay.Instance.PlayerData.MapIndex == 1 || Geekplay.Instance.PlayerData.MapIndex == 6 || Geekplay.Instance.PlayerData.MapIndex == 11)
+        {
+            Geekplay.Instance.PlayerData.Coins += 100;
+        }
+        _timerScript.StopTimer();
+        _timerScript.FinishTime();
+        finishAudio.Play();
+        StopFinishCoroutine();
+
+
+      
+    }
+    public void StartShowAdCoroutine()
+    {
+        if (AdsTimerScript.Instance.CanShow)
+        {
+            if (showAdCoroutine == null)
+            {
+                showAdCoroutine = StartCoroutine(SecondsCoroutine());
+            }
+        }
+    }
+    public void StopShowAdCoroutine()
+    {
+        if (showAdCoroutine != null)
+        {
+            StopCoroutine(showAdCoroutine);
+            showAdCoroutine = null;
+        }
+    }
+    public IEnumerator SecondsCoroutine()
+    {
+
+        CanMove = false;
+
+        CanSoundOn = false;
+  
+        showAdPanel.SetActive(true);
+        toMenuButton.interactable = false;
+        if (!gamemodeCar)
+        {
+            _sprintButtonScript.StopSprint();
+
+            if (gamemodeRunning)
+                runSoundObject.SetActive(false);
+            _playerController.jumpButton.GetComponent<Button>().interactable = false;
+            _playerController.sptintButton.GetComponent<Button>().interactable = false;
+            _playerController._floatingJoystick.gameObject.SetActive(false);
+        }
+        if (gamemodeCar)
+        {
+            carSoundsObject.SetActive(false);
+            for (int i = 0; i < _vehicleControl.controllerButtons.Length; i++)
+            {
+                _vehicleControl.controllerButtons[i].interactable = false;
+            }
+        }
+
+
+
+        Geekplay.Instance.GameStoped = true;
+        Time.timeScale = 0;
+        music.volume = 0;
+        music.Pause();
+        
+        if (Geekplay.Instance.language == "en")
+            showAdText.text = "AD AFTER: 2";
+        if (Geekplay.Instance.language == "ru")
+            showAdText.text = "РЕКЛАМА ЧЕРЕЗ: 2";
+        if (Geekplay.Instance.language == "de")
+            showAdText.text = "WERBUNG NACH: 2";
+        if (Geekplay.Instance.language == "es")
+            showAdText.text = "ANUNCIO DESPUÉS: 2";
+        if (Geekplay.Instance.language == "tr")
+            showAdText.text = "REKLAMDAN SONRA: 2";
+        if (Geekplay.Instance.language == "ar")
+            showAdText.text = "الإعلان بعد: 2";
+        yield return new WaitForSecondsRealtime(1);
+        if (Geekplay.Instance.language == "en")
+            showAdText.text = "AD AFTER: 1";
+        if (Geekplay.Instance.language == "ru")
+            showAdText.text = "РЕКЛАМА ЧЕРЕЗ: 1";
+        if (Geekplay.Instance.language == "de")
+            showAdText.text = "WERBUNG NACH: 1";
+        if (Geekplay.Instance.language == "es")
+            showAdText.text = "ANUNCIO DESPUÉS: 1";
+        if (Geekplay.Instance.language == "tr")
+            showAdText.text = "REKLAMDAN SONRA: 1";
+        if (Geekplay.Instance.language == "ar")
+            showAdText.text = "الإعلان بعد: 1";
+
+        yield return new WaitForSecondsRealtime(1);
+
+        if (fillCount < 100)
+        {
+            ShowAd();
+        }
+        StopShowAdCoroutine();
     }
     public void EndBrake()
     {
@@ -362,6 +738,9 @@ public class Teleport : MonoBehaviour
     }
     public void StopCorutine()
     {
+
+
+        StartStartShow();
         if (enumerator != null)
         {
             StopCoroutine(enumerator);
@@ -427,8 +806,6 @@ public class Teleport : MonoBehaviour
                 else
                     parts[i].GetComponent<Rigidbody>().AddForce(-rand2 * parts[i].transform.right);
             }
-            //parts[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
-            //parts[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
         playerObject.SetActive(false);
         if (gamemodeBicycle)
@@ -445,6 +822,8 @@ public class Teleport : MonoBehaviour
     }
     public void EndCorutine()
     {
+
+        StartStartShow();
         for (int i = 0; i < parts.Length; i++)
         {
             parts[i].SetActive(false);
@@ -464,6 +843,7 @@ public class Teleport : MonoBehaviour
             StopCoroutine(endEnumerator);
             endEnumerator = null;
         }
+        CanJump = true;
         deadAudioCount = 0;
     }
 }
